@@ -1,0 +1,1518 @@
+[
+  {
+    "id": "1",
+    "title": "Tomaat Mozerella",
+    "image": "https://img.static-rmg.be/a/food/image/q75/w640/h400/7077/tomaat-mozzarella.jpg",
+    "timings": {
+      "total": 30,
+      "active": 10
+    },
+    "labels": ["zomer", "hoofdgerecht", "light"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "tomaten",
+          "amount": 4,
+          "metric": "stuk(s)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "mozerella",
+          "amount": 2,
+          "metric": "bolletje(s)",
+          "departments": ["Kaas"]
+        },
+        {
+          "name": "verse basilicum",
+          "amount": 2,
+          "metric": "takje(s)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "balsamico siroop",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Roerei met zalm, kerstomaat, jonge spinazie en bieslook",
+    "image": "/roerei.jpg",
+    "timings": {
+      "total": 15,
+      "active": 15
+    },
+    "labels": ["zomer", "ontbijt"],
+    "food": {
+      "servings": 2,
+      "ingredients": [
+        {
+          "name": "kerstomaten",
+          "amount": 5,
+          "metric": "aantal (±)",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zalm",
+          "amount": 40,
+          "metric": "gram",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "eieren",
+          "amount": 4,
+          "metric": "aantal",
+          "departments": ["eieren"]
+        },
+        {
+          "name": "bieslook",
+          "amount": 2,
+          "metric": "eetlepels",
+          "departments": ["Groenten & Fruit"]
+        },
+        {
+          "name": "zwarte peper",
+          "departments": ["kruiden"]
+        },
+        {
+          "name": "olijfolie",
+          "departments": ["olie"]
+        },
+        {
+          "name": "zeezout",
+          "departments": ["kruiden"]
+        }
+      ]
+    },
+    "steps": [
+      {
+        "ingredients": ["tomaten", "mozzerella"],
+        "description": "Snij de tomaten en de mozzarella in plakken."
+      },
+      {
+        "ingredients": ["verse basilicum"],
+        "description": "Schik de plakken tomaat en mozzarella afwisselend op een bord, en stop er ook blaadjes basilicum tussen."
+      },
+      {
+        "ingredients": ["peper", "zeezout"],
+        "description": "Kruid met flink wat peper en een snuifje zeezout."
+      },
+      {
+        "ingredients": ["olijfolie"],
+        "description": "Overgiet met een straaltje olijfolie. Serveer meteen."
+      }
+    ]
+  }
+]
