@@ -12,9 +12,9 @@ const Signin = () => {
     e.preventDefault();
 
     try {
-      console.log("after login, going to navigate", username, password);
-      login(username, password);
-      navigate("/dashboard");
+      login(username, password, () => {
+        navigate("/dashboard");
+      });
     } catch (err) {
       console.log("err", err);
     }

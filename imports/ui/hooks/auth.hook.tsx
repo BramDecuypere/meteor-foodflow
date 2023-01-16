@@ -2,29 +2,31 @@ import { Meteor } from "meteor/meteor";
 import { useTracker } from "meteor/react-meteor-data";
 import React from "react";
 
-const authContext = React.createContext({
-  user: Meteor.user(),
-} as ReturnType<typeof useAuth>);
+const authContext = React.createContext({} as ReturnType<typeof useAuth>);
 
 function useAuth() {
   const user = useTracker(() => Meteor.user());
 
   return {
     user,
-    login(username: string, password: string) {
+    login(username: string, password: string, cb: () => void) {
       Meteor.loginWithPassword(username, password, (err) => {
         if (err) {
           if (err.message) {
             alert(`reason: ${err.message}`);
           }
+          return;
+        }
+
+        if (cb) {
+          setTimeout(() => {
+            cb();
+          }, 0);
         }
       });
     },
     logout() {
-      Meteor.logout((err) => {
-        console.log("🚀 ~ file: auth.hook.tsx:19 ~ Meteor.logout ~ err", err);
-        location.href = "/";
-      });
+      Meteor.logout();
     },
   };
 }

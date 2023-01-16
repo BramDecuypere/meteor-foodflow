@@ -5,7 +5,6 @@ import { Bars3BottomLeftIcon, BellIcon } from "@heroicons/react/24/outline";
 import { Fragment } from "react";
 import { useTracker } from "meteor/react-meteor-data";
 import { Meteor } from "meteor/meteor";
-import { redirect } from "react-router-dom";
 
 const userNavigation = [
   // { name: "Your Profile", href: "#" },
@@ -13,15 +12,7 @@ const userNavigation = [
   {
     name: "Sign out",
     href: "",
-    onClick: () =>
-      Meteor.logout((err) => {
-        if (err) {
-          console.log("🚀 ~ file: top-nav.tsx:14 ~ signout", err);
-          return;
-        }
-
-        redirect("/signin");
-      }),
+    onClick: () => Meteor.logout(),
   },
 ];
 
