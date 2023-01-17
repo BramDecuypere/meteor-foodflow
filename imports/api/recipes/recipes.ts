@@ -1,6 +1,9 @@
+import { Mongo } from "meteor/mongo";
+
 export interface RecipeStep {
-  ingredients: string[];
-  description: string;
+  title?: string;
+  ingredients?: string[];
+  description?: string;
 }
 
 export interface RecipeIngredient {
@@ -11,7 +14,8 @@ export interface RecipeIngredient {
 }
 
 export interface Recipe {
-  id: string;
+  _id: string;
+  language: "NL" | "EN";
   title: string;
   image: string;
   labels: string[];
@@ -25,3 +29,5 @@ export interface Recipe {
   };
   steps: RecipeStep[];
 }
+
+export const RecipesCollection = new Mongo.Collection<Recipe>("recipes");

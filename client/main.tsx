@@ -8,6 +8,7 @@ import DashboardTemplate from "/imports/ui/templates/dashboard";
 import Signin from "/imports/ui/pages/signin";
 import RequireAuth from "/imports/ui/atoms/require-auth.hook";
 import { AuthProvider } from "/imports/ui/hooks/auth.hook";
+import RecipesList from "/imports/ui/pages/recipes-list";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <div>Dashboard root</div>,
+        element: <RecipesList />,
       },
     ],
   },

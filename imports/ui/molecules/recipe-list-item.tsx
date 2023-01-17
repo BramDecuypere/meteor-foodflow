@@ -1,7 +1,9 @@
+import React from "react";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import clsx from "classnames";
 import { Link } from "react-router-dom";
-import { Recipe } from "../../../interfaces/recipe";
+
+import { Recipe } from "/imports/api/recipes/recipes";
 import Label from "../atoms/label";
 
 const RecipeListItem = ({
