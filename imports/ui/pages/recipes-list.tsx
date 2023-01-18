@@ -117,7 +117,7 @@ const RecipesList = () => {
           </ul>
         </div>
 
-        {recipesTotal && (
+        {recipesTotal ? (
           <div className="fixed bottom-5 right-5">
             <button className="btn flex items-center bg-green-300 py-4 px-8 rounded-lg shadow-lg border-2 border-black">
               <span className="h-5 w-5 mr-3">
@@ -126,7 +126,7 @@ const RecipesList = () => {
               Create grocery list ({recipesTotal})
             </button>
           </div>
-        )}
+        ) : undefined}
       </div>
     </>
   );
