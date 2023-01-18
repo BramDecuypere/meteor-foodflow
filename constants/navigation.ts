@@ -1,11 +1,11 @@
-import { HomeIcon, InboxIcon } from "@heroicons/react/24/outline";
+import { HomeIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 export const navigation = [
   { name: "Recipes", href: "/dashboard", icon: HomeIcon, current: false },
   {
     name: "Grocery list",
     href: "/groceries",
-    icon: InboxIcon,
+    icon: ShoppingCartIcon,
     current: false,
   },
   // { name: "Projects", href: "#", icon: FolderIcon, current: false },

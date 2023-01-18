@@ -1,4 +1,4 @@
-interface SelectedRecipe {
+export interface SelectedRecipe {
   _id: string;
   servings: number;
 }

@@ -34,6 +34,8 @@ function useGlobal() {
     setState,
   };
 
+  console.log("nextState", context);
+
   return context;
 }
 

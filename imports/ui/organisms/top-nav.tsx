@@ -1,7 +1,7 @@
 import React from "react";
 import cx from "classnames";
 import { Menu, Transition } from "@headlessui/react";
-import { Bars3BottomLeftIcon, BellIcon } from "@heroicons/react/24/outline";
+import { Bars3BottomLeftIcon } from "@heroicons/react/24/outline";
 import { Fragment } from "react";
 import { useTracker } from "meteor/react-meteor-data";
 import { Meteor } from "meteor/meteor";
@@ -73,13 +73,28 @@ const TopNav = () => {
 
           {user && (
             <>
-              <button
+              {/* <button
                 type="button"
                 className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
                 <span className="sr-only">View notifications</span>
                 <BellIcon className="h-6 w-6" aria-hidden="true" />
-              </button>
+              </button> */}
+
+              {/* {totalRecipes ? (
+                <button
+                  type="button"
+                  className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                >
+                  <div className="relative">
+                    <span className="sr-only">Shopping Cart</span>
+                    <span className="flex justify-center items-center bg-red-500 h-5 w-5 text-xs text-white rounded-lg absolute translate-x-4 -translate-y-2">
+                      {totalRecipes}
+                    </span>
+                    <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
+                  </div>
+                </button>
+              ) : undefined} */}
 
               {/* Profile dropdown */}
               <Menu as="div" className="relative ml-3">
