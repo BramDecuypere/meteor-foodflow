@@ -5,6 +5,7 @@ import { Bars3BottomLeftIcon, BellIcon } from "@heroicons/react/24/outline";
 import { Fragment } from "react";
 import { useTracker } from "meteor/react-meteor-data";
 import { Meteor } from "meteor/meteor";
+import GlobalConsumer from "../hooks/global.context";
 
 const userNavigation = [
   // { name: "Your Profile", href: "#" },
@@ -18,11 +19,12 @@ const userNavigation = [
 
 const TopNav = () => {
   const user = useTracker(() => Meteor.user());
-  // const { user, error, isLoading } = useUser();
-  // const dispatch = useAppDispatch();
+  const {
+    sidebar: { setIsOpen },
+  } = GlobalConsumer();
 
   const onOpenClick = () => {
-    // dispatch(setIsSidebarOpen(true));
+    setIsOpen(true);
   };
 
   return (

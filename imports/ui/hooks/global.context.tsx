@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { GlobalContext } from "/interfaces/global-context";
 
-const initialGlobalState = {
+const initialGlobalState: GlobalContext = {
   recipes: {
     selected: [],
+  },
+  sidebar: {
+    isOpen: true,
+    setIsOpen: (bool: boolean) => {},
   },
 };
 
@@ -12,10 +16,27 @@ const Global = React.createContext<GlobalContext>(initialGlobalState);
 function useGlobal() {
   const [state, setState] = useState(initialGlobalState);
 
-  return {
-    ...state,
-    setState,
+  const setIsOpen = (isOpen: boolean) => {
+    console.log("setting state", isOpen);
+    setState({
+      ...state,
+      sidebar: {
+        ...state.sidebar,
+        isOpen,
+      },
+    });
   };
+
+  const context = {
+    ...state,
+    sidebar: {
+      ...state.sidebar,
+      setIsOpen,
+    },
+    setState,
+  } as GlobalContext;
+
+  return context;
 }
 
 export function GlobalProvider({ children }: any) {

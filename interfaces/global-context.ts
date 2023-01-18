@@ -4,6 +4,10 @@ interface SelectedRecipe {
 }
 
 export interface GlobalContext {
+  sidebar: {
+    isOpen: boolean;
+    setIsOpen: (open: boolean) => void;
+  };
   recipes: {
     selected: SelectedRecipe[];
   };

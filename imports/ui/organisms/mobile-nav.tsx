@@ -6,20 +6,22 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { navigation } from "/constants/navigation";
 import Logo from "../atoms/Logo";
 import { NavLink } from "react-router-dom";
+import GlobalConsumer from "../hooks/global.context";
 // import Link from "next/link";
 // import { useAppDispatch, useAppSelector } from "@hooks/redux.hooks";
 // import { selectIsSidebarOpen, setIsSidebarOpen } from "@features/app/appSlice";
 
 const MobileNav = () => {
-  // const dispatch = useAppDispatch();
-  // const isSidebarOpen = useAppSelector(selectIsSidebarOpen);
+  const {
+    sidebar: { setIsOpen, isOpen },
+  } = GlobalConsumer();
 
   const onCloseClick = () => {
-    // dispatch(setIsSidebarOpen(false));
+    setIsOpen(false);
   };
 
   return (
-    <Transition.Root show={true} as={Fragment}>
+    <Transition.Root show={isOpen} as={Fragment}>
       <Dialog
         as="div"
         className="relative z-40 md:hidden"
