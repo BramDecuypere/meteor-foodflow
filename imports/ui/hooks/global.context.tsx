@@ -17,7 +17,6 @@ function useGlobal() {
   const [state, setState] = useState(initialGlobalState);
 
   const setIsOpen = (isOpen: boolean) => {
-    console.log("setting state", isOpen);
     setState({
       ...state,
       sidebar: {
