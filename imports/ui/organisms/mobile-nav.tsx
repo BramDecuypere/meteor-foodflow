@@ -7,17 +7,14 @@ import { navigation } from "/constants/navigation";
 import Logo from "../atoms/Logo";
 import { NavLink } from "react-router-dom";
 import GlobalConsumer from "../hooks/global.context";
-// import Link from "next/link";
-// import { useAppDispatch, useAppSelector } from "@hooks/redux.hooks";
-// import { selectIsSidebarOpen, setIsSidebarOpen } from "@features/app/appSlice";
 
 const MobileNav = () => {
   const {
-    sidebar: { setIsOpen, isOpen },
+    sidebar: { setIsSidebarOpen, isOpen },
   } = GlobalConsumer();
 
   const onCloseClick = () => {
-    setIsOpen(false);
+    if (setIsSidebarOpen) setIsSidebarOpen(false);
   };
 
   return (

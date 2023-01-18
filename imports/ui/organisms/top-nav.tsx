@@ -20,11 +20,11 @@ const userNavigation = [
 const TopNav = () => {
   const user = useTracker(() => Meteor.user());
   const {
-    sidebar: { setIsOpen },
+    sidebar: { setIsSidebarOpen },
   } = GlobalConsumer();
 
   const onOpenClick = () => {
-    setIsOpen(true);
+    if (setIsSidebarOpen) setIsSidebarOpen(true);
   };
 
   return (

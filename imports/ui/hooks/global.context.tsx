@@ -7,7 +7,6 @@ const initialGlobalState: GlobalContext = {
   },
   sidebar: {
     isOpen: false,
-    setIsOpen: (bool: boolean) => {},
   },
 };
 
@@ -16,7 +15,7 @@ const Global = React.createContext<GlobalContext>(initialGlobalState);
 function useGlobal() {
   const [state, setState] = useState(initialGlobalState);
 
-  const setIsOpen = (isOpen: boolean) => {
+  const setIsSidebarOpen = (isOpen: boolean) => {
     setState({
       ...state,
       sidebar: {
@@ -26,14 +25,14 @@ function useGlobal() {
     });
   };
 
-  const context = {
+  const context: GlobalContext = {
     ...state,
     sidebar: {
       ...state.sidebar,
-      setIsOpen,
+      setIsSidebarOpen,
     },
     setState,
-  } as GlobalContext;
+  };
 
   return context;
 }
