@@ -9,6 +9,7 @@ import Signin from "/imports/ui/pages/signin";
 import RequireAuth from "/imports/ui/atoms/require-auth.hook";
 import { AuthProvider } from "/imports/ui/hooks/auth.hook";
 import RecipesList from "/imports/ui/pages/recipes-list";
+import { GlobalProvider } from "/imports/ui/hooks/global.context";
 
 const router = createBrowserRouter([
   {
@@ -71,7 +72,9 @@ Meteor.startup(() => {
   render(
     <React.StrictMode>
       <AuthProvider>
-        <RouterProvider router={router} />
+        <GlobalProvider>
+          <RouterProvider router={router} />
+        </GlobalProvider>
       </AuthProvider>
     </React.StrictMode>,
     document.getElementById("react-target")
