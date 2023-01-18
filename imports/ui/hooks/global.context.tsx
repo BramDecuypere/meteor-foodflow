@@ -6,7 +6,7 @@ const initialGlobalState: GlobalContext = {
     selected: [],
   },
   sidebar: {
-    isOpen: true,
+    isOpen: false,
     setIsOpen: (bool: boolean) => {},
   },
 };
