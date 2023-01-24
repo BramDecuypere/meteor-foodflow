@@ -8,20 +8,14 @@ import GlobalConsumer from "../hooks/global.context";
 const RecipesList = () => {
   const state = GlobalConsumer();
   const { recipes, setState } = state;
-  const { recipes: trackedRecipes } = useTracker(() => {
-    const noDataAvailable = { recipes: [] };
-
-    if (!Meteor.user()) {
-      return noDataAvailable;
-    }
-
+  const trackedRecipes = useTracker(() => {
     const handler = Meteor.subscribe("recipes");
 
-    if (!handler.ready()) {
-      return { ...noDataAvailable, isLoading: true };
+    if (!Meteor.user() || !handler.ready()) {
+      return [];
     }
 
-    return { recipes: RecipesCollection.find().fetch() };
+    return RecipesCollection.find().fetch();
   });
 
   const setServingSize = (servings: number, _id: string) => {

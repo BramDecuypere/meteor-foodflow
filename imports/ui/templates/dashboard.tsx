@@ -15,7 +15,7 @@ const DashboardTemplate = ({ children }: { children?: any }) => {
       <div className="flex flex-1 flex-col md:pl-64">
         <TopNav />
 
-        <main className="flex-1 pb-16">{children || <Outlet />}</main>
+        <main className="flex-1 pb-16">{children ?? <Outlet />}</main>
       </div>
     </>
   );
