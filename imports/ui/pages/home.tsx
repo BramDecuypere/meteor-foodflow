@@ -157,7 +157,7 @@ const Home = () => (
                                 className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
                               >
                                 <item.icon
-                                  className="h-6 w-6 flex-shrink-0 text-green-400"
+                                  className="h-6 w-6 flex-shrink-0 text-orange"
                                   aria-hidden="true"
                                 />
                                 <div className="ml-4">
@@ -245,7 +245,7 @@ const Home = () => (
                                 className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
                               >
                                 <item.icon
-                                  className="h-6 w-6 flex-shrink-0 text-green-400"
+                                  className="h-6 w-6 flex-shrink-0 text-orange"
                                   aria-hidden="true"
                                 />
                                 <div className="ml-4">
@@ -283,7 +283,7 @@ const Home = () => (
                             <div className="mt-5 text-sm">
                               <a
                                 href="#"
-                                className= text-green-400 hover:text-green-300"
+                                className= text-orange hover:text-green-300"
                               >
                                 View all posts
                                 <span aria-hidden="true"> &rarr;</span>
@@ -306,7 +306,7 @@ const Home = () => (
             </Link>
             <Link
               to="/signup"
-              className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-green-400 px-4 py-2 text-base text-white shadow-sm hover:bg-green-600"
+              className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-orange px-4 py-2 text-base text-white shadow-sm hover:bg-green-600"
             >
               Sign up
             </Link>
@@ -349,7 +349,7 @@ const Home = () => (
                         className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50"
                       >
                         <item.icon
-                          className="h-6 w-6 flex-shrink-0 text-green-400"
+                          className="h-6 w-6 flex-shrink-0 text-orange"
                           aria-hidden="true"
                         />
                         <span className="ml-3 text-base text-gray-900">
@@ -388,7 +388,7 @@ const Home = () => (
                 <div>
                   <a
                     href="#"
-                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-green-400 px-4 py-2 text-base text-white shadow-sm hover:bg-green-700"
+                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-orange px-4 py-2 text-base text-white shadow-sm hover:bg-green-700"
                   >
                     Sign up
                   </a>
@@ -396,7 +396,7 @@ const Home = () => (
                     Existing customer?
                     <a
                       href="#"
-                      className="text-green-400 hover:text-green-300"
+                      className="text-orange hover:text-green-300"
                     >
                       Sign in
                     </a>
@@ -415,9 +415,7 @@ const Home = () => (
             <span className="block xl:inline">
               The way you eat and do groceries
             </span>{" "}
-            <span className="block text-green-400 xl:inline">
-              managed in flow
-            </span>
+            <span className="block text-orange xl:inline">managed in flow</span>
           </h1>
           <p className="mx-auto mt-3 max-w-md text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl">
             Creating grocery lists and remembering all of your favourite recipes
@@ -428,7 +426,7 @@ const Home = () => (
             <div className="rounded-md shadow">
               <a
                 href="#"
-                className="flex w-full items-center justify-center rounded-md border border-transparent bg-green-400 px-8 py-3 text-base text-white hover:bg-green-700 md:py-4 md:px-10 md:text-lg"
+                className="flex w-full items-center justify-center rounded-md border border-transparent bg-orange px-8 py-3 text-base text-white hover:bg-green-700 md:py-4 md:px-10 md:text-lg"
               >
                 Get started
               </a>
@@ -436,7 +434,7 @@ const Home = () => (
             <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
               <a
                 href="#"
-                className="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base text-green-400 hover:bg-gray-50 md:py-4 md:px-10 md:text-lg"
+                className="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base text-orange hover:bg-gray-50 md:py-4 md:px-10 md:text-lg"
               >
                 Book a call
               </a>
