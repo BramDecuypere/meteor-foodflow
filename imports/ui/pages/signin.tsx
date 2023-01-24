@@ -27,7 +27,7 @@ const Signin = () => {
           <div>
             <img
               className="h-12 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=green&shade=300"
+              src="https://tailwindui.com/img/logos/mark.svg?color=orange&shade=500"
               alt="Your Company"
             />
             <h2 className="mt-6 text-3xl font-bold tracking-tight text-gray-900">
@@ -35,7 +35,7 @@ const Signin = () => {
             </h2>
             <p className="mt-2 text-sm text-gray-600">
               Or{" "}
-              <a href="#" className="text-green-300 hover:text-green-300">
+              <a href="#" className="text-orange hover:text-orange">
                 start your 14-day free trial
               </a>
             </p>
@@ -142,7 +142,7 @@ const Signin = () => {
                       type="email"
                       autoComplete="email"
                       required
-                      className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-green-300 focus:outline-none focus:ring-green-400 sm:text-sm"
+                      className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-orange focus:outline-none focus:ring-orange sm:text-sm"
                     />
                   </div>
                 </div>
@@ -162,7 +162,7 @@ const Signin = () => {
                       autoComplete="current-password"
                       required
                       onChange={(e) => setPassword(e.target.value)}
-                      className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-green-300 focus:outline-none focus:ring-green-400 sm:text-sm"
+                      className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-orange focus:outline-none focus:ring-orange sm:text-sm"
                     />
                   </div>
                 </div>
@@ -173,7 +173,7 @@ const Signin = () => {
                       id="remember-me"
                       name="remember-me"
                       type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-green-300 focus:ring-green-400"
+                      className="h-4 w-4 rounded border-gray-300 text-orange focus:ring-orange"
                     />
                     <label
                       htmlFor="remember-me"
@@ -184,7 +184,7 @@ const Signin = () => {
                   </div>
 
                   <div className="text-sm">
-                    <a href="#" className="text-green-300 hover:text-green-400">
+                    <a href="#" className="text-orange hover:text-orange">
                       Forgot your password?
                     </a>
                   </div>
@@ -193,7 +193,7 @@ const Signin = () => {
                 <div>
                   <button
                     type="submit"
-                    className="flex w-full justify-center rounded-md border border-transparent bg-green-300 py-2 px-4 text-sm text-white shadow-sm hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-offset-2"
+                    className="flex w-full justify-center rounded-md border border-transparent bg-orange py-2 px-4 text-sm text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2"
                   >
                     Sign in
                   </button>
