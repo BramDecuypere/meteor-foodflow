@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import cn from "classnames";
 import { Link } from "react-router-dom";
 
@@ -7,21 +7,40 @@ import { Recipe } from "/imports/api/recipes/recipes";
 import AddToListGroup from "./add-to-list-group";
 import { ClockIcon, UserIcon } from "@heroicons/react/20/solid";
 
+const DEFAULT_SERVINGS = 2;
+
 const RecipeListItem = ({
   className,
   recipe,
-  onClick,
+  selected,
   onServingsChange,
 }: {
   className?: string;
   recipe: Recipe;
-  onClick: (e: any) => {};
   selected?: {
     _id: string;
     servings: number;
   };
-  onServingsChange: (servings: number) => {};
+  onServingsChange: (servings: number) => void;
 }) => {
+  const [currentServings, setCurrentServings] = useState(
+    selected ? selected.servings : DEFAULT_SERVINGS
+  );
+
+  useEffect(() => {
+    if (selected && selected.servings) {
+      setCurrentServings(selected?.servings);
+    }
+  }, [selected]);
+
+  const onAddToListClick = () => {
+    if (selected) {
+      return onServingsChange(0);
+    }
+
+    return onServingsChange(currentServings);
+  };
+
   return (
     <div
       className={cn(
@@ -41,8 +60,8 @@ const RecipeListItem = ({
         />
         <div className="flex flex-col absolute bottom-2 left-2 text-white font-bold">
           <div className="flex">
-            {recipe.labels.map((value) => {
-              return <Label label={value} className="mr-2 text-xs" />;
+            {recipe.labels.map((value, idx) => {
+              return <Label key={idx} label={value} className="mr-2 text-xs" />;
             })}
           </div>
           <span className="text-lg">{recipe.title}</span>
@@ -75,8 +94,11 @@ const RecipeListItem = ({
             </p>
           </div>
           <AddToListGroup
-            onAdd={() => onServingsChange(1)}
-            onRemove={() => onServingsChange(-1)}
+            onClick={onAddToListClick}
+            servings={currentServings}
+            isSelected={!!selected}
+            onAdd={() => onServingsChange(currentServings + 1)}
+            onRemove={() => onServingsChange(currentServings - 1)}
           />
         </div>
       </div>

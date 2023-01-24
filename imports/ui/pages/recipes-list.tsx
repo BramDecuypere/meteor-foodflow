@@ -1,16 +1,13 @@
 import React from "react";
 import { Meteor } from "meteor/meteor";
 import { useTracker } from "meteor/react-meteor-data";
-import { Recipe, RecipesCollection } from "/imports/api/recipes/recipes";
+import { RecipesCollection } from "/imports/api/recipes/recipes";
 import RecipeListItem from "../molecules/recipe-list-item";
 import GlobalConsumer from "../hooks/global.context";
-import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import { getRecipesTotal } from "/utils/get-total-recipes";
 
 const RecipesList = () => {
   const state = GlobalConsumer();
   const { recipes, setState } = state;
-  const selectedRecipes = recipes.selected;
   const { recipes: trackedRecipes } = useTracker(() => {
     const noDataAvailable = { recipes: [] };
 
@@ -28,20 +25,31 @@ const RecipesList = () => {
   });
 
   const setServingSize = (servings: number, _id: string) => {
+    const foundSelectedRecipe = state.recipes.selected.find(
+      ({ _id: id }) => id === _id
+    );
+
+    let selected = [];
+    if (!foundSelectedRecipe) {
+      selected = [...state.recipes.selected, { _id, servings }];
+    } else {
+      selected = [...state.recipes.selected].map((recipe) => {
+        if (recipe._id === _id) {
+          return {
+            _id: recipe._id,
+            servings,
+          };
+        }
+
+        return recipe;
+      });
+    }
+
     const nextState = {
       ...state,
       recipes: {
         ...state.recipes,
-        selected: state.recipes.selected.map((recipe) => {
-          if (recipe._id === _id) {
-            return {
-              _id: recipe._id,
-              servings,
-            };
-          }
-
-          return recipe;
-        }),
+        selected,
       },
     };
 
@@ -54,42 +62,9 @@ const RecipesList = () => {
     setState(nextState);
   };
 
-  const onRecipeListItemClick = (e: any, recipe: Recipe) => {
-    if (setState) {
-      const recipeSelected = recipes.selected.find(
-        (val) => val._id === recipe._id
-      );
-
-      const nextState = {
-        ...state,
-        recipes: {
-          ...state.recipes,
-        },
-      };
-
-      if (recipeSelected) {
-        nextState.recipes.selected = nextState.recipes.selected.filter(
-          (_recipe) => _recipe._id !== recipe._id
-        );
-      } else {
-        nextState.recipes.selected = [
-          ...nextState.recipes.selected,
-          {
-            _id: recipe._id,
-            servings: 2,
-          },
-        ];
-      }
-
-      setState(nextState);
-    }
-  };
-
   const getSelected = (_listId: string) => {
     return recipes.selected.find(({ _id }) => _id === _listId);
   };
-
-  const recipesTotal = getRecipesTotal(selectedRecipes);
 
   return (
     <>
@@ -103,29 +78,17 @@ const RecipesList = () => {
             {trackedRecipes.map((recipe, idx) => (
               <li key={idx}>
                 <RecipeListItem
-                  onClick={(e) => onRecipeListItemClick(e, recipe)}
                   className="my-1 md:my-3"
                   recipe={recipe}
                   selected={getSelected(recipe._id)}
-                  onServingsChange={(servings) =>
-                    setServingSize(servings, recipe._id)
-                  }
+                  onServingsChange={(servings) => {
+                    setServingSize(servings, recipe._id);
+                  }}
                 />
               </li>
             ))}
           </ul>
         </div>
-
-        {recipesTotal ? (
-          <div className="fixed bottom-5 right-5">
-            <button className="btn flex items-center bg-green-300 py-4 px-8 rounded-lg shadow-lg border-2 border-black">
-              <span className="h-5 w-5 mr-3">
-                <ShoppingCartIcon />
-              </span>
-              Create grocery list ({recipesTotal})
-            </button>
-          </div>
-        ) : undefined}
       </div>
     </>
   );
