@@ -15,7 +15,7 @@ module.exports = {
         'sans': ['Nunito', 'Arial', 'sans-serif'],
       },
       boxShadow: {
-        'light': '0 0 5px 1px rgba(0, 0, 0, 0.1)',
+        'light': '0 0 10px 5px rgba(0, 0, 0, 0.1)',
         'lighter': '0 0 10px 2px rgba(0, 0, 0, 0.05)',
         'medium': '0 0 25px 10px rgba(0, 0, 0, 0.1)'
       }

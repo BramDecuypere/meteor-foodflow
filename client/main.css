@@ -6,4 +6,5 @@ html,
 body,
 #react-target {
   height: 100%;
+  font-weight: 700;
 }

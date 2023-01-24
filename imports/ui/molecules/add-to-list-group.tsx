@@ -15,7 +15,7 @@ const AddToListGroup = ({
     <div
       className={cn({
         className,
-        "flex items-center justify-between font-bold shadow-light rounded-3xl h-10 bg-white border-2 text-xs w-full max-w-sm":
+        "flex items-center justify-between font-bold shadow-light rounded-3xl h-10 bg-white text-xs w-full max-w-sm":
           true,
       })}
     >

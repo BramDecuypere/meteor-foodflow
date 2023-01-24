@@ -1,5 +1,5 @@
 import React from "react";
-import clsx from "classnames";
+import cn from "classnames";
 import { DOMAttributes } from "react";
 
 interface ButtonItemProps extends DOMAttributes<HTMLButtonElement> {
@@ -15,7 +15,7 @@ const Button = ({
   <button
     onClick={onClick}
     type="button"
-    className={clsx(
+    className={cn(
       className,
       "bg-orange text-white h-10 px-3 rounded-3xl text-xs font-bold"
     )}

@@ -1,4 +1,4 @@
-import clsx from "classnames";
+import cn from "classnames";
 import { ButtonGroupState } from "../../../enums/button-group-state";
 import Button from "../atoms/Button";
 
@@ -19,7 +19,7 @@ const ButtonGroup = ({
           onClick={() => {
             setActiveValue(value);
           }}
-          className={clsx({
+          className={cn({
             "bg-red-200": active.toString() === value.toString(),
             "border-red-200": true,
             "bg-white": active.toString() !== value.toString(),
