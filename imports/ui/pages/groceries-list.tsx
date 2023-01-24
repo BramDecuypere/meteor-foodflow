@@ -37,7 +37,9 @@ const GroceriesList = () => {
           <ul>
             {state.recipes &&
               state.recipes.selected &&
-              state.recipes.selected.map(({ _id }) => <li>checked - {_id}</li>)}
+              state.recipes.selected.map(({ _id }) => (
+                <li key={_id}>checked - {_id}</li>
+              ))}
           </ul>
           {/* <ul className="grid gap-3 lg:grid-cols-2 xl:grid-cols-3 xl:gap-8">
             {trackedRecipes.map((recipe, idx) => (
