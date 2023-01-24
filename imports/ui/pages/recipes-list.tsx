@@ -24,9 +24,7 @@ const RecipesList = () => {
       return { ...noDataAvailable, isLoading: true };
     }
 
-    const recipes = RecipesCollection.find().fetch();
-
-    return { recipes };
+    return { recipes: RecipesCollection.find().fetch() };
   });
 
   const setServingSize = (servings: number, _id: string) => {
@@ -95,24 +93,25 @@ const RecipesList = () => {
 
   return (
     <>
-      <div className="mx-auto max-w-4xl pt-6 px-4 sm:px-6 md:px-8">
+      <div className="mx-auto max-w-6xl pt-6 px-4 sm:px-6 md:px-8">
         <h1 className="text-2xl font-semibold text-gray-900">Recipes</h1>
       </div>
 
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 md:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
         <div className="py-4">
-          <ul>
+          <ul className="grid gap-3 lg:grid-cols-2 xl:grid-cols-3 xl:gap-8">
             {trackedRecipes.map((recipe, idx) => (
-              <RecipeListItem
-                onClick={(e) => onRecipeListItemClick(e, recipe)}
-                key={idx}
-                className="my-1 md:my-3 rounded-md"
-                recipe={recipe}
-                selected={getSelected(recipe._id)}
-                onServingsChange={(servings) =>
-                  setServingSize(servings, recipe._id)
-                }
-              />
+              <li key={idx}>
+                <RecipeListItem
+                  onClick={(e) => onRecipeListItemClick(e, recipe)}
+                  className="my-1 md:my-3"
+                  recipe={recipe}
+                  selected={getSelected(recipe._id)}
+                  onServingsChange={(servings) =>
+                    setServingSize(servings, recipe._id)
+                  }
+                />
+              </li>
             ))}
           </ul>
         </div>

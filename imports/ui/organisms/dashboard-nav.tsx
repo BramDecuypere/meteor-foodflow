@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 
 const StaticSidebar = () => {
   return (
-    <div className="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col">
+    <div className="hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col shadow-medium z-50">
       {/* Sidebar component, swap this element with another sidebar if you like */}
       <div className="flex flex-grow flex-col overflow-y-auto border-r border-gray-200 bg-white pt-5">
         <div className="flex flex-shrink-0 items-center px-4">

@@ -1,23 +1,6 @@
 import clsx from "classnames";
-import { DOMAttributes } from "react";
 import { ButtonGroupState } from "../../../enums/button-group-state";
-
-interface ButtonItemProps extends DOMAttributes<HTMLButtonElement> {
-  className: string;
-}
-
-const ButtonItem = ({ children, className, onClick }: ButtonItemProps) => (
-  <button
-    onClick={onClick}
-    type="button"
-    className={clsx(
-      className,
-      "relative inline-flex items-center border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 focus:z-10 focus:outline-none"
-    )}
-  >
-    {children}
-  </button>
-);
+import Button from "../atoms/Button";
 
 const ButtonGroup = ({
   items,
@@ -31,7 +14,7 @@ const ButtonGroup = ({
   return (
     <span className="inline-flex rounded-md shadow-sm">
       {items.map(({ label, value }, idx) => (
-        <ButtonItem
+        <Button
           key={idx}
           onClick={() => {
             setActiveValue(value);
@@ -45,7 +28,7 @@ const ButtonGroup = ({
           })}
         >
           {label}
-        </ButtonItem>
+        </Button>
       ))}
     </span>
   );
