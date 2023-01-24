@@ -125,7 +125,7 @@ const Home = () => (
                     <Popover.Button
                       className={cl(
                         open ? "text-gray-900" : "text-gray-500",
-                        "group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-offset-2"
+                        "group inline-flex items-center rounded-md bg-white text-base hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-offset-2"
                       )}
                     >
                       <span>Solutions</span>
@@ -161,7 +161,7 @@ const Home = () => (
                                   aria-hidden="true"
                                 />
                                 <div className="ml-4">
-                                  <p className="text-base font-medium text-gray-900">
+                                  <p className="text-base text-gray-900">
                                     {item.name}
                                   </p>
                                   <p className="mt-1 text-sm text-gray-500">
@@ -176,7 +176,7 @@ const Home = () => (
                               <div key={item.name} className="flow-root">
                                 <a
                                   href={item.href}
-                                  className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-100"
+                                  className="-m-3 flex items-center rounded-md p-3 text-base text-gray-900 hover:bg-gray-100"
                                 >
                                   <item.icon
                                     className="h-6 w-6 flex-shrink-0 text-gray-400"
@@ -196,13 +196,13 @@ const Home = () => (
 
               <a
                 href="#"
-                className="text-base font-medium text-gray-500 hover:text-gray-900"
+                className="text-base text-gray-500 hover:text-gray-900"
               >
                 Pricing
               </a>
               <a
                 href="#"
-                className="text-base font-medium text-gray-500 hover:text-gray-900"
+                className="text-base text-gray-500 hover:text-gray-900"
               >
                 Docs
               </a>
@@ -213,7 +213,7 @@ const Home = () => (
                     <Popover.Button
                       className={cl(
                         open ? "text-gray-900" : "text-gray-500",
-                        "group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-offset-2"
+                        "group inline-flex items-center rounded-md bg-white text-base hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-offset-2"
                       )}
                     >
                       <span>More</span>
@@ -249,7 +249,7 @@ const Home = () => (
                                   aria-hidden="true"
                                 />
                                 <div className="ml-4">
-                                  <p className="text-base font-medium text-gray-900">
+                                  <p className="text-base text-gray-900">
                                     {item.name}
                                   </p>
                                   <p className="mt-1 text-sm text-gray-500">
@@ -261,7 +261,7 @@ const Home = () => (
                           </div>
                           <div className="bg-gray-50 px-5 py-5 sm:px-8 sm:py-8">
                             <div>
-                              <h3 className="text-base font-medium text-gray-500">
+                              <h3 className="text-base text-gray-500">
                                 Recent Posts
                               </h3>
                               <ul role="list" className="mt-4 space-y-4">
@@ -272,7 +272,7 @@ const Home = () => (
                                   >
                                     <a
                                       href={item.href}
-                                      className="font-medium text-gray-900 hover:text-gray-700"
+                                      className= text-gray-900 hover:text-gray-700"
                                     >
                                       {item.name}
                                     </a>
@@ -283,7 +283,7 @@ const Home = () => (
                             <div className="mt-5 text-sm">
                               <a
                                 href="#"
-                                className="font-medium text-green-400 hover:text-green-300"
+                                className= text-green-400 hover:text-green-300"
                               >
                                 View all posts
                                 <span aria-hidden="true"> &rarr;</span>
@@ -300,13 +300,13 @@ const Home = () => (
           <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
             <Link
               to="/signin"
-              className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+              className="whitespace-nowrap text-base text-gray-500 hover:text-gray-900"
             >
               Log in
             </Link>
             <Link
               to="/signup"
-              className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-green-400 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-green-600"
+              className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-green-400 px-4 py-2 text-base text-white shadow-sm hover:bg-green-600"
             >
               Sign up
             </Link>
@@ -352,7 +352,7 @@ const Home = () => (
                           className="h-6 w-6 flex-shrink-0 text-green-400"
                           aria-hidden="true"
                         />
-                        <span className="ml-3 text-base font-medium text-gray-900">
+                        <span className="ml-3 text-base text-gray-900">
                           {item.name}
                         </span>
                       </a>
@@ -364,14 +364,14 @@ const Home = () => (
                 <div className="grid grid-cols-2 gap-y-4 gap-x-8">
                   <a
                     href="#"
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="text-base text-gray-900 hover:text-gray-700"
                   >
                     Pricing
                   </a>
 
                   <a
                     href="#"
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
+                    className="text-base text-gray-900 hover:text-gray-700"
                   >
                     Docs
                   </a>
@@ -379,7 +379,7 @@ const Home = () => (
                     <a
                       key={item.name}
                       href={item.href}
-                      className="text-base font-medium text-gray-900 hover:text-gray-700"
+                      className="text-base text-gray-900 hover:text-gray-700"
                     >
                       {item.name}
                     </a>
@@ -388,11 +388,11 @@ const Home = () => (
                 <div>
                   <a
                     href="#"
-                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-green-400 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-green-700"
+                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-green-400 px-4 py-2 text-base text-white shadow-sm hover:bg-green-700"
                   >
                     Sign up
                   </a>
-                  <p className="mt-6 text-center text-base font-medium text-gray-500">
+                  <p className="mt-6 text-center text-base text-gray-500">
                     Existing customer?
                     <a
                       href="#"
@@ -428,7 +428,7 @@ const Home = () => (
             <div className="rounded-md shadow">
               <a
                 href="#"
-                className="flex w-full items-center justify-center rounded-md border border-transparent bg-green-400 px-8 py-3 text-base font-medium text-white hover:bg-green-700 md:py-4 md:px-10 md:text-lg"
+                className="flex w-full items-center justify-center rounded-md border border-transparent bg-green-400 px-8 py-3 text-base text-white hover:bg-green-700 md:py-4 md:px-10 md:text-lg"
               >
                 Get started
               </a>
@@ -436,7 +436,7 @@ const Home = () => (
             <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
               <a
                 href="#"
-                className="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-green-400 hover:bg-gray-50 md:py-4 md:px-10 md:text-lg"
+                className="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base text-green-400 hover:bg-gray-50 md:py-4 md:px-10 md:text-lg"
               >
                 Book a call
               </a>

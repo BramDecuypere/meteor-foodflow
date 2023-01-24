@@ -35,10 +35,7 @@ const Signin = () => {
             </h2>
             <p className="mt-2 text-sm text-gray-600">
               Or{" "}
-              <a
-                href="#"
-                className="font-medium text-green-300 hover:text-green-300"
-              >
+              <a href="#" className="text-green-300 hover:text-green-300">
                 start your 14-day free trial
               </a>
             </p>
@@ -47,7 +44,7 @@ const Signin = () => {
           <div className="mt-8">
             {/* <div>
               <div>
-                <p className="text-sm font-medium text-gray-700">
+                <p className="text-sm text-gray-700">
                   Sign in with
                 </p>
 
@@ -55,7 +52,7 @@ const Signin = () => {
                   <div>
                     <a
                       href="#"
-                      className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
+                      className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm text-gray-500 shadow-sm hover:bg-gray-50"
                     >
                       <span className="sr-only">Sign in with Facebook</span>
                       <svg
@@ -76,7 +73,7 @@ const Signin = () => {
                   <div>
                     <a
                       href="#"
-                      className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
+                      className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm text-gray-500 shadow-sm hover:bg-gray-50"
                     >
                       <span className="sr-only">Sign in with Twitter</span>
                       <svg
@@ -93,7 +90,7 @@ const Signin = () => {
                   <div>
                     <a
                       href="#"
-                      className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
+                      className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm text-gray-500 shadow-sm hover:bg-gray-50"
                     >
                       <span className="sr-only">Sign in with GitHub</span>
                       <svg
@@ -133,7 +130,7 @@ const Signin = () => {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block text-sm text-gray-700"
                   >
                     Email address
                   </label>
@@ -153,7 +150,7 @@ const Signin = () => {
                 <div className="space-y-1">
                   <label
                     htmlFor="password"
-                    className="block text-sm font-medium text-gray-700"
+                    className="block text-sm text-gray-700"
                   >
                     Password
                   </label>
@@ -187,10 +184,7 @@ const Signin = () => {
                   </div>
 
                   <div className="text-sm">
-                    <a
-                      href="#"
-                      className="font-medium text-green-300 hover:text-green-400"
-                    >
+                    <a href="#" className="text-green-300 hover:text-green-400">
                       Forgot your password?
                     </a>
                   </div>
@@ -199,7 +193,7 @@ const Signin = () => {
                 <div>
                   <button
                     type="submit"
-                    className="flex w-full justify-center rounded-md border border-transparent bg-green-300 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-offset-2"
+                    className="flex w-full justify-center rounded-md border border-transparent bg-green-300 py-2 px-4 text-sm text-white shadow-sm hover:bg-green-400 focus:outline-none focus:ring-2 focus:ring-green-300 focus:ring-offset-2"
                   >
                     Sign in
                   </button>
