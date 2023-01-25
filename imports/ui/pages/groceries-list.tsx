@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Meteor } from "meteor/meteor";
 import { useTracker } from "meteor/react-meteor-data";
 import {
@@ -6,7 +6,6 @@ import {
   RecipesCollection,
 } from "/imports/api/recipes/recipes";
 import GlobalConsumer from "../hooks/global.context";
-import { SelectedRecipe } from "/interfaces/global-context";
 
 const GroceriesList = () => {
   const state = GlobalConsumer();
@@ -30,7 +29,7 @@ const GroceriesList = () => {
   const selectedRecipes =
     state.recipes && state.recipes.selected ? state.recipes.selected : [];
 
-  const list = selectedRecipes
+  const completeIngredientsList = selectedRecipes
     .map(({ _id, servings }) => {
       const recipe = trackedRecipes.find(
         ({ _id: trackedRecipeId }) => trackedRecipeId === _id
@@ -44,10 +43,69 @@ const GroceriesList = () => {
     .reduce((ingredientsList, recipe) => {
       if (!recipe) return ingredientsList;
 
-      return [...ingredientsList, ...recipe.food.ingredients];
+      const ingredientsAdjustedToNewServingSize = recipe.food.ingredients.map(
+        (recipeIngredient) => {
+          const amount = recipeIngredient.amount
+            ? (recipeIngredient.amount / recipe.food.servings) * recipe.servings
+            : undefined;
+
+          return {
+            ...recipeIngredient,
+            amount,
+          };
+        }
+      );
+
+      return [...ingredientsList, ...ingredientsAdjustedToNewServingSize];
     }, [] as RecipeIngredient[]);
 
-  console.log("🚀 ~ file: groceries-list.tsx:40 ~ list ~ list", list);
+  const ingredientsByDepartment: {
+    [key: string]: {
+      name: string;
+      amount: number | undefined;
+      metric: string | undefined;
+    }[];
+  } = {};
+
+  completeIngredientsList.forEach((ingredient) => {
+    ingredient.departments.forEach((department) => {
+      if (!ingredientsByDepartment[department]) {
+        ingredientsByDepartment[department] = [
+          {
+            name: ingredient.name,
+            amount: ingredient.amount,
+            metric: ingredient.metric,
+          },
+        ];
+      } else {
+        const ingredientFoundIndex = ingredientsByDepartment[
+          department
+        ].findIndex((ingredientByDepartment) => {
+          return ingredientByDepartment.name === ingredient.name;
+        });
+
+        if (ingredientFoundIndex !== -1) {
+          const amount =
+            (ingredient.amount || 0) +
+            (ingredientsByDepartment[department][ingredientFoundIndex].amount ||
+              0);
+
+          ingredientsByDepartment[department][ingredientFoundIndex] = {
+            ...ingredientsByDepartment[department][ingredientFoundIndex],
+            amount: amount ? amount : undefined,
+          };
+        }
+        // new ingredient in the list
+        else {
+          ingredientsByDepartment[department].push({
+            name: ingredient.name,
+            amount: ingredient.amount,
+            metric: ingredient.metric,
+          });
+        }
+      }
+    });
+  });
 
   return (
     <>
@@ -57,25 +115,23 @@ const GroceriesList = () => {
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
         <div className="py-4">
-          <ul>
-            {selectedRecipes.map(({ _id }, idx) => (
-              <li key={idx}>checked - {_id.valueOf()}</li>
-            ))}
-          </ul>
-          {/* <ul className="grid gap-3 lg:grid-cols-2 xl:grid-cols-3 xl:gap-8">
-            {trackedRecipes.map((recipe, idx) => (
-              <li key={idx}>
-                <RecipeListItem
-                  className="my-1 md:my-3"
-                  recipe={recipe}
-                  selected={getSelected(recipe._id)}
-                  onServingsChange={(servings) => {
-                    setServingSize(servings, recipe._id);
-                  }}
-                />
-              </li>
-            ))}
-          </ul> */}
+          {Object.keys(ingredientsByDepartment).map((department, idx) => (
+            <Fragment key={idx}>
+              <h2 className="text-xl pb-4 capitalize">{department}</h2>
+              <ul className="pb-8">
+                {ingredientsByDepartment[department].map(
+                  ({ name, amount, metric }, idx2) => {
+                    return (
+                      <li key={idx2}>
+                        {amount && <span>{`${amount} ${metric} `}</span>}
+                        <span>{`${name}`}</span>
+                      </li>
+                    );
+                  }
+                )}
+              </ul>
+            </Fragment>
+          ))}
         </div>
       </div>
     </>

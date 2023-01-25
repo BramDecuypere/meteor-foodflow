@@ -50,7 +50,7 @@ const RecipeListItem = ({
     >
       <Link
         onClick={(e) => e.stopPropagation()}
-        to={`/recipes/${recipe._id}`}
+        to={`/recipes/${recipe._id.valueOf()}`}
         className="h-56 overflow-hidden relative backdrop-filter"
       >
         <div className="absolute w-full h-full bg-black rounded-t-3xl opacity-5"></div>
