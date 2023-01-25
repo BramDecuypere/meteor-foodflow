@@ -1,8 +1,12 @@
 import React from "react";
 import { Meteor } from "meteor/meteor";
 import { useTracker } from "meteor/react-meteor-data";
-import { RecipesCollection } from "/imports/api/recipes/recipes";
+import {
+  RecipeIngredient,
+  RecipesCollection,
+} from "/imports/api/recipes/recipes";
 import GlobalConsumer from "../hooks/global.context";
+import { SelectedRecipe } from "/interfaces/global-context";
 
 const GroceriesList = () => {
   const state = GlobalConsumer();
@@ -23,8 +27,27 @@ const GroceriesList = () => {
     return { recipes: RecipesCollection.find().fetch() };
   });
 
-  console.log("trackedRecipes", trackedRecipes);
-  console.log("state", state);
+  const selectedRecipes =
+    state.recipes && state.recipes.selected ? state.recipes.selected : [];
+
+  const list = selectedRecipes
+    .map(({ _id, servings }) => {
+      const recipe = trackedRecipes.find(
+        ({ _id: trackedRecipeId }) => trackedRecipeId === _id
+      );
+
+      if (!recipe) return;
+
+      return { ...recipe, servings };
+    })
+    .filter((recipe) => !!recipe)
+    .reduce((ingredientsList, recipe) => {
+      if (!recipe) return ingredientsList;
+
+      return [...ingredientsList, ...recipe.food.ingredients];
+    }, [] as RecipeIngredient[]);
+
+  console.log("🚀 ~ file: groceries-list.tsx:40 ~ list ~ list", list);
 
   return (
     <>
@@ -35,11 +58,9 @@ const GroceriesList = () => {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
         <div className="py-4">
           <ul>
-            {state.recipes &&
-              state.recipes.selected &&
-              state.recipes.selected.map(({ _id }) => (
-                <li key={_id}>checked - {_id}</li>
-              ))}
+            {selectedRecipes.map(({ _id }, idx) => (
+              <li key={idx}>checked - {_id.valueOf()}</li>
+            ))}
           </ul>
           {/* <ul className="grid gap-3 lg:grid-cols-2 xl:grid-cols-3 xl:gap-8">
             {trackedRecipes.map((recipe, idx) => (
