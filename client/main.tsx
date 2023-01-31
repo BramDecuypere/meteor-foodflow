@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <RequireAuth>
-        <DashboardTemplate />
+        <DashboardTemplate title="Recipes" />
       </RequireAuth>
     ),
     errorElement: (
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
     path: "/groceries",
     element: (
       <RequireAuth>
-        <DashboardTemplate />
+        <DashboardTemplate title="Groceries List" />
       </RequireAuth>
     ),
     errorElement: (

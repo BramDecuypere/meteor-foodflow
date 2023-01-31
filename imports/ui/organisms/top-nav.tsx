@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import cx from "classnames";
 import { Menu, Transition } from "@headlessui/react";
 import { Bars3BottomLeftIcon } from "@heroicons/react/24/outline";
@@ -17,7 +17,7 @@ const userNavigation = [
   },
 ];
 
-const TopNav = () => {
+const TopNav = ({ title = "" }: { title?: string | ReactNode }) => {
   const user = useTracker(() => Meteor.user());
   const {
     sidebar: { setIsSidebarOpen },
@@ -38,7 +38,7 @@ const TopNav = () => {
         <Bars3BottomLeftIcon className="h-6 w-6" aria-hidden="true" />
       </button>
       <div className="flex flex-1 justify-between px-4">
-        <div className="flex flex-1">
+        <div className="flex flex-1 items-center">
           {/* <form className="flex w-full md:ml-0" action="#" method="GET">
                   <label htmlFor="search-field" className="sr-only">
                     Search
@@ -59,6 +59,7 @@ const TopNav = () => {
                     />
                   </div>
                 </form> */}
+          {title && <h1 className="md:ml-8 text-2xl">{title}</h1>}
         </div>
         <div className="ml-4 flex items-center md:ml-6">
           {/* {isLoading && <div>Loading...</div>}

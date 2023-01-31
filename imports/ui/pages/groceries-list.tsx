@@ -133,71 +133,65 @@ const GroceriesList = () => {
   }, [Object.keys(ingredientsByDepartment).length]);
 
   return (
-    <>
-      <div className="mx-auto max-w-6xl pt-6 px-4 sm:px-6 md:px-8">
-        <h1 className="text-2xl font-semibold text-gray-900">Groceries list</h1>
-      </div>
-
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
-        <div className="py-4">
-          {Object.keys(ingredientsByDepartment).map((department, idx) => (
-            <Fragment key={idx}>
-              <Accordion
-                className="mb-6 md:mb-10"
-                title={department}
-                body={
-                  <ul className="p-4 font-normal">
-                    {ingredientsByDepartment[department].map(
-                      ({ name, amount, metric }, idx2) => {
-                        return (
-                          <li
-                            key={idx2}
-                            className="flex justify-between pb-4 last:pb-0 w-full"
+    <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
+      <div className="py-4">
+        {Object.keys(ingredientsByDepartment).map((department, idx) => (
+          <Fragment key={idx}>
+            <Accordion
+              className="mb-6 md:mb-10 mx-auto max-w-2xl"
+              title={department}
+              body={
+                <ul className="p-4 font-normal">
+                  {ingredientsByDepartment[department].map(
+                    ({ name, amount, metric }, idx2) => {
+                      return (
+                        <li
+                          key={idx2}
+                          className="flex justify-between pb-4 last:pb-0 w-full"
+                        >
+                          <CheckboxLabel
+                            onClick={() => {
+                              console.log("element");
+                            }}
+                            isSelected={false}
                           >
-                            <CheckboxLabel
-                              onClick={() => {
-                                console.log("element");
-                              }}
-                              isSelected={false}
-                            >
-                              <span>{`${name}`}</span>
-                              {amount && <span>{` - ${metric}`}</span>}
-                            </CheckboxLabel>
+                            <span>{`${name}`}</span>
+                            {amount && <span>{` - ${metric}`}</span>}
+                          </CheckboxLabel>
 
-                            {amount && (
-                              <AmountModifier
-                                amount={amount || 0}
-                                onAdd={() => {}}
-                                onRemove={() => {}}
-                              />
-                            )}
-                          </li>
-                        );
-                      }
-                    )}
-                  </ul>
+                          {amount && (
+                            <AmountModifier
+                              amount={amount || 0}
+                              onAdd={() => {}}
+                              onRemove={() => {}}
+                            />
+                          )}
+                        </li>
+                      );
+                    }
+                  )}
+                </ul>
+              }
+              isOpen={openDepartments.indexOf(department) !== -1}
+              onChangeClick={(department) => {
+                const isOpenDepartment =
+                  openDepartments.indexOf(department) === -1;
+
+                if (!isOpenDepartment) {
+                  setOpenDepartments(
+                    openDepartments.filter(
+                      (_department) => _department !== department
+                    )
+                  );
+                } else {
+                  setOpenDepartments([...openDepartments, department]);
                 }
-                isOpen={openDepartments.indexOf(department) !== -1}
-                onChangeClick={(department) => {
-                  const isOpenDepartment =
-                    openDepartments.indexOf(department) === -1;
-
-                  if (!isOpenDepartment) {
-                    setOpenDepartments(
-                      openDepartments.filter(
-                        (_department) => _department !== department
-                      )
-                    );
-                  } else {
-                    setOpenDepartments([...openDepartments, department]);
-                  }
-                }}
-              />
-            </Fragment>
-          ))}
-        </div>
+              }}
+            />
+          </Fragment>
+        ))}
       </div>
-    </>
+    </div>
   );
 };
 

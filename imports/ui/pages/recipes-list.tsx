@@ -62,10 +62,6 @@ const RecipesList = () => {
 
   return (
     <>
-      <div className="mx-auto max-w-6xl pt-6 px-4 sm:px-6 md:px-8">
-        <h1 className="text-2xl font-semibold text-gray-900">Recipes</h1>
-      </div>
-
       <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
         <div className="py-4">
           <ul className="grid gap-3 lg:grid-cols-2 xl:grid-cols-3 xl:gap-8">

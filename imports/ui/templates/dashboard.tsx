@@ -1,11 +1,17 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Outlet } from "react-router-dom";
 
 import StaticSidebar from "../organisms/dashboard-nav";
 import MobileNav from "../organisms/mobile-nav";
 import TopNav from "../organisms/top-nav";
 
-const DashboardTemplate = ({ children }: { children?: any }) => {
+const DashboardTemplate = ({
+  children,
+  title,
+}: {
+  children?: any;
+  title?: ReactNode;
+}) => {
   return (
     <>
       <MobileNav />
@@ -13,7 +19,7 @@ const DashboardTemplate = ({ children }: { children?: any }) => {
       <StaticSidebar />
 
       <div className="flex flex-1 flex-col md:pl-64">
-        <TopNav />
+        <TopNav title={title} />
 
         <main className="flex-1 pb-16">{children ?? <Outlet />}</main>
       </div>
