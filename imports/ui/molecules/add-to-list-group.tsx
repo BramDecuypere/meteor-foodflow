@@ -2,6 +2,7 @@ import React from "react";
 import cn from "classnames";
 import Button from "../atoms/Button";
 import { CheckIcon } from "@heroicons/react/20/solid";
+import AmountModifier from "../atoms/AmountModifier";
 
 const AddToListGroup = ({
   onAdd,
@@ -25,15 +26,12 @@ const AddToListGroup = ({
         { className }
       )}
     >
-      <div className="flex flex-grow justify-center">
-        <button onClick={onAdd} className="text-2xl text-orange h-9">
-          +
-        </button>
-        <span className="px-4 leading-10">{servings} servings</span>
-        <button onClick={onRemove} className="text-2xl text-orange h-9">
-          -
-        </button>
-      </div>
+      <AmountModifier
+        title={"servings"}
+        onAdd={onAdd}
+        onRemove={onRemove}
+        amount={servings}
+      />
       <Button
         onClick={onClick}
         className={cn({

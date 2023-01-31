@@ -3,7 +3,7 @@ import { HomeIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 export const navigation = [
   { name: "Recipes", href: "/dashboard", icon: HomeIcon, current: false },
   {
-    name: "Grocery list",
+    name: "Groceries list",
     href: "/groceries",
     icon: ShoppingCartIcon,
     current: false,

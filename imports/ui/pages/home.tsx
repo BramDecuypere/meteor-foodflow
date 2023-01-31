@@ -418,7 +418,7 @@ const Home = () => (
             <span className="block text-orange xl:inline">managed in flow</span>
           </h1>
           <p className="mx-auto mt-3 max-w-md text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl">
-            Creating grocery lists and remembering all of your favourite recipes
+            Creating groceries lists and remembering all of your favourite recipes
             takes more time than you'd like? You need help to optimize the
             energy you get out of your body?
           </p>

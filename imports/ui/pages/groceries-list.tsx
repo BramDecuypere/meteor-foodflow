@@ -1,34 +1,19 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Meteor } from "meteor/meteor";
 import { useTracker } from "meteor/react-meteor-data";
 import {
+  Recipe,
   RecipeIngredient,
   RecipesCollection,
 } from "/imports/api/recipes/recipes";
 import GlobalConsumer from "../hooks/global.context";
+import Accordion from "../molecules/accordion";
+import { SelectedRecipe } from "/interfaces/global-context";
 
-const GroceriesList = () => {
-  const state = GlobalConsumer();
-
-  const { recipes: trackedRecipes } = useTracker(() => {
-    const noDataAvailable = { recipes: [] };
-
-    if (!Meteor.user()) {
-      return noDataAvailable;
-    }
-
-    const handler = Meteor.subscribe("recipes");
-
-    if (!handler.ready()) {
-      return { ...noDataAvailable, isLoading: true };
-    }
-
-    return { recipes: RecipesCollection.find().fetch() };
-  });
-
-  const selectedRecipes =
-    state.recipes && state.recipes.selected ? state.recipes.selected : [];
-
+const getIngredientsByDepartment = (
+  selectedRecipes: SelectedRecipe[],
+  trackedRecipes: Recipe[]
+) => {
   const completeIngredientsList = selectedRecipes
     .map(({ _id, servings }) => {
       const recipe = trackedRecipes.find(
@@ -107,6 +92,44 @@ const GroceriesList = () => {
     });
   });
 
+  return ingredientsByDepartment;
+};
+
+const GroceriesList = () => {
+  const state = GlobalConsumer();
+
+  const { recipes: trackedRecipes } = useTracker(() => {
+    const noDataAvailable = { recipes: [] };
+
+    if (!Meteor.user()) {
+      return noDataAvailable;
+    }
+
+    const handler = Meteor.subscribe("recipes");
+
+    if (!handler.ready()) {
+      return { ...noDataAvailable, isLoading: true };
+    }
+
+    return { recipes: RecipesCollection.find().fetch() };
+  });
+
+  const selectedRecipes =
+    state.recipes && state.recipes.selected ? state.recipes.selected : [];
+
+  const ingredientsByDepartment = getIngredientsByDepartment(
+    selectedRecipes,
+    trackedRecipes
+  );
+
+  const [openDepartments, setOpenDepartments] = useState<string[]>(
+    Object.keys(ingredientsByDepartment)
+  );
+
+  useEffect(() => {
+    setOpenDepartments(Object.keys(ingredientsByDepartment));
+  }, [Object.keys(ingredientsByDepartment).length]);
+
   return (
     <>
       <div className="mx-auto max-w-6xl pt-6 px-4 sm:px-6 md:px-8">
@@ -117,19 +140,39 @@ const GroceriesList = () => {
         <div className="py-4">
           {Object.keys(ingredientsByDepartment).map((department, idx) => (
             <Fragment key={idx}>
-              <h2 className="text-xl pb-4 capitalize">{department}</h2>
-              <ul className="pb-8">
-                {ingredientsByDepartment[department].map(
-                  ({ name, amount, metric }, idx2) => {
-                    return (
-                      <li key={idx2}>
-                        {amount && <span>{`${amount} ${metric} `}</span>}
-                        <span>{`${name}`}</span>
-                      </li>
+              <Accordion
+                className="mb-6 md:mb-10"
+                title={department}
+                body={
+                  <ul className="p-4 font-normal">
+                    {ingredientsByDepartment[department].map(
+                      ({ name, amount, metric }, idx2) => {
+                        return (
+                          <li key={idx2}>
+                            {amount && <span>{`${amount} ${metric} `}</span>}
+                            <span>{`${name}`}</span>
+                          </li>
+                        );
+                      }
+                    )}
+                  </ul>
+                }
+                isOpen={openDepartments.indexOf(department) !== -1}
+                onChangeClick={(department) => {
+                  const isOpenDepartment =
+                    openDepartments.indexOf(department) === -1;
+
+                  if (!isOpenDepartment) {
+                    setOpenDepartments(
+                      openDepartments.filter(
+                        (_department) => _department !== department
+                      )
                     );
+                  } else {
+                    setOpenDepartments([...openDepartments, department]);
                   }
-                )}
-              </ul>
+                }}
+              />
             </Fragment>
           ))}
         </div>
