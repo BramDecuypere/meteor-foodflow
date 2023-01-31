@@ -9,6 +9,8 @@ import {
 import GlobalConsumer from "../hooks/global.context";
 import Accordion from "../molecules/accordion";
 import { SelectedRecipe } from "/interfaces/global-context";
+import CheckboxLabel from "../atoms/CheckboxLabel";
+import AmountModifier from "../atoms/AmountModifier";
 
 const getIngredientsByDepartment = (
   selectedRecipes: SelectedRecipe[],
@@ -148,9 +150,27 @@ const GroceriesList = () => {
                     {ingredientsByDepartment[department].map(
                       ({ name, amount, metric }, idx2) => {
                         return (
-                          <li key={idx2}>
-                            {amount && <span>{`${amount} ${metric} `}</span>}
-                            <span>{`${name}`}</span>
+                          <li
+                            key={idx2}
+                            className="flex justify-between pb-4 last:pb-0 w-full"
+                          >
+                            <CheckboxLabel
+                              onClick={() => {
+                                console.log("element");
+                              }}
+                              isSelected={false}
+                            >
+                              <span>{`${name}`}</span>
+                              {amount && <span>{` - ${metric}`}</span>}
+                            </CheckboxLabel>
+
+                            {amount && (
+                              <AmountModifier
+                                amount={amount || 0}
+                                onAdd={() => {}}
+                                onRemove={() => {}}
+                              />
+                            )}
                           </li>
                         );
                       }
