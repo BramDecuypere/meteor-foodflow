@@ -101,7 +101,7 @@ const GroceriesList = () => {
   const state = GlobalConsumer();
 
   const { recipes: trackedRecipes } = useTracker(() => {
-    const noDataAvailable = { recipes: [] };
+    const noDataAvailable = { recipes: [], isLoading: false };
 
     if (!Meteor.user()) {
       return noDataAvailable;
@@ -113,7 +113,7 @@ const GroceriesList = () => {
       return { ...noDataAvailable, isLoading: true };
     }
 
-    return { recipes: RecipesCollection.find().fetch() };
+    return { recipes: RecipesCollection.find().fetch(), isLoading: false };
   });
 
   const selectedRecipes =

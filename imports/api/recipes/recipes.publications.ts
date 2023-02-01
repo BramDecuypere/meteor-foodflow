@@ -1,6 +1,7 @@
-import { Meteor } from "meteor/meteor";
-import { RecipesCollection } from "./recipes";
+// import { Meteor } from "meteor/meteor";
+// import { RecipesCollection } from "./recipes";
 
-Meteor.publish("recipes", function publishRecipes() {
-  return RecipesCollection.find();
-});
+// Only allow users to find their own recipes for now
+// Meteor.publish("recipes", function publishRecipes() {
+//   return RecipesCollection.find();
+// });

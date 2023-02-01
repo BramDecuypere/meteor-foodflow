@@ -1,3 +1,5 @@
+import { Recipe } from "/imports/api/recipes/recipes";
+
 declare module "meteor/meteor" {
   module Meteor {
     interface UserEmail {
@@ -15,6 +17,9 @@ declare module "meteor/meteor" {
 
       // Custom elements
       recipes: string[];
+      activeList: {
+        recipes: Recipe[];
+      };
     }
   }
 }

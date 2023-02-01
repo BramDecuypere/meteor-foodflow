@@ -3,6 +3,8 @@ import { Accounts } from "meteor/accounts-base";
 import { Recipe, RecipesCollection } from "../imports/api/recipes/recipes";
 import "/imports/api/recipes/recipes.methods";
 import "/imports/api/recipes/recipes.publications";
+import "/imports/api/users/users.methods";
+import "/imports/api/users/users.publications";
 import { recipesMock } from "./recipe.mock";
 
 const SEED_USERNAME = "meteorite";

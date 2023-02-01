@@ -8,8 +8,12 @@ import GlobalConsumer from "../hooks/global.context";
 const RecipesList = () => {
   const state = GlobalConsumer();
   const { recipes, setState } = state;
+
+  // This is setting default recipes if there are no recipes found
+  Meteor.call("users.defaultRecipes");
+
   const trackedRecipes = useTracker(() => {
-    const handler = Meteor.subscribe("recipes");
+    const handler = Meteor.subscribe("users.recipes");
 
     if (!Meteor.user() || !handler.ready()) {
       return [];
