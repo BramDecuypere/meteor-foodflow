@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import cn from "classnames";
 import { Link } from "react-router-dom";
 
@@ -7,8 +7,7 @@ import { Recipe } from "/imports/api/recipes/recipes";
 import AddToListGroup from "./add-to-list-group";
 import { ClockIcon, UserIcon } from "@heroicons/react/20/solid";
 import { Meteor } from "meteor/meteor";
-
-const DEFAULT_SERVINGS = 2;
+import UserDefaultServings from "../hooks/user-default-servings.hook";
 
 const RecipeListItem = ({
   className,
@@ -19,7 +18,9 @@ const RecipeListItem = ({
   recipe: Recipe;
   selected: boolean;
 }) => {
-  const [currentServings, setCurrentServings] = useState(DEFAULT_SERVINGS);
+  const userServings = UserDefaultServings();
+
+  const [currentServings, setCurrentServings] = useState(userServings);
 
   const setServings = (servings: number) => {
     const nextServings = currentServings <= 1 ? 1 : servings;
@@ -34,6 +35,10 @@ const RecipeListItem = ({
       Meteor.call("users.addRecipeToActiveList", recipe, currentServings);
     }
   };
+
+  useEffect(() => {
+    setCurrentServings(userServings);
+  }, [userServings]);
 
   return (
     <div

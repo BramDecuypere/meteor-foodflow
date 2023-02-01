@@ -11,6 +11,7 @@ import { AuthProvider } from "/imports/ui/hooks/auth.hook";
 import RecipesList from "/imports/ui/pages/recipes-list";
 import { GlobalProvider } from "/imports/ui/hooks/global.context";
 import GroceriesList from "/imports/ui/pages/groceries-list";
+import Settings from "/imports/ui/pages/settings";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,25 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <GroceriesList />,
+      },
+    ],
+  },
+  {
+    path: "/settings",
+    element: (
+      <RequireAuth>
+        <DashboardTemplate title="Settings" />
+      </RequireAuth>
+    ),
+    errorElement: (
+      <DashboardTemplate>
+        <div>Not found</div>
+      </DashboardTemplate>
+    ),
+    children: [
+      {
+        path: "",
+        element: <Settings />,
       },
     ],
   },

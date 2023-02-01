@@ -17,6 +17,7 @@ declare module "meteor/meteor" {
 
       // Custom elements
       recipes: string[];
+      defaultServings: number;
       activeList: {
         recipes: {
           servings: number;
