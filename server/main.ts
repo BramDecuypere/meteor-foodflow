@@ -21,8 +21,6 @@ Meteor.startup(() => {
   if (RecipesCollection.find().count() === 0) {
     const _recipes = recipesMock as Recipe[];
 
-    const userId = Accounts.findUserByUsername(SEED_USERNAME);
-
     const bulk = RecipesCollection.rawCollection().initializeUnorderedBulkOp();
 
     _recipes.forEach((recipe) => {
@@ -30,25 +28,20 @@ Meteor.startup(() => {
     });
 
     bulk.execute();
-
-    const recipeIds = RecipesCollection.find().map((recipe) => recipe._id);
-
-    if (userId) {
-      Meteor.users.update(userId._id, {
-        $set: {
-          recipes: recipeIds,
-        },
-      });
-    }
   }
 
   Accounts.onCreateUser((options, user) => {
-    const customizedUser = Object.assign(user);
+    const customizedUser: Meteor.User = Object.assign(user);
 
     // We still want the default hook's 'profile' behavior.
     if (options.profile) {
       customizedUser.profile = options.profile;
     }
+
+    customizedUser.recipes = [];
+    customizedUser.activeList = {
+      recipes: [],
+    };
 
     return customizedUser;
   });
