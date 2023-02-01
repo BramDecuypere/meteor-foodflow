@@ -1,7 +1,7 @@
 import { Meteor } from "meteor/meteor";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import useAuth from "../hooks/auth.hook";
+import useAuth from "./auth.hook";
 
 const RequireAuth = ({ children }: any) => {
   const { user } = useAuth();

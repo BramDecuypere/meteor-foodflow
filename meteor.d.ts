@@ -18,7 +18,10 @@ declare module "meteor/meteor" {
       // Custom elements
       recipes: string[];
       activeList: {
-        recipes: Recipe[];
+        recipes: {
+          servings: number;
+          recipe: Recipe;
+        }[];
       };
     }
   }

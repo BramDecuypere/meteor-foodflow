@@ -27,6 +27,7 @@ const AddToListGroup = ({
       )}
     >
       <AmountModifier
+        disabled={isSelected}
         className="flex-grow"
         title={"servings"}
         onAdd={onAdd}
@@ -41,8 +42,8 @@ const AddToListGroup = ({
       >
         {isSelected ? (
           <span className="flex items-center">
-            <CheckIcon className="h-6 w-6 pr-2" />
-            <span>Addded</span>
+            <CheckIcon className="h-6 w-6 pr-2 text-orange" />
+            <span className="text-orange">Added</span>
           </span>
         ) : (
           <span>Add to list</span>

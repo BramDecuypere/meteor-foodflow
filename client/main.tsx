@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "/imports/ui/pages/home";
 import DashboardTemplate from "/imports/ui/templates/dashboard";
 import Signin from "/imports/ui/pages/signin";
-import RequireAuth from "/imports/ui/atoms/require-auth.hook";
+import RequireAuth from "../imports/ui/hooks/require-auth.hook";
 import { AuthProvider } from "/imports/ui/hooks/auth.hook";
 import RecipesList from "/imports/ui/pages/recipes-list";
 import { GlobalProvider } from "/imports/ui/hooks/global.context";

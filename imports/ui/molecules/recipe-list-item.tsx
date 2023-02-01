@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 import { Link } from "react-router-dom";
 
@@ -6,6 +6,7 @@ import Label from "/imports/ui/atoms/label";
 import { Recipe } from "/imports/api/recipes/recipes";
 import AddToListGroup from "./add-to-list-group";
 import { ClockIcon, UserIcon } from "@heroicons/react/20/solid";
+import { Meteor } from "meteor/meteor";
 
 const DEFAULT_SERVINGS = 2;
 
@@ -13,32 +14,25 @@ const RecipeListItem = ({
   className,
   recipe,
   selected,
-  onServingsChange,
 }: {
   className?: string;
   recipe: Recipe;
-  selected?: {
-    _id: string;
-    servings: number;
-  };
-  onServingsChange: (servings: number) => void;
+  selected: boolean;
 }) => {
-  const [currentServings, setCurrentServings] = useState(
-    selected ? selected.servings : DEFAULT_SERVINGS
-  );
+  const [currentServings, setCurrentServings] = useState(DEFAULT_SERVINGS);
 
-  useEffect(() => {
-    if (selected && selected.servings) {
-      setCurrentServings(selected?.servings);
-    }
-  }, [selected]);
+  const setServings = (servings: number) => {
+    const nextServings = currentServings <= 1 ? 1 : servings;
 
-  const onAddToListClick = () => {
+    return setCurrentServings(nextServings);
+  };
+
+  const onAddToListGroupClick = () => {
     if (selected) {
-      return onServingsChange(0);
+      Meteor.call("users.removeRecipeToActiveList", recipe);
+    } else {
+      Meteor.call("users.addRecipeToActiveList", recipe, currentServings);
     }
-
-    return onServingsChange(currentServings);
   };
 
   return (
@@ -94,11 +88,11 @@ const RecipeListItem = ({
             </p>
           </div>
           <AddToListGroup
-            onClick={onAddToListClick}
+            onClick={onAddToListGroupClick}
             servings={currentServings}
-            isSelected={!!selected}
-            onAdd={() => onServingsChange(currentServings + 1)}
-            onRemove={() => onServingsChange(currentServings - 1)}
+            isSelected={selected}
+            onAdd={() => setServings(currentServings + 1)}
+            onRemove={() => setServings(currentServings - 1)}
           />
         </div>
       </div>

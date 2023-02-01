@@ -1,50 +1,39 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Meteor } from "meteor/meteor";
-import { useTracker } from "meteor/react-meteor-data";
-import {
-  Recipe,
-  RecipeIngredient,
-  RecipesCollection,
-} from "/imports/api/recipes/recipes";
-import GlobalConsumer from "../hooks/global.context";
+
+import { Recipe, RecipeIngredient } from "/imports/api/recipes/recipes";
 import Accordion from "../molecules/accordion";
-import { SelectedRecipe } from "/interfaces/global-context";
 import CheckboxLabel from "../atoms/CheckboxLabel";
 import AmountModifier from "../atoms/AmountModifier";
+import ActiveList from "../hooks/active-list.hook";
 
-const getIngredientsByDepartment = (
-  selectedRecipes: SelectedRecipe[],
-  trackedRecipes: Recipe[]
-) => {
-  const completeIngredientsList = selectedRecipes
-    .map(({ _id, servings }) => {
-      const recipe = trackedRecipes.find(
-        ({ _id: trackedRecipeId }) => trackedRecipeId === _id
-      );
+const getIngredientsByDepartment = (activeList: {
+  recipes: {
+    recipe: Recipe;
+    servings: number;
+  }[];
+}) => {
+  const completeIngredientsList = activeList.recipes.reduce(
+    (ingredientsList, activeListItem) => {
+      if (!activeListItem) return ingredientsList;
 
-      if (!recipe) return;
-
-      return { ...recipe, servings };
-    })
-    .filter((recipe) => !!recipe)
-    .reduce((ingredientsList, recipe) => {
-      if (!recipe) return ingredientsList;
-
-      const ingredientsAdjustedToNewServingSize = recipe.food.ingredients.map(
-        (recipeIngredient) => {
+      const ingredientsAdjustedToNewServingSize =
+        activeListItem.recipe.food.ingredients.map((recipeIngredient) => {
+          const recipe = activeListItem.recipe;
+          const servings = activeListItem.servings;
           const amount = recipeIngredient.amount
-            ? (recipeIngredient.amount / recipe.food.servings) * recipe.servings
+            ? (recipeIngredient.amount / recipe.food.servings) * servings
             : undefined;
 
           return {
             ...recipeIngredient,
             amount,
           };
-        }
-      );
+        });
 
       return [...ingredientsList, ...ingredientsAdjustedToNewServingSize];
-    }, [] as RecipeIngredient[]);
+    },
+    [] as RecipeIngredient[]
+  );
 
   const ingredientsByDepartment: {
     [key: string]: {
@@ -98,35 +87,11 @@ const getIngredientsByDepartment = (
 };
 
 const GroceriesList = () => {
-  const state = GlobalConsumer();
+  const activeList = ActiveList();
 
-  const { recipes: trackedRecipes } = useTracker(() => {
-    const noDataAvailable = { recipes: [], isLoading: false };
+  const ingredientsByDepartment = getIngredientsByDepartment(activeList);
 
-    if (!Meteor.user()) {
-      return noDataAvailable;
-    }
-
-    const handler = Meteor.subscribe("recipes");
-
-    if (!handler.ready()) {
-      return { ...noDataAvailable, isLoading: true };
-    }
-
-    return { recipes: RecipesCollection.find().fetch(), isLoading: false };
-  });
-
-  const selectedRecipes =
-    state.recipes && state.recipes.selected ? state.recipes.selected : [];
-
-  const ingredientsByDepartment = getIngredientsByDepartment(
-    selectedRecipes,
-    trackedRecipes
-  );
-
-  const [openDepartments, setOpenDepartments] = useState<string[]>(
-    Object.keys(ingredientsByDepartment)
-  );
+  const [openDepartments, setOpenDepartments] = useState<string[]>([]);
 
   useEffect(() => {
     setOpenDepartments(Object.keys(ingredientsByDepartment));

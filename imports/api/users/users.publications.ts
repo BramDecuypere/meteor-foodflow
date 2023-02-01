@@ -1,8 +1,16 @@
 import { Meteor } from "meteor/meteor";
 import { RecipesCollection } from "../recipes/recipes";
 
-Meteor.publish("users.activeList", function publishActiveList() {
-  return Meteor.user({ fields: { activeList: 1 } });
+Meteor.publish("users.activeList", function () {
+  if (!this.userId) {
+    throw new Meteor.Error("Not authorized.");
+  }
+
+  return Meteor.users.find(this.userId, {
+    fields: {
+      activeList: 1,
+    },
+  });
 });
 
 Meteor.publish("users.recipes", function publishUserRecipes() {
