@@ -8,7 +8,7 @@ const SEED_PASSWORD = "password";
 
 Migrations.add({
   version: 1,
-  up() {
+  up: Meteor.wrapAsync(async (_: any, next: any) => {
     const _recipes = recipesMock as Recipe[];
     // This is how to get access to the raw MongoDB node collection that the Meteor server collection wraps
     const batch = RecipesCollection.rawCollection().initializeUnorderedBulkOp();
@@ -32,18 +32,23 @@ Migrations.add({
 
     if (!Accounts.findUserByUsername(SEED_USERNAME)) {
       const recipes = RecipesCollection.find().map((recipe) => recipe._id);
-      Accounts.createUser({
-        username: SEED_USERNAME,
-        password: SEED_PASSWORD,
-        recipes,
-        defaultServings: 2,
-        activeList: {
-          recipes: [],
-        },
-      } as Omit<Meteor.User, "_id">);
-    }
 
-    return true;
-  },
+      Accounts.createUser(
+        {
+          username: SEED_USERNAME,
+          password: SEED_PASSWORD,
+          recipes,
+          defaultServings: 2,
+          activeList: {
+            recipes: [],
+          },
+        } as Omit<Meteor.User, "_id">,
+        () => next()
+      );
+    } else {
+      next();
+    }
+  }),
+
   down() {},
 });
