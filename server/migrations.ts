@@ -29,10 +29,11 @@ Migrations.add({
     }
 
     if (!Accounts.findUserByUsername(SEED_USERNAME)) {
+      const recipes = RecipesCollection.find().map((recipe) => recipe._id);
       Accounts.createUser({
         username: SEED_USERNAME,
         password: SEED_PASSWORD,
-        recipes: [],
+        recipes,
         defaultServings: 2,
         activeList: {
           recipes: [],
