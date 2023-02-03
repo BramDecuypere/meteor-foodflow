@@ -19,7 +19,7 @@ Migrations.add({
 
       const recipesCount = RecipesCollection.find().count();
 
-      if (recipesCount <= 5) {
+      if (recipesCount < 5) {
         _recipes.forEach((recipe) => {
           batch.insert(recipe);
         });
