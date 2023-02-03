@@ -30,25 +30,33 @@ Migrations.add({
       return execute();
     }
 
+    console.log("----------- SEED USER -------------");
     if (!Accounts.findUserByUsername(SEED_USERNAME)) {
+      console.log("----------- no seed user found -------------");
       const recipes = RecipesCollection.find().map((recipe) => recipe._id);
+      console.log("----------- recipes for seed user: ", recipes);
 
-      Accounts.createUser(
-        {
-          username: SEED_USERNAME,
-          password: SEED_PASSWORD,
-          recipes,
-          defaultServings: 2,
-          activeList: {
-            recipes: [],
-          },
-        } as Omit<Meteor.User, "_id">,
-        (err) => {
-          console.log(err);
-          next();
-        }
-      );
+      try {
+        Accounts.createUser(
+          {
+            username: SEED_USERNAME,
+            password: SEED_PASSWORD,
+            recipes,
+            defaultServings: 2,
+            activeList: {
+              recipes: [],
+            },
+          } as Omit<Meteor.User, "_id">,
+          (err) => {
+            console.log("----------- create seed user -------------", err);
+            next();
+          }
+        );
+      } catch (err) {
+        console.log("caught error: ", err);
+      }
     } else {
+      console.log("------ seed user exists -----");
       next();
     }
   }),
