@@ -7,6 +7,5 @@ import "/imports/api/users/users.methods";
 import "/imports/api/users/users.publications";
 
 Meteor.startup(() => {
-  // Migrations.migrateTo("latest");
-  Migrations.migrateTo("1,rerun");
+  Migrations.migrateTo("latest");
 });
