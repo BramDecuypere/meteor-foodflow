@@ -1,6 +1,7 @@
 import { Accounts } from "meteor/accounts-base";
-import { RecipesCollection } from "../imports/api/recipes/recipes";
+import { Recipe, RecipesCollection } from "../imports/api/recipes/recipes";
 import { Meteor } from "meteor/meteor";
+import { recipesMock } from "./recipe.mock";
 
 const SEED_USERNAME = "meteorite";
 const SEED_PASSWORD = "password";
@@ -9,6 +10,7 @@ Migrations.add({
   version: 1,
   up() {
     if (RecipesCollection.find().count() === 0) {
+      const _recipes = recipesMock as Recipe[];
       // This is how to get access to the raw MongoDB node collection that the Meteor server collection wraps
       const batch =
         RecipesCollection.rawCollection().initializeUnorderedBulkOp();
@@ -18,6 +20,9 @@ Migrations.add({
       const recipesCount = RecipesCollection.find().count();
 
       if (recipesCount <= 5) {
+        _recipes.forEach((recipe) => {
+          batch.insert(recipe);
+        });
         hasUpdates = true;
       }
 
