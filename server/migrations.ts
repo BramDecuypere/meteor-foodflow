@@ -43,7 +43,10 @@ Migrations.add({
             recipes: [],
           },
         } as Omit<Meteor.User, "_id">,
-        () => next()
+        (err) => {
+          console.log(err);
+          next();
+        }
       );
     } else {
       next();
