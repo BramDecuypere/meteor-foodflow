@@ -9,28 +9,25 @@ const SEED_PASSWORD = "password";
 Migrations.add({
   version: 1,
   up() {
-    if (RecipesCollection.find().count() === 0) {
-      const _recipes = recipesMock as Recipe[];
-      // This is how to get access to the raw MongoDB node collection that the Meteor server collection wraps
-      const batch =
-        RecipesCollection.rawCollection().initializeUnorderedBulkOp();
-      //Mongo throws an error if we execute a batch operation without actual operations, e.g. when Lists was empty.
-      let hasUpdates = false;
+    const _recipes = recipesMock as Recipe[];
+    // This is how to get access to the raw MongoDB node collection that the Meteor server collection wraps
+    const batch = RecipesCollection.rawCollection().initializeUnorderedBulkOp();
+    //Mongo throws an error if we execute a batch operation without actual operations, e.g. when Lists was empty.
+    let hasUpdates = false;
 
-      const recipesCount = RecipesCollection.find().count();
+    const recipesCount = RecipesCollection.find().count();
 
-      if (recipesCount < 5) {
-        _recipes.forEach((recipe) => {
-          batch.insert(recipe);
-        });
-        hasUpdates = true;
-      }
+    if (recipesCount < 5) {
+      _recipes.forEach((recipe) => {
+        batch.insert(recipe);
+      });
+      hasUpdates = true;
+    }
 
-      if (hasUpdates) {
-        // We need to wrap the async function to get a synchronous API that migrations expects
-        const execute = Meteor.wrapAsync(batch.execute, batch);
-        return execute();
-      }
+    if (hasUpdates) {
+      // We need to wrap the async function to get a synchronous API that migrations expects
+      const execute = Meteor.wrapAsync(batch.execute, batch);
+      return execute();
     }
 
     if (!Accounts.findUserByUsername(SEED_USERNAME)) {
