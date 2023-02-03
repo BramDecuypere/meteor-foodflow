@@ -5,6 +5,7 @@ import Accordion from "../molecules/accordion";
 import CheckboxLabel from "../atoms/CheckboxLabel";
 import AmountModifier from "../atoms/AmountModifier";
 import ActiveList from "../hooks/active-list.hook";
+import TextToggle from "../atoms/TextToggle";
 
 const getIngredientsByDepartment = (activeList: {
   recipes: {
@@ -100,6 +101,9 @@ const GroceriesList = () => {
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
       <div className="py-4">
+        <div>
+          <TextToggle isSelected={true} />
+        </div>
         {Object.keys(ingredientsByDepartment).map((department, idx) => (
           <Fragment key={idx}>
             <Accordion
