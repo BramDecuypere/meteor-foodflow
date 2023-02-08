@@ -42,21 +42,16 @@ Migrations.add({
     if (!Accounts.findUserByUsername(SEED_USERNAME)) {
       const recipes = RecipesCollection.find().map((recipe) => recipe._id);
 
-      Accounts.createUser(
-        {
-          username: SEED_USERNAME,
-          password: SEED_PASSWORD,
-          recipes,
-          defaultServings: 2,
-          activeList: {
-            recipes: [],
-            selectedIngredients: [],
-          },
-        } as Omit<Meteor.User, "_id">,
-        (err) => {
-          console.log("----------- create seed user -------------", err);
-        }
-      );
+      Accounts.createUser({
+        username: SEED_USERNAME,
+        password: SEED_PASSWORD,
+        recipes,
+        defaultServings: 2,
+        activeList: {
+          recipes: [],
+          selectedIngredients: [],
+        },
+      } as Omit<Meteor.User, "_id">);
     }
   },
   down() {},
