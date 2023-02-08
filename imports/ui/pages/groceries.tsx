@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import TextToggle from "../atoms/TextToggle";
 import ActiveMenuList from "../organisms/active-menu-list";
-import GroceriesList from "../organisms/groceries-list";
+import GroceriesList from "../organisms/groceries-list/groceries-list";
 
 export enum GroceriesListStates {
   MENU = "My Active Menu",

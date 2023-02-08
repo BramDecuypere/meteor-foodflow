@@ -1,4 +1,4 @@
-import { Recipe, RecipeIngredient } from "/imports/api/recipes/recipes";
+import { ActiveList } from "./interfaces/active-list";
 
 declare module "meteor/meteor" {
   module Meteor {
@@ -18,13 +18,7 @@ declare module "meteor/meteor" {
       // Custom elements
       recipes: string[];
       defaultServings: number;
-      activeList: {
-        recipes: {
-          servings: number;
-          recipe: Recipe;
-        }[];
-        selectedIngredients: RecipeIngredient[];
-      };
+      activeList: ActiveList;
     }
   }
 }
