@@ -56,7 +56,11 @@ const RecipeListItem = ({
         {onRemoveClick && (
           <div
             className="text-orange absolute top-0 right-0 p-2"
-            onClick={() => onRemoveClick(recipe)}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              onRemoveClick(recipe);
+            }}
           >
             <XMarkIcon className="w-10 h-10" />
           </div>
