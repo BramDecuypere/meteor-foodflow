@@ -32,7 +32,8 @@ export const getIngredientsByDepartment = (
 
   const handleIngredientsByDepartment = (
     department: string,
-    ingredient: RecipeIngredient
+    ingredient: RecipeIngredient,
+    isSelected?: boolean
   ) => {
     if (!ingredientsByDepartment[department]) {
       ingredientsByDepartment[department] = [
@@ -48,10 +49,10 @@ export const getIngredientsByDepartment = (
       });
 
       if (ingredientFoundIndex !== -1) {
+        const currentAmount =
+          ingredientsByDepartment[department][ingredientFoundIndex].amount;
         const amount =
-          (ingredient.amount || 0) +
-          (ingredientsByDepartment[department][ingredientFoundIndex].amount ||
-            0);
+          (currentAmount || 0) + (!isSelected ? ingredient.amount || 0 : 0);
 
         ingredientsByDepartment[department][ingredientFoundIndex] = {
           ...ingredientsByDepartment[department][ingredientFoundIndex],
@@ -68,13 +69,15 @@ export const getIngredientsByDepartment = (
 
   completeIngredientsList.forEach((ingredient) => {
     ingredient.departments.forEach((department) => {
+      // here we handle the ingredients that come from the recipe
       handleIngredientsByDepartment(department, ingredient);
     });
   });
 
   activeList.selectedIngredients.forEach((ingredient) => {
     ingredient.departments.forEach((department) => {
-      handleIngredientsByDepartment(department, ingredient);
+      // here we handle the special selected ingredients to avoid crashes
+      handleIngredientsByDepartment(department, ingredient, true);
     });
   });
 
