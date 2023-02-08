@@ -8,9 +8,9 @@ import DashboardTemplate from "/imports/ui/templates/dashboard";
 import Signin from "/imports/ui/pages/signin";
 import RequireAuth from "../imports/ui/hooks/require-auth.hook";
 import { AuthProvider } from "/imports/ui/hooks/auth.hook";
-import RecipesList from "/imports/ui/pages/recipes-list";
+import Recipes from "../imports/ui/pages/recipes";
 import { GlobalProvider } from "/imports/ui/hooks/global.context";
-import GroceriesList from "/imports/ui/pages/groceries-list";
+import Groceries from "../imports/ui/pages/groceries";
 import Settings from "/imports/ui/pages/settings";
 
 const router = createBrowserRouter([
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <RecipesList />,
+        element: <Recipes />,
       },
     ],
   },
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <GroceriesList />,
+        element: <Groceries />,
       },
     ],
   },

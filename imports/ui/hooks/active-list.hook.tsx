@@ -1,7 +1,7 @@
 import { Meteor } from "meteor/meteor";
 import { useTracker } from "meteor/react-meteor-data";
 
-const ActiveList = () => {
+const ActiveListHook = () => {
   return useTracker(() => {
     const handler = Meteor.subscribe("users.activeList");
 
@@ -17,4 +17,4 @@ const ActiveList = () => {
   });
 };
 
-export default ActiveList;
+export default ActiveListHook;

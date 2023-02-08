@@ -86,6 +86,39 @@ Meteor.methods({
     });
   },
 
+  "users.changeServingsActiveList"(recipe: Recipe, servings: number) {
+    if (!this.userId) {
+      throw new Meteor.Error("Not authorized.");
+    }
+
+    console.log("recipe", recipe.title);
+    console.log("servings", servings);
+
+    const { activeList: currentActiveList } = Meteor.user({
+      fields: { activeList: 1 },
+    }) as Meteor.User;
+
+    const recipes = currentActiveList.recipes.map((item) => {
+      if (item.recipe._id.valueOf() === recipe._id.valueOf()) {
+        return {
+          ...item,
+          servings,
+        };
+      }
+
+      return item;
+    });
+
+    return Meteor.users.update(this.userId, {
+      $set: {
+        activeList: {
+          ...currentActiveList,
+          recipes,
+        },
+      },
+    });
+  },
+
   "users.removeRecipeToActiveList"(recipe: Recipe) {
     if (!this.userId) {
       throw new Meteor.Error("Not authorized.");

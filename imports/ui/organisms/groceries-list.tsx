@@ -1,12 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
 import cn from "classnames";
+import React, { useEffect, useRef, useState } from "react";
 
+import ActiveListHook from "../hooks/active-list.hook";
 import { RecipeIngredient } from "/imports/api/recipes/recipes";
 import Accordion from "../molecules/accordion";
 import CheckboxLabel from "../atoms/CheckboxLabel";
 import AmountModifier from "../atoms/AmountModifier";
-import TextToggle from "../atoms/TextToggle";
-import ActiveListHook from "../hooks/active-list.hook";
 import { Meteor } from "meteor/meteor";
 import { ActiveList } from "/interfaces/active-list";
 
@@ -149,7 +148,6 @@ const AccordionBody = ({
 
 const GroceriesList = () => {
   const activeList = ActiveListHook();
-
   const ingredientsByDepartment = getIngredientsByDepartment(activeList);
 
   const [openDepartments, setOpenDepartments] = useState<string[]>([]);
@@ -263,19 +261,14 @@ const GroceriesList = () => {
   };
 
   return (
-    <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
-      <div className="py-4">
-        <div>
-          <TextToggle isSelected={true} />
-        </div>
-        {Object.keys(ingredientsByDepartment)
-          .filter((department) => !isDepartmentCompleted(department))
-          .map(AccordionMapperFunction())}
-        {Object.keys(ingredientsByDepartment)
-          .filter((department) => isDepartmentCompleted(department))
-          .map(AccordionMapperFunction())}
-      </div>
-    </div>
+    <>
+      {Object.keys(ingredientsByDepartment)
+        .filter((department) => !isDepartmentCompleted(department))
+        .map(AccordionMapperFunction())}
+      {Object.keys(ingredientsByDepartment)
+        .filter((department) => isDepartmentCompleted(department))
+        .map(AccordionMapperFunction())}
+    </>
   );
 };
 

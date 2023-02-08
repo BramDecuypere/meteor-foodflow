@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import cn from "classnames";
 import { Link } from "react-router-dom";
 
@@ -6,21 +6,27 @@ import Label from "/imports/ui/atoms/label";
 import { Recipe } from "/imports/api/recipes/recipes";
 import AddToListGroup from "./add-to-list-group";
 import { ClockIcon, UserIcon } from "@heroicons/react/20/solid";
-import { Meteor } from "meteor/meteor";
-import UserDefaultServings from "../hooks/user-default-servings.hook";
 
 const RecipeListItem = ({
   className,
   recipe,
   selected,
+  selectable,
+  servings,
+  onAddToListClick,
+  onIncreaseServingsClick,
+  onDecreaseServingsClick,
 }: {
   className?: string;
   recipe: Recipe;
-  selected: boolean;
+  selected?: boolean;
+  selectable?: boolean;
+  servings: number;
+  onAddToListClick?: (servings: number) => void;
+  onIncreaseServingsClick?: () => void;
+  onDecreaseServingsClick?: () => void;
 }) => {
-  const userServings = UserDefaultServings();
-
-  const [currentServings, setCurrentServings] = useState(userServings);
+  const [currentServings, setCurrentServings] = useState(servings);
 
   const setServings = (servings: number) => {
     const nextServings = currentServings <= 1 ? 1 : servings;
@@ -28,18 +34,9 @@ const RecipeListItem = ({
     return setCurrentServings(nextServings);
   };
 
-  const onAddToListGroupClick = () => {
-    if (selected) {
-      Meteor.call("users.removeRecipeToActiveList", recipe);
-    } else {
-      Meteor.call("users.addRecipeToActiveList", recipe, currentServings);
-    }
-  };
-
   useEffect(() => {
-    setCurrentServings(userServings);
-  }, [userServings]);
-
+    setCurrentServings(servings);
+  }, [servings]);
   return (
     <div
       className={cn(
@@ -92,12 +89,26 @@ const RecipeListItem = ({
                 .join(", ")}
             </p>
           </div>
+
           <AddToListGroup
-            onClick={onAddToListGroupClick}
+            onClick={
+              onAddToListClick
+                ? () => onAddToListClick(currentServings)
+                : () => {}
+            }
             servings={currentServings}
             isSelected={selected}
-            onAdd={() => setServings(currentServings + 1)}
-            onRemove={() => setServings(currentServings - 1)}
+            selectable={selectable}
+            onAdd={
+              onIncreaseServingsClick
+                ? onIncreaseServingsClick
+                : () => setServings(currentServings + 1)
+            }
+            onRemove={
+              onDecreaseServingsClick
+                ? onDecreaseServingsClick
+                : () => setServings(currentServings - 1)
+            }
           />
         </div>
       </div>
