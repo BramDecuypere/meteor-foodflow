@@ -118,9 +118,6 @@ Meteor.methods({
       throw new Meteor.Error("Not authorized.");
     }
 
-    console.log("recipe", recipe.title);
-    console.log("servings", servings);
-
     const { activeList: currentActiveList } = Meteor.user({
       fields: { activeList: 1 },
     }) as Meteor.User;

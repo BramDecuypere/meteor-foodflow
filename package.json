@@ -1,6 +1,11 @@
 {
   "name": "meteor-foodflow",
   "private": true,
+  "engineStrict": true,
+  "engines": {
+    "npm": "6.x",
+    "node": "14.x"
+  },
   "scripts": {
     "start": "meteor run",
     "test": "meteor test --once --driver-package meteortesting:mocha",

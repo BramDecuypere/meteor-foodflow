@@ -3,6 +3,9 @@ import { Recipe, RecipesCollection } from "../imports/api/recipes/recipes";
 import { Meteor } from "meteor/meteor";
 import { recipesMock } from "./recipe.mock";
 
+// Make sure we create a user with everything attached to it
+import "/server/on-create-user";
+
 const SEED_USERNAME = "meteorite";
 const SEED_PASSWORD = "password";
 
