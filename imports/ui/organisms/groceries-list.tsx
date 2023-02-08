@@ -40,38 +40,52 @@ const getIngredientsByDepartment = (
   );
 
   const ingredientsByDepartment: IngredientsByDepartment = {};
+
+  const handleIngredientsByDepartment = (
+    department: string,
+    ingredient: RecipeIngredient
+  ) => {
+    if (!ingredientsByDepartment[department]) {
+      ingredientsByDepartment[department] = [
+        {
+          ...ingredient,
+        },
+      ];
+    } else {
+      const ingredientFoundIndex = ingredientsByDepartment[
+        department
+      ].findIndex((ingredientByDepartment) => {
+        return ingredientByDepartment.name === ingredient.name;
+      });
+
+      if (ingredientFoundIndex !== -1) {
+        const amount =
+          (ingredient.amount || 0) +
+          (ingredientsByDepartment[department][ingredientFoundIndex].amount ||
+            0);
+
+        ingredientsByDepartment[department][ingredientFoundIndex] = {
+          ...ingredientsByDepartment[department][ingredientFoundIndex],
+          amount: amount ? amount : undefined,
+        };
+      }
+
+      // new ingredient in the list
+      else {
+        ingredientsByDepartment[department].push(ingredient);
+      }
+    }
+  };
+
   completeIngredientsList.forEach((ingredient) => {
     ingredient.departments.forEach((department) => {
-      if (!ingredientsByDepartment[department]) {
-        ingredientsByDepartment[department] = [
-          {
-            ...ingredient,
-          },
-        ];
-      } else {
-        const ingredientFoundIndex = ingredientsByDepartment[
-          department
-        ].findIndex((ingredientByDepartment) => {
-          return ingredientByDepartment.name === ingredient.name;
-        });
+      handleIngredientsByDepartment(department, ingredient);
+    });
+  });
 
-        if (ingredientFoundIndex !== -1) {
-          const amount =
-            (ingredient.amount || 0) +
-            (ingredientsByDepartment[department][ingredientFoundIndex].amount ||
-              0);
-
-          ingredientsByDepartment[department][ingredientFoundIndex] = {
-            ...ingredientsByDepartment[department][ingredientFoundIndex],
-            amount: amount ? amount : undefined,
-          };
-        }
-
-        // new ingredient in the list
-        else {
-          ingredientsByDepartment[department].push(ingredient);
-        }
-      }
+  activeList.selectedIngredients.forEach((ingredient) => {
+    ingredient.departments.forEach((department) => {
+      handleIngredientsByDepartment(department, ingredient);
     });
   });
 

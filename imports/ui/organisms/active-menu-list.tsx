@@ -7,13 +7,13 @@ import { Recipe } from "/imports/api/recipes/recipes";
 
 const ActiveMenuList = () => {
   const { recipes } = ActiveListHook();
-  console.log(
-    "🚀 ~ file: active-menu-list.tsx:10 ~ ActiveMenuList ~ recipes",
-    recipes
-  );
 
   const handleServingsChange = (recipe: Recipe, servings: number) => {
     Meteor.call("users.changeServingsActiveList", recipe, servings);
+  };
+
+  const handleOnRemoveClick = (recipe: Recipe) => {
+    Meteor.call("users.removeRecipeToActiveList", recipe);
   };
 
   return (
@@ -29,6 +29,7 @@ const ActiveMenuList = () => {
           onDecreaseServingsClick={() =>
             handleServingsChange(recipe, servings - 1)
           }
+          onRemoveClick={handleOnRemoveClick}
         />
       ))}
     </RecipeList>

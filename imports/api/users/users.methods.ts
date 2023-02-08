@@ -86,6 +86,33 @@ Meteor.methods({
     });
   },
 
+  "users.removeRecipeFromActiveList"(recipe: Recipe, servings: number) {
+    if (!this.userId) {
+      throw new Meteor.Error("Not authorized.");
+    }
+
+    const { activeList: currentActiveList } = Meteor.user({
+      fields: { activeList: 1 },
+    }) as Meteor.User;
+
+    const recipes = [
+      ...currentActiveList.recipes,
+      {
+        servings,
+        recipe,
+      },
+    ];
+
+    return Meteor.users.update(this.userId, {
+      $set: {
+        activeList: {
+          ...currentActiveList,
+          recipes,
+        },
+      },
+    });
+  },
+
   "users.changeServingsActiveList"(recipe: Recipe, servings: number) {
     if (!this.userId) {
       throw new Meteor.Error("Not authorized.");

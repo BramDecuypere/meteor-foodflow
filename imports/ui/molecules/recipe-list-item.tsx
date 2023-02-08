@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import cn from "classnames";
 import { Link } from "react-router-dom";
 
 import Label from "/imports/ui/atoms/label";
 import { Recipe } from "/imports/api/recipes/recipes";
 import AddToListGroup from "./add-to-list-group";
-import { ClockIcon, UserIcon } from "@heroicons/react/20/solid";
+import { ClockIcon, UserIcon, XMarkIcon } from "@heroicons/react/20/solid";
 
 const RecipeListItem = ({
   className,
@@ -16,6 +16,7 @@ const RecipeListItem = ({
   onAddToListClick,
   onIncreaseServingsClick,
   onDecreaseServingsClick,
+  onRemoveClick,
 }: {
   className?: string;
   recipe: Recipe;
@@ -25,6 +26,7 @@ const RecipeListItem = ({
   onAddToListClick?: (servings: number) => void;
   onIncreaseServingsClick?: () => void;
   onDecreaseServingsClick?: () => void;
+  onRemoveClick?: (recipe: Recipe) => void;
 }) => {
   const [currentServings, setCurrentServings] = useState(servings);
 
@@ -37,6 +39,7 @@ const RecipeListItem = ({
   useEffect(() => {
     setCurrentServings(servings);
   }, [servings]);
+
   return (
     <div
       className={cn(
@@ -50,6 +53,14 @@ const RecipeListItem = ({
         className="h-56 overflow-hidden relative backdrop-filter"
       >
         <div className="absolute w-full h-full bg-black rounded-t-3xl opacity-5"></div>
+        {onRemoveClick && (
+          <div
+            className="text-orange absolute top-0 right-0 p-2"
+            onClick={() => onRemoveClick(recipe)}
+          >
+            <XMarkIcon className="w-10 h-10" />
+          </div>
+        )}
         <img
           className="rounded-t-3xl object-cover h-full w-full"
           src={recipe.image}
