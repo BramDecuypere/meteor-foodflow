@@ -1,4 +1,4 @@
-import { Recipe } from "/imports/api/recipes/recipes";
+import { Recipe, RecipeIngredient } from "/imports/api/recipes/recipes";
 
 declare module "meteor/meteor" {
   module Meteor {
@@ -23,6 +23,7 @@ declare module "meteor/meteor" {
           servings: number;
           recipe: Recipe;
         }[];
+        selectedIngredients: RecipeIngredient[];
       };
     }
   }

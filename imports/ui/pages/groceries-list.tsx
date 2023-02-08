@@ -1,17 +1,21 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import cn from "classnames";
 
-import { Recipe, RecipeIngredient } from "/imports/api/recipes/recipes";
+import { RecipeIngredient } from "/imports/api/recipes/recipes";
 import Accordion from "../molecules/accordion";
 import CheckboxLabel from "../atoms/CheckboxLabel";
 import AmountModifier from "../atoms/AmountModifier";
-import ActiveList from "../hooks/active-list.hook";
+import ActiveListHook from "../hooks/active-list.hook";
+import { Meteor } from "meteor/meteor";
+import { ActiveList } from "/interfaces/active-list";
 
-const getIngredientsByDepartment = (activeList: {
-  recipes: {
-    recipe: Recipe;
-    servings: number;
-  }[];
-}) => {
+interface IngredientsByDepartment {
+  [key: string]: RecipeIngredient[];
+}
+
+const getIngredientsByDepartment = (
+  activeList: ActiveList
+): IngredientsByDepartment => {
   const completeIngredientsList = activeList.recipes.reduce(
     (ingredientsList, activeListItem) => {
       if (!activeListItem) return ingredientsList;
@@ -35,22 +39,13 @@ const getIngredientsByDepartment = (activeList: {
     [] as RecipeIngredient[]
   );
 
-  const ingredientsByDepartment: {
-    [key: string]: {
-      name: string;
-      amount: number | undefined;
-      metric: string | undefined;
-    }[];
-  } = {};
-
+  const ingredientsByDepartment: IngredientsByDepartment = {};
   completeIngredientsList.forEach((ingredient) => {
     ingredient.departments.forEach((department) => {
       if (!ingredientsByDepartment[department]) {
         ingredientsByDepartment[department] = [
           {
-            name: ingredient.name,
-            amount: ingredient.amount,
-            metric: ingredient.metric,
+            ...ingredient,
           },
         ];
       } else {
@@ -71,13 +66,10 @@ const getIngredientsByDepartment = (activeList: {
             amount: amount ? amount : undefined,
           };
         }
+
         // new ingredient in the list
         else {
-          ingredientsByDepartment[department].push({
-            name: ingredient.name,
-            amount: ingredient.amount,
-            metric: ingredient.metric,
-          });
+          ingredientsByDepartment[department].push(ingredient);
         }
       }
     });
@@ -86,75 +78,198 @@ const getIngredientsByDepartment = (activeList: {
   return ingredientsByDepartment;
 };
 
+const getIngredientLabel = (
+  { name, amount, metric }: RecipeIngredient,
+  selected: boolean
+) => {
+  let ingredientLabel = name;
+
+  if (amount) {
+    ingredientLabel = `${name} - ${metric}`;
+  }
+
+  return (
+    <span className={cn({ "line-through opacity-40": selected })}>
+      {ingredientLabel}
+    </span>
+  );
+};
+
+const checkIsIngredientComplete = (activeList: ActiveList, name: string) => {
+  return (
+    activeList.selectedIngredients.findIndex(
+      (ingredient) => ingredient.name === name
+    ) > -1
+  );
+};
+
+const AccordionBody = ({
+  sortedIngredientsByDepartment,
+  activeList,
+}: {
+  sortedIngredientsByDepartment: RecipeIngredient[];
+  activeList: ActiveList;
+}) => {
+  return (
+    <ul className="p-4 font-normal">
+      {sortedIngredientsByDepartment.map((recipe, idx2) => {
+        const { name, amount } = recipe;
+
+        const selected = checkIsIngredientComplete(activeList, name);
+
+        return (
+          <li key={idx2} className="flex justify-between pb-4 last:pb-0 w-full">
+            <CheckboxLabel
+              onClick={() => {
+                Meteor.call(
+                  "users.toggleSelectedIngredientOnAcctiveList",
+                  recipe
+                );
+              }}
+              isSelected={selected}
+            >
+              {getIngredientLabel(recipe, selected)}
+            </CheckboxLabel>
+
+            {amount && (
+              <AmountModifier
+                amount={amount || 0}
+                onAdd={() => {}}
+                onRemove={() => {}}
+                disabled={selected}
+              />
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
+
 const GroceriesList = () => {
-  const activeList = ActiveList();
+  const activeList = ActiveListHook();
 
   const ingredientsByDepartment = getIngredientsByDepartment(activeList);
 
   const [openDepartments, setOpenDepartments] = useState<string[]>([]);
 
+  const selectedIngredients = useRef(activeList.selectedIngredients);
+
+  const closeDepartment = (department: string) => {
+    return openDepartments.filter((_department) => _department !== department);
+  };
+
+  const handleDepartmentChange = (department: string) => {
+    const isOpenDepartment = openDepartments.indexOf(department) !== -1;
+
+    if (isOpenDepartment) {
+      setOpenDepartments(closeDepartment(department));
+    } else {
+      setOpenDepartments([...openDepartments, department]);
+    }
+  };
+
   useEffect(() => {
     setOpenDepartments(Object.keys(ingredientsByDepartment));
   }, [Object.keys(ingredientsByDepartment).length]);
 
+  useEffect(() => {
+    const changedIngredients = activeList.selectedIngredients.filter(
+      (ingredient) => {
+        const isIngredientFoundInPreviousList =
+          selectedIngredients.current.findIndex(
+            ({ name }) => name === ingredient.name
+          ) > -1;
+
+        return !isIngredientFoundInPreviousList;
+      }
+    );
+
+    if (changedIngredients.length === 1) {
+      handleCloseDepartmentWhenIngredientsAreCompleted(
+        changedIngredients[0].departments[0]
+      );
+    }
+
+    selectedIngredients.current = activeList.selectedIngredients;
+  }, [activeList.selectedIngredients.length]);
+
+  const getAmountOfCheckedIngredients = (
+    sortedIngredientsOfDepartment: RecipeIngredient[]
+  ) => {
+    return sortedIngredientsOfDepartment.reduce((prev, curr) => {
+      if (checkIsIngredientComplete(activeList, curr.name)) {
+        return prev + 1;
+      }
+
+      return prev;
+    }, 0);
+  };
+
+  const isDepartmentCompleted = (department: string) => {
+    const sortedIngredientsByList =
+      getSortedIngredientsByDepartment(department);
+
+    const amountOfCheckedIngredients = getAmountOfCheckedIngredients(
+      sortedIngredientsByList
+    );
+
+    return amountOfCheckedIngredients === sortedIngredientsByList.length;
+  };
+
+  const handleCloseDepartmentWhenIngredientsAreCompleted = (
+    department: string
+  ) => {
+    if (isDepartmentCompleted(department)) {
+      setOpenDepartments(closeDepartment(department));
+    }
+  };
+
+  const getSortedIngredientsByDepartment = (department: string) => {
+    return ingredientsByDepartment[department].sort(({ name }) => {
+      const isIngredientComplete = checkIsIngredientComplete(activeList, name);
+
+      if (isIngredientComplete) {
+        return 1;
+      }
+
+      return -1;
+    });
+  };
+
+  const AccordionMapperFunction = () => {
+    return (department: string, idx: number) => {
+      const sortedIngredientsByDepartment =
+        getSortedIngredientsByDepartment(department);
+
+      return (
+        <Accordion
+          key={idx}
+          isComplete={isDepartmentCompleted(department)}
+          className="mb-6 md:mb-10 mx-auto max-w-2xl"
+          title={department}
+          body={
+            <AccordionBody
+              activeList={activeList}
+              sortedIngredientsByDepartment={sortedIngredientsByDepartment}
+            />
+          }
+          isOpen={openDepartments.indexOf(department) !== -1}
+          onChangeClick={handleDepartmentChange}
+        />
+      );
+    };
+  };
+
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
       <div className="py-4">
-        {Object.keys(ingredientsByDepartment).map((department, idx) => (
-          <Fragment key={idx}>
-            <Accordion
-              className="mb-6 md:mb-10 mx-auto max-w-2xl"
-              title={department}
-              body={
-                <ul className="p-4 font-normal">
-                  {ingredientsByDepartment[department].map(
-                    ({ name, amount, metric }, idx2) => {
-                      return (
-                        <li
-                          key={idx2}
-                          className="flex justify-between pb-4 last:pb-0 w-full"
-                        >
-                          <CheckboxLabel
-                            onClick={() => {
-                              console.log("element");
-                            }}
-                            isSelected={false}
-                          >
-                            <span>{`${name}`}</span>
-                            {amount && <span>{` - ${metric}`}</span>}
-                          </CheckboxLabel>
-
-                          {amount && (
-                            <AmountModifier
-                              amount={amount || 0}
-                              onAdd={() => {}}
-                              onRemove={() => {}}
-                            />
-                          )}
-                        </li>
-                      );
-                    }
-                  )}
-                </ul>
-              }
-              isOpen={openDepartments.indexOf(department) !== -1}
-              onChangeClick={(department) => {
-                const isOpenDepartment =
-                  openDepartments.indexOf(department) === -1;
-
-                if (!isOpenDepartment) {
-                  setOpenDepartments(
-                    openDepartments.filter(
-                      (_department) => _department !== department
-                    )
-                  );
-                } else {
-                  setOpenDepartments([...openDepartments, department]);
-                }
-              }}
-            />
-          </Fragment>
-        ))}
+        {Object.keys(ingredientsByDepartment)
+          .filter((department) => !isDepartmentCompleted(department))
+          .map(AccordionMapperFunction())}
+        {Object.keys(ingredientsByDepartment)
+          .filter((department) => isDepartmentCompleted(department))
+          .map(AccordionMapperFunction())}
       </div>
     </div>
   );

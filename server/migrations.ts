@@ -45,6 +45,7 @@ Migrations.add({
             defaultServings: 2,
             activeList: {
               recipes: [],
+              selectedIngredients: [],
             },
           } as Omit<Meteor.User, "_id">,
           (err) => {
