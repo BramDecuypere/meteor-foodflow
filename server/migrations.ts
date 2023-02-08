@@ -7,31 +7,6 @@ const SEED_USERNAME = "meteorite";
 const SEED_PASSWORD = "password";
 
 Migrations.add({
-  version: 2,
-  up: () => {
-    if (!Accounts.findUserByUsername(SEED_USERNAME)) {
-      const recipes = RecipesCollection.find().map((recipe) => recipe._id);
-
-      Accounts.createUser(
-        {
-          username: SEED_USERNAME,
-          password: SEED_PASSWORD,
-          recipes,
-          defaultServings: 2,
-          activeList: {
-            recipes: [],
-            selectedIngredients: [],
-          },
-        } as Omit<Meteor.User, "_id">,
-        (err) => {
-          console.log("----------- create seed user -------------", err);
-        }
-      );
-    }
-  },
-});
-
-Migrations.add({
   version: 1,
   up: Meteor.wrapAsync(async (_: any, next: any) => {
     const _recipes = recipesMock as Recipe[];
@@ -58,5 +33,31 @@ Migrations.add({
     next();
   }),
 
+  down() {},
+});
+
+Migrations.add({
+  version: 2,
+  up() {
+    if (!Accounts.findUserByUsername(SEED_USERNAME)) {
+      const recipes = RecipesCollection.find().map((recipe) => recipe._id);
+
+      Accounts.createUser(
+        {
+          username: SEED_USERNAME,
+          password: SEED_PASSWORD,
+          recipes,
+          defaultServings: 2,
+          activeList: {
+            recipes: [],
+            selectedIngredients: [],
+          },
+        } as Omit<Meteor.User, "_id">,
+        (err) => {
+          console.log("----------- create seed user -------------", err);
+        }
+      );
+    }
+  },
   down() {},
 });
