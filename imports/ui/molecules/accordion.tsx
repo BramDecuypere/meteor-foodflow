@@ -6,6 +6,7 @@ interface Wrapper extends React.HTMLProps<HTMLDivElement> {
   isOpen: boolean;
   title: string;
   body: ReactNode;
+  isComplete?: boolean;
   onChangeClick?: (department: string) => void;
 }
 
@@ -15,6 +16,7 @@ const Accordion = ({
   isOpen,
   onChangeClick,
   className,
+  isComplete,
   ...rest
 }: Wrapper) => {
   return (
@@ -39,7 +41,9 @@ const Accordion = ({
           }
         )}
       >
-        <span className="p-4">{title}</span>
+        <span className={cn("p-4", { "line-through opacity-40": isComplete })}>
+          {title}
+        </span>
         <span className="flex justify-center items-center pr-4">
           <ChevronDownIcon className={cn("h-10", { "rotate-180": isOpen })} />
         </span>

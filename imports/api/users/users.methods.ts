@@ -1,6 +1,10 @@
 import { Meteor } from "meteor/meteor";
 
-import { Recipe, RecipesCollection } from "../recipes/recipes";
+import {
+  Recipe,
+  RecipeIngredient,
+  RecipesCollection,
+} from "../recipes/recipes";
 
 Meteor.methods({
   "users.defaultRecipes"() {
@@ -19,6 +23,40 @@ Meteor.methods({
     }
 
     return Meteor.user();
+  },
+
+  "users.toggleSelectedIngredientOnAcctiveList"(
+    recipeIngredient: RecipeIngredient
+  ) {
+    if (!this.userId) {
+      throw new Meteor.Error("Not authorized.");
+    }
+
+    const { activeList: currentActiveList } = Meteor.user({
+      fields: { activeList: 1 },
+    }) as Meteor.User;
+
+    const isIngredientSelected =
+      currentActiveList.selectedIngredients.findIndex(
+        ({ name }) => name === recipeIngredient.name
+      ) > -1;
+
+    const activeList = { ...currentActiveList };
+
+    if (isIngredientSelected) {
+      activeList.selectedIngredients = activeList.selectedIngredients.filter(
+        ({ name }) => name !== recipeIngredient.name
+      );
+    } else {
+      activeList.selectedIngredients = [
+        ...activeList.selectedIngredients,
+        recipeIngredient,
+      ];
+    }
+
+    return Meteor.users.update(this.userId, {
+      $set: { activeList },
+    });
   },
 
   "users.addRecipeToActiveList"(recipe: Recipe, servings: number) {
@@ -41,6 +79,7 @@ Meteor.methods({
     return Meteor.users.update(this.userId, {
       $set: {
         activeList: {
+          ...currentActiveList,
           recipes,
         },
       },
@@ -63,6 +102,7 @@ Meteor.methods({
     return Meteor.users.update(this.userId, {
       $set: {
         activeList: {
+          ...currentActiveList,
           recipes,
         },
       },

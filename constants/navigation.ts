@@ -5,9 +5,9 @@ import {
 } from "@heroicons/react/24/outline";
 
 export const navigation = [
-  { name: "Recipes", href: "/dashboard", icon: HomeIcon, current: false },
+  { name: "My Recipes", href: "/dashboard", icon: HomeIcon, current: false },
   {
-    name: "Groceries list",
+    name: "Active Groceries",
     href: "/groceries",
     icon: ShoppingCartIcon,
     current: false,
