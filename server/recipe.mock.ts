@@ -775,7 +775,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
           departments: [Departments.PASTA_RICE_GRAINS],
         },
         {
-          name: Ingredients.LEMON,
+          name: Ingredients.LEMONS,
           amount: 0.5,
           metric: Metrics.AMOUNT,
           departments: [Departments.VEGETABLES_FRUITS],
@@ -854,7 +854,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
         ingredients: [
           Ingredients.FLAT_PARSLEY,
           Ingredients.GARLIC,
-          Ingredients.LEMON,
+          Ingredients.LEMONS,
           Ingredients.PINE_NUTS,
           Ingredients.BLACK_PEPPER,
         ],
@@ -1069,6 +1069,466 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
       {
         ingredients: [Ingredients.NAAN_BREAD],
         description: "Serveer met het naanbrood",
+      },
+    ],
+  },
+  {
+    language: Languages.NL,
+    title: "Granola poeder",
+    image: "",
+    timings: {
+      total: 25,
+      active: 10,
+    },
+    labels: [Labels.BREAKFAST],
+    food: {
+      servings: 32,
+      ingredients: [
+        {
+          name: Ingredients.OATMEAL,
+          amount: 1,
+          metric: Metrics.KILO_GRAM,
+          departments: [Departments.NUTS],
+        },
+        {
+          name: Ingredients.MIXED_UNSALTED_NUTS,
+          amount: 250,
+          metric: Metrics.GRAM,
+          departments: [Departments.NUTS],
+        },
+        {
+          name: Ingredients.MIXED_DRIED_FRUITS,
+          amount: 250,
+          metric: Metrics.GRAM,
+          departments: [Departments.NUTS],
+        },
+        {
+          name: Ingredients.MIXED_SEEDS,
+          amount: 100,
+          metric: Metrics.GRAM,
+          departments: [Departments.NUTS],
+        },
+        {
+          name: Ingredients.CACAO_POWDER,
+          amount: 3,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.NUTS],
+        },
+        {
+          name: Ingredients.ORANGES,
+          amount: 1,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+      ],
+    },
+    steps: [
+      {
+        description: "Voorverwarmde oven van 180 °C",
+      },
+      {
+        ingredients: [
+          Ingredients.OATMEAL,
+          Ingredients.MIXED_UNSALTED_NUTS,
+          Ingredients.MIXED_SEEDS,
+        ],
+        description:
+          "Meng de noten, zaden en havermout in een ovenschaal of plaat",
+      },
+      {
+        description:
+          "Rooster voor ongeveer 15 - 20 min en schep ze halverwege eens om",
+      },
+      {
+        ingredients: [Ingredients.MIXED_DRIED_FRUITS, Ingredients.CACAO_POWDER],
+        description:
+          "Roer de gedroogde vruchten erdoor samen et het cacao poeder",
+      },
+      {
+        ingredients: [Ingredients.ORANGES],
+        description:
+          "Voeg de zeste van de sinaasappel erbij en meng alles tot een grof poeder in een blender",
+      },
+      {
+        description:
+          "Voeg alles samen in een glazen bokaal die luchtdicht kan worden gemaakt",
+      },
+      {
+        title: "Snelle pannekoeken met dit poeder",
+      },
+      {
+        ingredients: [
+          Ingredients.BANANA,
+          Ingredients.SELF_RAISING_WHOLE_WHEAT_FLOUR,
+          Ingredients.EGGS,
+        ],
+        description:
+          "2 volle eetlepels granolapoeder, 1 geprakte rijpe banaan, 1 volle eetlepel zelfzijzend volkoren bakmeel, 1 ei",
+      },
+      {
+        title: "Snelle smoothie",
+      },
+      {
+        ingredients: [Ingredients.BANANA, Ingredients.RASPBERRY],
+        description:
+          "50g granolapoeder, 200ml melk, 1 banaan, handvol diepvries frambozen",
+      },
+      {
+        title: "Snelle havermoutpap",
+      },
+      {
+        ingredients: [Ingredients.MILK],
+        description: "50g granolapoeder, 200ml melk, vers fruit naar keuze",
+      },
+    ],
+  },
+  {
+    language: Languages.NL,
+    title: "Zoete aardappelsalade met rucola en tomaat",
+    image: "",
+    timings: {
+      total: 70,
+      active: 10,
+    },
+    labels: [Labels.LUNCH],
+    food: {
+      servings: 2,
+      ingredients: [
+        {
+          name: Ingredients.SWEET_POTATO,
+          amount: 600,
+          metric: Metrics.GRAM,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.TOMATOES,
+          amount: 500,
+          metric: Metrics.GRAM,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.SPRING_ONION,
+          amount: 4,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.ARUGOLA,
+          amount: 50,
+          metric: Metrics.GRAM,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.FETA,
+          amount: 40,
+          metric: Metrics.GRAM,
+          departments: [Departments.CHEESE],
+        },
+      ],
+    },
+    steps: [
+      {
+        description: "Voorverwarmde oven van 180 °C",
+      },
+      {
+        ingredients: [Ingredients.SWEET_POTATO],
+        description:
+          "Was de zoete aardappels goed en leg ze in een braadslede voor 1 uur in de oven tot ze helemaal zacht zijn",
+      },
+      {
+        ingredients: [Ingredients.TOMATOES, Ingredients.SPRING_ONION],
+        description: "Snijd de tomaten en de lente ui in stukken",
+      },
+      {
+        ingredients: [Ingredients.OLIVE_OIL, Ingredients.RED_WINE_VINIGAR],
+        description:
+          "Meng onder de tomaten en lente ui een eetlepel olijfolie en een scheutje rode wijnazijn",
+      },
+      {
+        ingredients: [Ingredients.BLACK_PEPPER, Ingredients.SEA_SALT],
+        description: "Kruid met peper en zout",
+      },
+    ],
+  },
+  {
+    language: Languages.NL,
+    title: "Kip met bruine rijst in een curry saus",
+    image: "",
+    timings: {
+      total: 50,
+      active: 40,
+    },
+    labels: [Labels.DINNER, Labels.INDIAN],
+    food: {
+      servings: 1,
+      ingredients: [
+        {
+          name: Ingredients.CARROTS,
+          amount: 100,
+          metric: Metrics.GRAM,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.COURGETTE,
+          amount: 100,
+          metric: Metrics.GRAM,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.RED_AND_YELLOW_BELL_PEPPER,
+          amount: 2,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.APPLE,
+          amount: 0.5,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.CHICKEN_BREAST,
+          amount: 100,
+          metric: Metrics.GRAM,
+          departments: [Departments.MEAT],
+        },
+        {
+          name: Ingredients.BROWN_RICE,
+          amount: 80,
+          metric: Metrics.GRAM,
+          departments: [Departments.PASTA_RICE_GRAINS],
+        },
+        {
+          name: Ingredients.SHALLOT,
+          amount: 1,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.COCONUT_MILK,
+          amount: 1,
+          metric: Metrics.DECILITER,
+          departments: [Departments.MILK],
+        },
+        {
+          name: Ingredients.CHICKEN_STOCK,
+          amount: 0.5,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.HERBS],
+        },
+        {
+          name: Ingredients.COCONUT_FAT,
+          departments: [Departments.OILS],
+        },
+        {
+          name: Ingredients.CHICKEN_HERBS,
+          departments: [Departments.HERBS],
+        },
+        {
+          name: Ingredients.NUTMEG,
+          departments: [Departments.HERBS],
+        },
+        {
+          name: Ingredients.CURRY_POWDER,
+          departments: [Departments.HERBS],
+        },
+      ],
+    },
+    steps: [
+      {
+        ingredients: [Ingredients.SHALLOT],
+        description: "Versnipper de sjalotten",
+      },
+      {
+        ingredients: [Ingredients.COCONUT_FAT],
+        description:
+          "1 eetlepel per persoon voor de sjalotten te stoven tot ze glazig worden",
+      },
+      {
+        ingredients: [Ingredients.APPLE],
+        description:
+          "Versnipper de geschilde appel en voeg ze toe aan de pan. Laat ze even meestoven",
+      },
+      {
+        ingredients: [Ingredients.CURRY_POWDER],
+        description: "Voeg de curry poeder toe en roer goed om",
+      },
+      {
+        ingredients: [Ingredients.CHICKEN_STOCK],
+        description: "Voeg de kippenbouillon erbij",
+      },
+      {
+        ingredients: [Ingredients.COCONUT_MILK],
+        description:
+          "Voeg de kokosmelk bij de saus en laat inkoken op een zacht vurutje. (minstens 20 minuten)",
+      },
+      {
+        description:
+          "Optioneel: Mix nu de volledige saus als deze heeft gekookt",
+      },
+      {
+        ingredients: [Ingredients.BROWN_RICE],
+        description:
+          "Kook de bruine rijst volgens de handleiding (20 minuten, start nu) (indien gebruik rijst van 10 minuten, start na het snijden van alle groenten",
+      },
+      {
+        ingredients: [
+          Ingredients.CARROTS,
+          Ingredients.COURGETTE,
+          Ingredients.RED_AND_YELLOW_BELL_PEPPER,
+        ],
+        description:
+          "Snij alle groenten in reepjes en voeg ze bij in de wok of pan",
+      },
+      {
+        ingredients: [
+          Ingredients.CHICKEN_BREAST,
+          Ingredients.COCONUT_FAT,
+          Ingredients.CHICKEN_HERBS,
+        ],
+        description:
+          "Snij de kip in blokjes, kruid ze en bak ze in een wok of pan met vetstof",
+      },
+      {
+        description:
+          "Voeg 3el water toe per persoon en laat 10 minuutjes garen",
+      },
+      {
+        description: "Dresseer de rijst met de saus erover en geniet",
+      },
+    ],
+  },
+  {
+    language: Languages.NL,
+    title: "Plattekaastaart met aardbeien",
+    image: "",
+    timings: {
+      total: 60 * 4,
+      active: 15,
+    },
+    labels: [Labels.DESSERT, Labels.SUMMER],
+    food: {
+      servings: 6,
+      ingredients: [
+        {
+          name: Ingredients.STRAWBERRIES,
+          amount: 400,
+          metric: Metrics.GRAM,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.BUTTER,
+          amount: 50,
+          metric: Metrics.GRAM,
+          departments: [Departments.MILK],
+        },
+        {
+          name: Ingredients.COTTAGE_CHEESE,
+          amount: 500,
+          metric: Metrics.GRAM,
+          departments: [Departments.MILK],
+        },
+        {
+          name: Ingredients.WIPPED_CREAM,
+          amount: 250,
+          metric: Metrics.MILLILITER,
+          departments: [Departments.MILK],
+        },
+        {
+          name: Ingredients.SEMOLINA_SUGAR,
+          amount: 6,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.HERBS],
+        },
+        {
+          name: Ingredients.VANILLA_SUGAR,
+          amount: 80,
+          metric: Metrics.GRAM,
+          departments: [Departments.SUGAR],
+        },
+        {
+          name: Ingredients.GELATINE,
+          amount: 12,
+          metric: Metrics.GRAM,
+          departments: [Departments.BISCUITS],
+        },
+        {
+          name: Ingredients.LEMONS,
+          amount: 2,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.ORANGES,
+          amount: 1,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.PETIT_BEURRE_BISCUITS,
+          amount: 250,
+          metric: Metrics.GRAM,
+          departments: [Departments.BISCUITS],
+        },
+      ],
+    },
+    steps: [
+      {
+        ingredients: [Ingredients.PETIT_BEURRE_BISCUITS],
+        description: "Verkruimel de petit beurres",
+      },
+      {
+        ingredients: [Ingredients.PETIT_BEURRE_BISCUITS, Ingredients.BUTTER],
+        description: "Smelt de boter en meng de kruimels erdoor.",
+      },
+      {
+        description:
+          "Bedek hiermee de bodem van een springvorm en druk goed aan. Zet in de koelkast",
+      },
+      {
+        ingredients: [
+          Ingredients.WIPPED_CREAM,
+          Ingredients.SEMOLINA_SUGAR,
+          Ingredients.VANILLA_SUGAR,
+        ],
+        description:
+          "Klop de slagroom samen met de suiker en vanillesuiker op.",
+      },
+      {
+        ingredients: [Ingredients.COTTAGE_CHEESE],
+        description: "Meng hieronder de platte kaas",
+      },
+      {
+        ingredients: [Ingredients.ORANGES],
+        description:
+          "Was de sinaasappel goed en rasp de schil. En roer de schilletjes door de vorige stap",
+      },
+
+      {
+        ingredients: [Ingredients.GELATINE],
+        description: "Week de gelatine in koud water",
+      },
+      {
+        ingredients: [Ingredients.LEMONS, Ingredients.ORANGES],
+        description:
+          "Pers de citroenen en geraspte appelsienen. Warm het op in de microgolf",
+      },
+      {
+        ingredients: [Ingredients.GELATINE],
+        description:
+          "Neem de geweekte gelatine en los ze op in het opgewarmde sap van de citroenen en appelsienen",
+      },
+      {
+        description: "Roer dit mengsel door het plattekaasmengsel",
+      },
+      {
+        ingredients: [Ingredients.STRAWBERRIES],
+        description:
+          "Spoel de aardbeien en snij ze in stukjes (verwijder zeker ook de groene stukjes) Meng door het plattekaasmengsel",
+      },
+      {
+        description:
+          "Verdeel het volledige plattekaasmengsel nu over de gekoelde springvorm met de verkruimelde koekjes in",
       },
     ],
   },

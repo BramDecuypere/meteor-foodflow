@@ -13,4 +13,6 @@ export enum Departments {
   FREEZER = "Diepvriesproducten",
   MILK = "Melkproducten",
   BISCUITS = "Koeken",
+  NUTS = "Noten",
+  MEAT = "Vlees",
 }
