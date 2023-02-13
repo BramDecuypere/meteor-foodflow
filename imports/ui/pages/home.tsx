@@ -360,49 +360,26 @@ const Home = () => (
                   </nav>
                 </div> */}
             </div>
-            {/* <div className="space-y-6 py-6 px-5">
-                <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                  <a
-                    href="#"
-                    className="text-base text-gray-900 hover:text-gray-700"
-                  >
-                    Pricing
-                  </a>
+            <div className="space-y-6 py-6 px-5">
+              <div>
+                <Link
+                  to="/signup"
+                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-orange px-4 py-2 text-base text-white shadow-sm hover:bg-orange-700"
+                >
+                  Sign up
+                </Link>
 
-                  <a
-                    href="#"
-                    className="text-base text-gray-900 hover:text-gray-700"
+                <p className="mt-6 text-center text-base text-gray-500">
+                  Existing customer?
+                  <Link
+                    to="/signin"
+                    className="pl-2 text-orange hover:text-orange-300"
                   >
-                    Docs
-                  </a>
-                  {resources.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="text-base text-gray-900 hover:text-gray-700"
-                    >
-                      {item.name}
-                    </a>
-                  ))}
-                </div>
-                <div>
-                  <a
-                    href="#"
-                    className="flex w-full items-center justify-center rounded-md border border-transparent bg-orange px-4 py-2 text-base text-white shadow-sm hover:bg-orange-700"
-                  >
-                    Sign up
-                  </a>
-                  <p className="mt-6 text-center text-base text-gray-500">
-                    Existing customer?
-                    <a
-                      href="#"
-                      className="text-orange hover:text-orange-300"
-                    >
-                      Sign in
-                    </a>
-                  </p>
-                </div>
-              </div> */}
+                    Log in
+                  </Link>
+                </p>
+              </div>
+            </div>
           </div>
         </Popover.Panel>
       </Transition>
@@ -418,9 +395,9 @@ const Home = () => (
             <span className="block text-orange xl:inline">managed in flow</span>
           </h1>
           <p className="mx-auto mt-3 max-w-md text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl">
-            Creating groceries lists and remembering all of your favourite recipes
-            takes more time than you'd like? You need help to optimize the
-            energy you get out of your body?
+            Creating groceries lists and remembering all of your favourite
+            recipes takes more time than you'd like? You need help to optimize
+            the energy you get out of your body?
           </p>
           <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
             <div className="rounded-md shadow">
