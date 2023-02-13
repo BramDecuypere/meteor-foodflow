@@ -5,6 +5,8 @@ export enum Metrics {
   AMOUNT = "aantal",
   AMOUNT_ABOUT = "aantal (±)",
   GRAM = "g",
+  CENTIMETER = "cm",
+  KILO_GRAM = "kg",
   TABLESPOON = "eetlepel",
   TEASPOON = "theelepel",
   LEAVES = "blaadje(s)",

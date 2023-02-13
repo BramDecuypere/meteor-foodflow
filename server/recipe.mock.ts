@@ -263,7 +263,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
           name: Ingredients.PASTA_LASAGNA_LEAVES,
           amount: 9,
           metric: Metrics.AMOUNT,
-          departments: [Departments.PASTA],
+          departments: [Departments.PASTA_RICE_GRAINS],
         },
         {
           name: Ingredients.HERBS_PROVENCAL,
@@ -436,7 +436,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
           name: Ingredients.PASTA_ORZO,
           amount: 200,
           metric: Metrics.GRAM,
-          departments: [Departments.PASTA],
+          departments: [Departments.PASTA_RICE_GRAINS],
         },
         {
           name: Ingredients.TOMATOES_CHERRY,
@@ -638,6 +638,437 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
       {
         description:
           "Haal uit de oven en laat 10 minuten rusten. Dien op met brood.",
+      },
+    ],
+  },
+  {
+    language: Languages.NL,
+    title: "Fruit tiramisu",
+    image: "",
+    timings: {
+      total: 25,
+      active: 25,
+    },
+    labels: [Labels.ITALIAN, Labels.DESSERT],
+    food: {
+      servings: 4,
+      ingredients: [
+        {
+          name: Ingredients.MIXED_RED_FRUIT,
+          amount: 300,
+          metric: Metrics.GRAM,
+          departments: [Departments.FREEZER],
+        },
+        {
+          name: Ingredients.MASCARPONE,
+          amount: 250,
+          metric: Metrics.GRAM,
+          departments: [Departments.MILK],
+        },
+        {
+          name: Ingredients.COTTAGE_CHEESE,
+          amount: 250,
+          metric: Metrics.GRAM,
+          departments: [Departments.MILK],
+        },
+        {
+          name: Ingredients.POWDERED_SUGAR,
+          amount: 2,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.SUGAR],
+        },
+        {
+          name: Ingredients.LIME,
+          amount: 1,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.VANILLA_PODS,
+          amount: 1,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.HERBS],
+        },
+        {
+          name: Ingredients.BISCUITS_CRUMBLED,
+          amount: 100,
+          metric: Metrics.GRAM,
+          departments: [Departments.BISCUITS],
+        },
+      ],
+    },
+    steps: [
+      {
+        ingredients: [Ingredients.MIXED_RED_FRUIT],
+        description:
+          "Doe het (rood) fruit in een kookpot op een zacht vuur. Laat met een deksel op zacht sudderen voor ongeveer ±12 minuten. Roer af en toe.",
+      },
+      {
+        ingredients: [
+          Ingredients.MASCARPONE,
+          Ingredients.COTTAGE_CHEESE,
+          Ingredients.LIME,
+        ],
+        description:
+          "Meng de platte kaas en de mascarpone + voeg de zeste van de limoen (biologische) limoen toe",
+      },
+      {
+        ingredients: [Ingredients.VANILLA_PODS],
+        description:
+          "Snijd de zaden uit het vanillestokje en meng ze onder de massa in de vorige stap",
+      },
+      {
+        ingredients: [Ingredients.MIXED_RED_FRUIT],
+        description:
+          "Haal het fruit uit stap 1 van het vuur en verdeel gelijk over de potjes",
+      },
+      {
+        ingredients: [Ingredients.BISCUITS_CRUMBLED],
+        description: "Verkruimel de koekjes",
+      },
+      {
+        description:
+          "Doe een laagje van de platte kaas & mascarpone massa in de kommetjes en werk af met de verkruimelde koekjes",
+      },
+    ],
+  },
+  {
+    language: Languages.NL,
+    title: "Gevulde puntparpirka's met quinoa",
+    image: "",
+    timings: {
+      total: 20,
+      active: 30,
+    },
+    labels: [Labels.ITALIAN, Labels.DINNER, Labels.LUNCH, Labels.SUMMER],
+    food: {
+      servings: 2,
+      ingredients: [
+        {
+          name: Ingredients.VEGETABLE_STOCK,
+          amount: 400,
+          metric: Metrics.MILLILITER,
+          departments: [Departments.HERBS],
+        },
+        {
+          name: Ingredients.QUINOA,
+          amount: 150,
+          metric: Metrics.GRAM,
+          departments: [Departments.PASTA_RICE_GRAINS],
+        },
+        {
+          name: Ingredients.SWEET_PEPPER,
+          amount: 2,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.SWEET_PEPPER,
+          amount: 2,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.PINE_NUTS,
+          amount: 60,
+          metric: Metrics.GRAM,
+          departments: [Departments.PASTA_RICE_GRAINS],
+        },
+        {
+          name: Ingredients.LEMON,
+          amount: 0.5,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.FETA,
+          amount: 200,
+          metric: Metrics.GRAM,
+          departments: [Departments.CHEESE],
+        },
+        {
+          name: Ingredients.PANKO,
+          amount: 4,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.HERBS],
+        },
+        {
+          name: Ingredients.ARUGOLA,
+          amount: 100,
+          metric: Metrics.GRAM,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.SUN_DRIED_TOMATOES,
+          amount: 50,
+          metric: Metrics.GRAM,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.OLIVE_OIL,
+          departments: [Departments.OILS],
+        },
+        {
+          name: Ingredients.BLACK_PEPPER,
+          departments: [Departments.HERBS],
+        },
+        {
+          name: Ingredients.GARLIC,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+      ],
+    },
+    steps: [
+      {
+        description: "Verwarm de oven voor op 200 °C",
+      },
+      {
+        ingredients: [Ingredients.QUINOA, Ingredients.VEGETABLE_STOCK],
+        description:
+          "Doe de quinoa in een pot en doe de dubbele hoeveelheid groentenbouillon toe",
+      },
+      {
+        description:
+          "Breng aan de kook en verlaag het vuur (volg instructies op verpakking voor de duur)",
+      },
+      {
+        ingredients: [Ingredients.SWEET_PEPPER],
+        description:
+          "Snijd de zoete puntpaprika in twee (langs de lange kant) en verwijder de zaadjes",
+      },
+      {
+        ingredients: [Ingredients.OLIVE_OIL],
+        description:
+          "Wrijf ze in met een beetje olijfolie en doe ze voor 10 minuten in de oven (beetgaar)",
+      },
+      {
+        ingredients: [Ingredients.FLAT_PARSLEY],
+        description:
+          "Spoel de peterselie. Verwijder de harde stelen en snij fijn.",
+      },
+      {
+        description:
+          "Wanneer de paprika's 10 minuten in de oven hebben gezeten, haal je ze eruit en zet je de gril op",
+      },
+      {
+        ingredients: [
+          Ingredients.FLAT_PARSLEY,
+          Ingredients.GARLIC,
+          Ingredients.LEMON,
+          Ingredients.PINE_NUTS,
+          Ingredients.BLACK_PEPPER,
+        ],
+        description:
+          "Meng peterselie, knoflook, citroensap, pijnboompitten, gemalen peper",
+      },
+      {
+        ingredients: [Ingredients.FETA],
+        description: "Brokkel de feta in de kom en meng opnieuw",
+      },
+      {
+        ingredients: [Ingredients.PANKO],
+        description:
+          "Vul de paprika's met de mengeling en bestrooi ze met panko en een paar druppels olijfolie",
+      },
+      {
+        description:
+          "Laat 10 minuten grillen en kijk regelmatig (panko verbrandt sneller dan paneermeel)",
+      },
+      {
+        ingredients: [Ingredients.ARUGOLA, Ingredients.SUN_DRIED_TOMATOES],
+        description:
+          "Haal uit de oven en laat even afkoelen, maak een snelle rucola salade met zongedroogde tomaten voor erbij",
+      },
+    ],
+  },
+  {
+    language: Languages.NL,
+    title: "Wortelsoep met linzen en indiaase kruiden",
+    image: "",
+    timings: {
+      total: 50,
+      active: 30,
+    },
+    labels: [Labels.INDIAN, Labels.DINNER, Labels.LUNCH, Labels.SUMMER],
+    food: {
+      servings: 6,
+      ingredients: [
+        {
+          name: Ingredients.VEGETABLE_STOCK,
+          amount: 40,
+          metric: Metrics.DECILITER,
+          departments: [Departments.HERBS],
+        },
+        {
+          name: Ingredients.ONION_WHITE,
+          amount: 3,
+          metric: Metrics.DECILITER,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.BELL_PEPPER_RED,
+          amount: 2,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.CARROTS,
+          amount: 1,
+          metric: Metrics.KILO_GRAM,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.LENTILS,
+          amount: 150,
+          metric: Metrics.GRAM,
+          departments: [Departments.PRESERVED],
+        },
+        {
+          name: Ingredients.GINGER,
+          amount: 5,
+          metric: Metrics.CENTIMETER,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.CURCUMA,
+          amount: 1,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.HERBS],
+        },
+        {
+          name: Ingredients.CUMIN,
+          amount: 1,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.HERBS],
+        },
+        {
+          name: Ingredients.GARAM_MASALA,
+          amount: 1,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.HERBS],
+        },
+        {
+          name: Ingredients.CHILI_FLAKES,
+          amount: 0.5,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.HERBS],
+        },
+        {
+          name: Ingredients.LAUREL,
+          amount: 5,
+          metric: Metrics.LEAVES,
+          departments: [Departments.HERBS],
+        },
+        {
+          name: Ingredients.THYME,
+          amount: 2,
+          metric: Metrics.BRANCHES,
+          departments: [Departments.HERBS],
+        },
+        {
+          name: Ingredients.COCONUT_CREAM,
+          departments: [Departments.PRESERVED],
+        },
+        {
+          name: Ingredients.NAAN_BREAD,
+          departments: [Departments.BREAD],
+        },
+        {
+          name: Ingredients.GARLIC,
+          amount: 2,
+          metric: Metrics.CLOVES,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.OLIVE_OIL,
+          departments: [Departments.OILS],
+        },
+        {
+          name: Ingredients.SEA_SALT,
+          departments: [Departments.HERBS],
+        },
+      ],
+    },
+    steps: [
+      {
+        ingredients: [Ingredients.ONION_WHITE],
+        description: "Pel de uien en snijd ze in grote stukken",
+      },
+      {
+        description: "Stoof de uien aan op een laag vuur",
+      },
+      {
+        ingredients: [Ingredients.GARLIC],
+        description: "Pel de knoflook, snijd in stukken en laat meestoven",
+      },
+      {
+        ingredients: [Ingredients.BELL_PEPPER_RED],
+        description:
+          "Snijd de paprika's in grove stukken en verwijder de zaden.",
+      },
+      {
+        description: "Zet vuur zachter en voeg de paprika's toe",
+      },
+      {
+        ingredients: [Ingredients.CARROTS],
+        description: "Schil de wortelen en snij in grote stukken",
+      },
+      {
+        description: "Zet het vuur terug hoger",
+      },
+      {
+        ingredients: [Ingredients.CARROTS, Ingredients.LENTILS],
+        description: "Voeg de wortelen en linzen toe",
+      },
+      {
+        ingredients: [Ingredients.GINGER],
+        description:
+          "Schil de gember en snijd hem in stukken. Voeg toe aan de groenten",
+      },
+      {
+        ingredients: [
+          Ingredients.CURCUMA,
+          Ingredients.CUMIN,
+          Ingredients.GARAM_MASALA,
+          Ingredients.CHILI_FLAKES,
+          Ingredients.LAUREL,
+          Ingredients.THYME,
+        ],
+        description:
+          "Kruid de groenten met kurkuma, komijnpoeder, garam masala, chilivlokken, de laurier en de tijm",
+      },
+      {
+        description: "Meng alles en laat nog even verder stoven",
+      },
+      {
+        ingredients: [Ingredients.VEGETABLE_STOCK],
+        description:
+          "Voeg het water met bouillon (of de verse bouillon) toe en breng aan de kook.",
+      },
+      {
+        description: "Zet het vuur lager en laat ongeveer 30 minuten sudderen",
+      },
+      {
+        description: "Verwijder laurier en thijm",
+      },
+      {
+        description: "Mix alles tot een gladde massa",
+      },
+      {
+        ingredients: [
+          Ingredients.SEA_SALT,
+          Ingredients.BLACK_PEPPER,
+          Ingredients.CHILI_FLAKES,
+        ],
+        description: "Proef en kruid bij indien nodig",
+      },
+      {
+        description:
+          "Schep alles in grote kommen en giet er een scheutje kokosroom bij",
+      },
+      {
+        ingredients: [Ingredients.NAAN_BREAD],
+        description: "Serveer met het naanbrood",
       },
     ],
   },

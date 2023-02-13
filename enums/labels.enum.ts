@@ -1,6 +1,9 @@
 export enum Labels {
   SUMMER = "zomer",
-  BREAKFAST = "ontbijt",
-  DINNER = "diner",
   ITALIAN = "italiaans",
+  INDIAN = "indiaas",
+  BREAKFAST = "ontbijt",
+  LUNCH = "lunch",
+  DINNER = "diner",
+  DESSERT = "dessert",
 }
