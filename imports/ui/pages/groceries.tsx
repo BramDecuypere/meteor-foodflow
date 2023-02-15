@@ -31,6 +31,10 @@ const Groceries = () => {
     return navigateItem;
   };
 
+  if (activeList.loading) {
+    return null;
+  }
+
   if (activeList.recipes.length === 0) {
     return (
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">

@@ -6,7 +6,7 @@ import RecipeListItem from "../molecules/recipe-list-item";
 import { Recipe } from "/imports/api/recipes/recipes";
 
 const ActiveMenuList = () => {
-  const { recipes } = ActiveListHook();
+  const { recipes, loading } = ActiveListHook();
 
   const handleServingsChange = (recipe: Recipe, servings: number) => {
     Meteor.call("users.changeServingsActiveList", recipe, servings);
@@ -15,6 +15,10 @@ const ActiveMenuList = () => {
   const handleOnRemoveClick = (recipe: Recipe) => {
     Meteor.call("users.removeRecipeToActiveList", recipe);
   };
+
+  if (loading) {
+    return null;
+  }
 
   return (
     <RecipeList>

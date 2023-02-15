@@ -6,14 +6,16 @@ const ActiveListHook = () => {
     const handler = Meteor.subscribe("users.activeList");
 
     if (!Meteor.user() || !handler.ready()) {
-      return { recipes: [], selectedIngredients: [] };
+      return { recipes: [], selectedIngredients: [], loading: true };
     }
 
-    const { activeList } = Meteor.user({
+    const {
+      activeList: { recipes, selectedIngredients },
+    } = Meteor.user({
       fields: { activeList: 1 },
     }) as Meteor.User;
 
-    return activeList;
+    return { recipes, selectedIngredients, loading: false };
   });
 };
 

@@ -96,6 +96,10 @@ const GroceriesList = () => {
     };
   };
 
+  if (activeList.loading) {
+    return null;
+  }
+
   return (
     <>
       {Object.keys(ingredientsByDepartment)
