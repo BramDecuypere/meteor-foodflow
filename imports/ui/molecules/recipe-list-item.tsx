@@ -83,11 +83,14 @@ const RecipeListItem = ({
           <div className="flex">
             <span className="flex items-center text-xs pb-3 pr-2">
               <ClockIcon className="h-3 text-orange pr-1" />
-              <span>± {recipe.timings.active + recipe.timings.total} min</span>
+              <span>
+                ± {recipe.timings.total} min ({recipe.timings.active} min
+                active)
+              </span>
             </span>
             <span className="flex items-center text-xs pb-3 pr-2">
               <UserIcon className="h-3 text-orange pr-1" />
-              <span>4 serv.</span>
+              <span>{recipe.food.servings}</span>
             </span>
             {/* <span className="flex items-center text-xs pb-3 pr-2">
               <ClockIcon className="h-3 text-orange pr-1" />

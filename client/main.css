@@ -8,3 +8,19 @@ body,
   height: 100%;
   font-weight: 700;
 }
+
+img:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  /* background-image: url(ishere.jpg); */
+  background: rgb(200, 200, 200);
+  border-top-right-radius: 1.5rem;
+  border-top-left-radius: 1.5rem;
+  background-image: url("/img/image.svg");
+  background-size: 20%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
