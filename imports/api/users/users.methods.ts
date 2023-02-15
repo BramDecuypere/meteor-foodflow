@@ -113,9 +113,14 @@ Meteor.methods({
     });
   },
 
-  "users.changeServingsActiveList"(recipe: Recipe, servings: number) {
+  "users.changeServingsActiveList"(recipe: Recipe, _servings: number) {
     if (!this.userId) {
       throw new Meteor.Error("Not authorized.");
+    }
+
+    let servings = 1;
+    if (_servings > 1) {
+      servings = _servings;
     }
 
     const { activeList: currentActiveList } = Meteor.user({
