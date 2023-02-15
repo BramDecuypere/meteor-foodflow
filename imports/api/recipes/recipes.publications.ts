@@ -1,7 +1,10 @@
-// import { Meteor } from "meteor/meteor";
-// import { RecipesCollection } from "./recipes";
+import { Meteor } from "meteor/meteor";
+import { RecipesCollection } from "./recipes";
 
-// Only allow users to find their own recipes for now
-// Meteor.publish("recipes", function publishRecipes() {
-//   return RecipesCollection.find();
-// });
+Meteor.publish("recipes", function publishRecipes() {
+  if (!this.userId) {
+    throw new Meteor.Error("Not authorized.");
+  }
+
+  return RecipesCollection.find();
+});
