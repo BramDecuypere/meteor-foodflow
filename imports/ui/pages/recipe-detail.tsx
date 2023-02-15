@@ -1,32 +1,30 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
+import { useParams } from "react-router-dom";
 import Label from "../atoms/label";
+import TextToggle from "../atoms/TextToggle";
 import SelectedRecipeHook from "../hooks/selected-recipe.hook";
 import { ButtonGroupState } from "/enums/button-group-state";
 
 const RecipeDetail = () => {
-  const { recipe, loading } = SelectedRecipeHook();
-  const [state, setState] = useState(ButtonGroupState.INGREDIENTS);
-  const [availableDepartments, setAvailableDepartments] = useState<string[]>(
-    []
+  const { id } = useParams();
+  const { recipe, loading } = SelectedRecipeHook(id);
+  const [selectedView, setSelectedView] = useState(
+    ButtonGroupState.INGREDIENTS
   );
 
-  useEffect(() => {
-    let availableDepartmentSet = new Set<string>();
+  if (!recipe || loading) {
+    return null;
+  }
 
-    if (!recipe) {
-      return;
-    }
+  const getIngredients = () => {
+    let availableDepartmentSet = new Set<string>();
 
     recipe.food.ingredients.map((ingredient) => {
       availableDepartmentSet.add(ingredient.departments[0]);
     });
 
-    setAvailableDepartments(Array.from(availableDepartmentSet));
-  }, [recipe && recipe.food.ingredients]);
-
-  if (!recipe) {
-    return null;
-  }
+    return Array.from(availableDepartmentSet);
+  };
 
   return (
     <div className="mx-auto flex max-w-4xl px-4 sm:px-6 md:px-8">
@@ -53,25 +51,16 @@ const RecipeDetail = () => {
         </div>
 
         <div className="w-full text-center py-6">
-          {/* <ButtonGroup
-            setActiveValue={(buttonGroupState) => setState(buttonGroupState)}
-            items={[
-              {
-                label: "Ingredienten",
-                value: ButtonGroupState.INGREDIENTS,
-              },
-              {
-                label: "Bereiding",
-                value: ButtonGroupState.STEPS,
-              },
-            ]}
-            active={state}
-          /> */}
+          <TextToggle
+            selected={selectedView}
+            onClick={(val) => setSelectedView(val as ButtonGroupState)}
+            options={[ButtonGroupState.INGREDIENTS, ButtonGroupState.STEPS]}
+          />
         </div>
 
-        {state === ButtonGroupState.INGREDIENTS && (
+        {selectedView === ButtonGroupState.INGREDIENTS && (
           <div className="w-full max-w-xl mx-auto">
-            {availableDepartments.map((department) => {
+            {getIngredients().map((department) => {
               const ingredientsList = recipe.food.ingredients.filter(
                 (ingredient) => ingredient.departments.indexOf(department) > -1
               );
@@ -100,7 +89,7 @@ const RecipeDetail = () => {
           </div>
         )}
 
-        {state === ButtonGroupState.STEPS && (
+        {selectedView === ButtonGroupState.STEPS && (
           <div className="w-full max-w-xl mx-auto">
             <ol className="w-full list-decimal">
               {recipe.steps.map((step, idx) => {

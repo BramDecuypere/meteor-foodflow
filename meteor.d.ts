@@ -1,3 +1,4 @@
+import { Mongo } from "meteor/mongo";
 import { ActiveList } from "./interfaces/active-list";
 
 declare module "meteor/meteor" {
@@ -16,7 +17,7 @@ declare module "meteor/meteor" {
       services?: any;
 
       // Custom elements
-      recipes: string[];
+      recipes: Mongo.ObjectID[];
       defaultServings: number;
       activeList: ActiveList;
     }
