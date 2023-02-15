@@ -12,6 +12,7 @@ import Recipes from "../imports/ui/pages/recipes";
 import { GlobalProvider } from "/imports/ui/hooks/global.context";
 import Groceries from "../imports/ui/pages/groceries";
 import Settings from "/imports/ui/pages/settings";
+import RecipeDetail from "/imports/ui/pages/recipe-detail";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,25 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Recipes />,
+      },
+    ],
+  },
+  {
+    path: "/recipes",
+    element: (
+      <RequireAuth>
+        <DashboardTemplate title="Recipe detail" />
+      </RequireAuth>
+    ),
+    errorElement: (
+      <DashboardTemplate>
+        <div>Not found</div>
+      </DashboardTemplate>
+    ),
+    children: [
+      {
+        path: "/recipes/:id",
+        element: <RecipeDetail />,
       },
     ],
   },

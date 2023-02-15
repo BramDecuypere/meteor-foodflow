@@ -14,7 +14,7 @@ export interface RecipeIngredient {
 }
 
 export interface Recipe {
-  _id: string;
+  _id: Mongo.ObjectID;
   language: "NL" | "EN";
   title: string;
   image: string;
