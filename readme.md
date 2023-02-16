@@ -1,3 +1,3 @@
 # Meteor FoodFlow
 
-This is meteor test project
+Foodflow is a project sponsored by GROW MY FLOW BV
