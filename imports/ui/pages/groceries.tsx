@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import cn from "classnames";
 import TextToggle from "../atoms/TextToggle";
 import ActiveMenuList from "../organisms/active-menu-list";
 import GroceriesList from "../organisms/groceries-list/groceries-list";
@@ -7,6 +8,8 @@ import ActiveListHook from "../hooks/active-list.hook";
 import { navigation } from "/constants/navigation";
 import Button from "../atoms/Button";
 import { useNavigate } from "react-router-dom";
+import { PlusIcon } from "@heroicons/react/24/outline";
+import ModalBackground from "../atoms/ModalBackground";
 
 export enum GroceriesListStates {
   MENU = "My Active Menu",
@@ -16,6 +19,7 @@ export enum GroceriesListStates {
 const Groceries = () => {
   const activeList = ActiveListHook();
   const navigate = useNavigate();
+  const [openAddModal, setOpenAddModal] = useState(false);
 
   const [selectedView, setSelectedView] = useState<GroceriesListStates>(
     GroceriesListStates.GROCERIES_LIST
@@ -64,7 +68,13 @@ const Groceries = () => {
   return (
     <div className="mx-auto px-4 sm:px-6 md:px-8">
       <div className="py-4">
-        <div className="flex justify-center py-8">
+        <div
+          className={cn("inline-flex flex-col py-8 mx-auto", {
+            "max-w-2xl md:justify-between":
+              selectedView === GroceriesListStates.GROCERIES_LIST,
+            "justify-center": selectedView === GroceriesListStates.MENU,
+          })}
+        >
           <TextToggle
             selected={selectedView}
             onClick={(val) => setSelectedView(val as GroceriesListStates)}
@@ -73,18 +83,36 @@ const Groceries = () => {
               GroceriesListStates.GROCERIES_LIST,
             ]}
           />
+
+          {selectedView === GroceriesListStates.GROCERIES_LIST && (
+            <Button
+              onClick={() => setOpenAddModal(true)}
+              className="inline-flex my-8 items-center justify-center"
+            >
+              <PlusIcon height="1rem" />
+              &nbsp;Add item
+            </Button>
+          )}
         </div>
 
         {selectedView === GroceriesListStates.GROCERIES_LIST && (
-          <div className="max-w-6xl mx-auto">
+          <div className="mx-auto">
             <GroceriesList />
           </div>
         )}
+
         {selectedView === GroceriesListStates.MENU && (
           <div>
             <ActiveMenuList />
           </div>
         )}
+
+        <ModalBackground
+          isOpen={openAddModal}
+          setModalIsOpen={() => setOpenAddModal(!openAddModal)}
+        >
+          <div>Test</div>
+        </ModalBackground>
       </div>
     </div>
   );

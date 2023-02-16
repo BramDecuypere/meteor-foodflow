@@ -21,7 +21,7 @@ const DashboardTemplate = ({
       <div className="flex flex-1 flex-col md:pl-64">
         <TopNav title={title} />
 
-        <main className="flex-1 pb-16">{children ?? <Outlet />}</main>
+        <main className="flex-1 pb-16 relative">{children ?? <Outlet />}</main>
       </div>
     </>
   );
