@@ -6,4 +6,5 @@ export interface ActiveList {
     servings: number;
   }[];
   selectedIngredients: RecipeIngredient[];
+  extraIngredients: RecipeIngredient[];
 }

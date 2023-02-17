@@ -16,12 +16,26 @@ export const AccordionBody = ({
   sortedIngredientsByDepartment: RecipeIngredient[];
   activeList: ActiveList;
 }) => {
+  const onAddIngredientAmount = (
+    ingredient: RecipeIngredient,
+    amount?: number
+  ) => {
+    Meteor.call("users.addActiveListRecipe", ingredient, amount);
+  };
+
+  const onDecreaseIngredientAmount = (
+    ingredient: RecipeIngredient,
+    amount?: number
+  ) => {
+    Meteor.call("users.removeActiveListRecipe", ingredient, amount);
+  };
+
   return (
     <ul className="p-4 font-normal">
-      {sortedIngredientsByDepartment.map((recipe, idx2) => {
-        const { name, amount } = recipe;
+      {sortedIngredientsByDepartment.map((ingredient, idx2) => {
+        const { name, amount } = ingredient;
 
-        const selected = checkIsIngredientComplete(activeList, name);
+        const selected = checkIsIngredientComplete(activeList, name, amount);
 
         return (
           <li key={idx2} className="flex justify-between pb-4 last:pb-0 w-full">
@@ -29,19 +43,24 @@ export const AccordionBody = ({
               onClick={() => {
                 Meteor.call(
                   "users.toggleSelectedIngredientOnAcctiveList",
-                  recipe
+                  ingredient
                 );
               }}
               isSelected={selected}
             >
-              {getIngredientLabel(recipe, selected)}
+              {getIngredientLabel(ingredient, selected)}
             </CheckboxLabel>
 
             {amount && (
               <AmountModifier
                 amount={amount || 0}
-                onAdd={() => {}}
-                onRemove={() => {}}
+                onAdd={() => onAddIngredientAmount(ingredient, amount + 1)}
+                onRemove={() =>
+                  onDecreaseIngredientAmount(
+                    ingredient,
+                    typeof amount !== "undefined" ? amount - 1 : undefined
+                  )
+                }
                 disabled={selected}
               />
             )}

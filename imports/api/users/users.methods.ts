@@ -113,6 +113,90 @@ Meteor.methods({
     });
   },
 
+  "users.removeActiveListRecipe"(ingredient: RecipeIngredient, amount: number) {
+    if (!this.userId) {
+      throw new Meteor.Error("Not authorized.");
+    }
+
+    console.log("🚀 ~ removing ingredient", ingredient, amount);
+  },
+
+  "users.addActiveListRecipe"(ingredient: RecipeIngredient, amount: number) {
+    if (!this.userId) {
+      throw new Meteor.Error("Not authorized.");
+    }
+
+    const { activeList: currentActiveList } = Meteor.user({
+      fields: { activeList: 1 },
+    }) as Meteor.User;
+
+    const isIngredientInSelectedIngredientList =
+      currentActiveList.selectedIngredients.findIndex(({ name }) => {
+        return name === ingredient.name;
+      }) > -1;
+
+    const isIngredientInExtraIngredientsList =
+      currentActiveList.extraIngredients.findIndex(({ name }) => {
+        return name === ingredient.name;
+      }) > -1;
+
+    console.log(
+      "🚀 ~ file: users.methods.ts:139 ~ isIngredientInExtraIngredientsList",
+      isIngredientInExtraIngredientsList
+    );
+
+    let selectedIngredients: RecipeIngredient[] =
+      currentActiveList.selectedIngredients;
+    let extraIngredients: RecipeIngredient[] =
+      currentActiveList.extraIngredients;
+
+    if (isIngredientInSelectedIngredientList) {
+      selectedIngredients = currentActiveList.selectedIngredients.map(
+        (item) => {
+          if (item.name === ingredient.name) {
+            return {
+              ...item,
+              amount,
+            };
+          }
+
+          return item;
+        }
+      );
+    } else if (isIngredientInExtraIngredientsList) {
+      extraIngredients = extraIngredients.map((_ingredient) => {
+        if (_ingredient.name === ingredient.name) {
+          return {
+            ..._ingredient,
+            amount:
+              typeof _ingredient.amount !== "undefined"
+                ? _ingredient.amount + 1
+                : undefined,
+          };
+        }
+
+        return _ingredient;
+      });
+    } else {
+      extraIngredients = [
+        {
+          ...ingredient,
+          amount: 1,
+        },
+      ];
+    }
+
+    return Meteor.users.update(this.userId, {
+      $set: {
+        activeList: {
+          ...currentActiveList,
+          selectedIngredients,
+          extraIngredients,
+        },
+      },
+    });
+  },
+
   "users.changeServingsActiveList"(recipe: Recipe, _servings: number) {
     if (!this.userId) {
       throw new Meteor.Error("Not authorized.");
