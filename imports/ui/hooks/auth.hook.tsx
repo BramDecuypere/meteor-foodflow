@@ -6,9 +6,13 @@ const authContext = React.createContext({} as ReturnType<typeof useAuth>);
 
 function useAuth() {
   const user = useTracker(() => Meteor.user());
+  const isLoggingIn = useTracker(() => Meteor.loggingIn());
+  const isLoggingOut = useTracker(() => Meteor.loggingOut());
 
   return {
     user,
+    isLoggingIn,
+    isLoggingOut,
     login(username: string, password: string, cb: () => void) {
       Meteor.loginWithPassword(username, password, (err) => {
         if (err) {
@@ -25,8 +29,14 @@ function useAuth() {
         }
       });
     },
-    logout() {
-      Meteor.logout();
+    logout(cb: () => void) {
+      Meteor.logout(() => {
+        if (cb) {
+          setTimeout(() => {
+            cb();
+          }, 0);
+        }
+      });
     },
   };
 }

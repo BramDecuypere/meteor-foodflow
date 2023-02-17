@@ -6,22 +6,27 @@ import { Fragment } from "react";
 import { useTracker } from "meteor/react-meteor-data";
 import { Meteor } from "meteor/meteor";
 import GlobalConsumer from "../hooks/global.context";
+import useAuth from "../hooks/auth.hook";
 
-const userNavigation = [
-  // { name: "Your Profile", href: "#" },
-  // { name: "Settings", href: "#" },
-  {
-    name: "Sign out",
-    href: "",
-    onClick: () => Meteor.logout(),
-  },
-];
+import { useNavigate } from "react-router-dom";
 
 const TopNav = ({ title = "" }: { title?: string | ReactNode }) => {
   const user = useTracker(() => Meteor.user());
+  const { logout } = useAuth();
+  const navigate = useNavigate();
   const {
     sidebar: { setIsSidebarOpen },
   } = GlobalConsumer();
+
+  const userNavigation = [
+    // { name: "Your Profile", href: "#" },
+    // { name: "Settings", href: "#" },
+    {
+      name: "Sign out",
+      href: "",
+      onClick: () => logout(() => navigate("/")),
+    },
+  ];
 
   const onOpenClick = () => {
     if (setIsSidebarOpen) setIsSidebarOpen(true);

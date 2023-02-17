@@ -1,19 +1,16 @@
-import { Meteor } from "meteor/meteor";
-import { useTracker } from "meteor/react-meteor-data";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "./auth.hook";
 
 const RequireAuth = ({ children }: any) => {
-  const { user } = useAuth();
+  const { user, isLoggingIn, isLoggingOut } = useAuth();
   const navigate = useNavigate();
-  const isLoggingIn = useTracker(() => Meteor.loggingIn());
 
   useEffect(() => {
-    if (!user && !isLoggingIn) {
+    if (!user && !isLoggingIn && !isLoggingOut) {
       navigate("/");
     }
-  }, [user, isLoggingIn]);
+  }, [user, isLoggingIn, isLoggingOut]);
 
   return children;
 };
