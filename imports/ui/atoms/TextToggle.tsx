@@ -19,7 +19,7 @@ const TextToggle = ({
           <div
             onClick={() => onClick(val)}
             key={idx}
-            className={cn("py-2 px-6 rounded-full", {
+            className={cn("py-2 px-6 rounded-full text-center", {
               "bg-orange text-white": selected === val,
               "text-orange": selected !== val,
             })}

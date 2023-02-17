@@ -67,9 +67,9 @@ const Groceries = () => {
 
   return (
     <div className="mx-auto px-4 sm:px-6 md:px-8">
-      <div className="py-4">
+      <div className="flex flex-col py-4">
         <div
-          className={cn("inline-flex flex-col py-8 mx-auto", {
+          className={cn("flex flex-col py-8 mx-auto", {
             "max-w-2xl md:justify-between":
               selectedView === GroceriesListStates.GROCERIES_LIST,
             "justify-center": selectedView === GroceriesListStates.MENU,
@@ -96,7 +96,7 @@ const Groceries = () => {
         </div>
 
         {selectedView === GroceriesListStates.GROCERIES_LIST && (
-          <div className="mx-auto">
+          <div className="w-full mx-auto">
             <GroceriesList />
           </div>
         )}

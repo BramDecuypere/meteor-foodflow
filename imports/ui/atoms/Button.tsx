@@ -3,7 +3,7 @@ import cn from "classnames";
 
 interface ButtonItemProps
   extends Omit<HTMLProps<HTMLButtonElement>, "className"> {
-  className: string | null | undefined;
+  className?: string;
   loading?: boolean;
   onClick?: () => void;
   type?: "button" | "submit" | "reset" | undefined;
