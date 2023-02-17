@@ -3,25 +3,22 @@ import { useNavigate } from "react-router-dom";
 import cn from "classnames";
 import useAuth from "../hooks/auth.hook";
 import Button from "../atoms/Button";
+import { Meteor } from "meteor/meteor";
 
 const Signin = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const [username, setUsername] = useState("meteorite");
   const [password, setPassword] = useState("password");
-  const [isLoading, setIsLoading] = useState(false);
 
   const submit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    setIsLoading(true);
 
     try {
       login(username, password, () => {
         navigate("/dashboard");
-        setIsLoading(false);
       });
     } catch (err) {
-      setIsLoading(false);
       console.log("err", err);
     }
   };
@@ -199,7 +196,7 @@ const Signin = () => {
                 <div>
                   <Button
                     type="submit"
-                    loading={isLoading}
+                    loading={Meteor.loggingIn()}
                     className={cn(
                       "flex w-full justify-center rounded-md border border-transparent bg-orange py-2 px-4 text-sm text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2"
                     )}
