@@ -6,7 +6,7 @@ interface ButtonItemProps
   className: string | null | undefined;
   loading?: boolean;
   onClick?: () => void;
-  type: "button" | "submit" | "reset" | undefined;
+  type?: "button" | "submit" | "reset" | undefined;
 }
 
 const Button = ({
