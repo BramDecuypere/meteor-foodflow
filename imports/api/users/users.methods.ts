@@ -140,15 +140,10 @@ Meteor.methods({
         return name === ingredient.name;
       }) > -1;
 
-    console.log(
-      "🚀 ~ file: users.methods.ts:139 ~ isIngredientInExtraIngredientsList",
-      isIngredientInExtraIngredientsList
-    );
-
     let selectedIngredients: RecipeIngredient[] =
-      currentActiveList.selectedIngredients;
+      currentActiveList.selectedIngredients || [];
     let extraIngredients: RecipeIngredient[] =
-      currentActiveList.extraIngredients;
+      currentActiveList.extraIngredients || [];
 
     if (isIngredientInSelectedIngredientList) {
       selectedIngredients = currentActiveList.selectedIngredients.map(
@@ -179,6 +174,7 @@ Meteor.methods({
       });
     } else {
       extraIngredients = [
+        ...extraIngredients,
         {
           ...ingredient,
           amount: 1,
