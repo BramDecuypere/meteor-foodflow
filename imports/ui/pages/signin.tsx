@@ -1,21 +1,27 @@
 import React, { FormEventHandler, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import cn from "classnames";
 import useAuth from "../hooks/auth.hook";
+import Button from "../atoms/Button";
 
 const Signin = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const [username, setUsername] = useState("meteorite");
   const [password, setPassword] = useState("password");
+  const [isLoading, setIsLoading] = useState(false);
 
   const submit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       login(username, password, () => {
         navigate("/dashboard");
+        setIsLoading(false);
       });
     } catch (err) {
+      setIsLoading(false);
       console.log("err", err);
     }
   };
@@ -191,12 +197,14 @@ const Signin = () => {
                 </div>
 
                 <div>
-                  <button
-                    type="submit"
-                    className="flex w-full justify-center rounded-md border border-transparent bg-orange py-2 px-4 text-sm text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2"
+                  <Button
+                    loading={isLoading}
+                    className={cn(
+                      "flex w-full justify-center rounded-md border border-transparent bg-orange py-2 px-4 text-sm text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2"
+                    )}
                   >
                     Sign in
-                  </button>
+                  </Button>
                 </div>
               </form>
             </div>
