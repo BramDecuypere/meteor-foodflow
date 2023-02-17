@@ -69,11 +69,14 @@ const Groceries = () => {
     <div className="mx-auto px-4 sm:px-6 md:px-8">
       <div className="flex flex-col py-4">
         <div
-          className={cn("flex flex-col py-8 mx-auto", {
-            "max-w-2xl md:justify-between":
-              selectedView === GroceriesListStates.GROCERIES_LIST,
-            "justify-center": selectedView === GroceriesListStates.MENU,
-          })}
+          className={cn(
+            "flex flex-col md:flex-row py-8 mx-auto md:w-full md:items-center",
+            {
+              "max-w-2xl md:justify-between":
+                selectedView === GroceriesListStates.GROCERIES_LIST,
+              "justify-center": selectedView === GroceriesListStates.MENU,
+            }
+          )}
         >
           <TextToggle
             selected={selectedView}
@@ -87,7 +90,7 @@ const Groceries = () => {
           {selectedView === GroceriesListStates.GROCERIES_LIST && (
             <Button
               onClick={() => setOpenAddModal(true)}
-              className="inline-flex my-8 items-center justify-center"
+              className="inline-flex my-8 md:my-0 items-center justify-center ml-4"
             >
               <PlusIcon height="1rem" />
               &nbsp;Add item
