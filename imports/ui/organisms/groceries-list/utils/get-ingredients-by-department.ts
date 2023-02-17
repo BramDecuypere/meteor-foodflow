@@ -2,39 +2,30 @@ import { RecipeIngredient } from "/imports/api/recipes/recipes";
 import { ActiveList } from "/interfaces/active-list";
 import { IngredientsByDepartment } from "/interfaces/ingredients-by-department";
 
-export const getIngredientsByDepartment = (
-  activeList: ActiveList
-): IngredientsByDepartment => {
-  const completeIngredientsList = activeList.recipes.reduce(
-    (ingredientsList, activeListItem) => {
-      if (!activeListItem) return ingredientsList;
+const getCompleteIngredientsList = (activeList: ActiveList) =>
+  activeList.recipes.reduce((ingredientsList, activeListItem) => {
+    if (!activeListItem) return ingredientsList;
 
-      const ingredientsAdjustedToNewServingSize =
-        activeListItem.recipe.food.ingredients.map((recipeIngredient) => {
-          const recipe = activeListItem.recipe;
-          const servings = activeListItem.servings;
-          const amount = recipeIngredient.amount
-            ? (recipeIngredient.amount / recipe.food.servings) * servings
-            : undefined;
+    const ingredientsAdjustedToNewServingSize =
+      activeListItem.recipe.food.ingredients.map((recipeIngredient) => {
+        const recipe = activeListItem.recipe;
+        const servings = activeListItem.servings;
+        const amount = recipeIngredient.amount
+          ? (recipeIngredient.amount / recipe.food.servings) * servings
+          : undefined;
 
-          return {
-            ...recipeIngredient,
-            amount,
-          };
-        });
+        return {
+          ...recipeIngredient,
+          amount,
+        };
+      });
 
-      return [...ingredientsList, ...ingredientsAdjustedToNewServingSize];
-    },
-    [] as RecipeIngredient[]
-  );
+    return [...ingredientsList, ...ingredientsAdjustedToNewServingSize];
+  }, [] as RecipeIngredient[]);
 
-  const ingredientsByDepartment: IngredientsByDepartment = {};
-
-  const handleIngredientsByDepartment = (
-    department: string,
-    ingredient: RecipeIngredient,
-    isSelected?: boolean
-  ) => {
+const getHandleIngredientsByDepartment =
+  (ingredientsByDepartment: IngredientsByDepartment) =>
+  (department: string, ingredient: RecipeIngredient, isSelected?: boolean) => {
     if (!ingredientsByDepartment[department]) {
       ingredientsByDepartment[department] = [
         {
@@ -67,6 +58,17 @@ export const getIngredientsByDepartment = (
     }
   };
 
+export const getIngredientsByDepartment = (
+  activeList: ActiveList
+): IngredientsByDepartment => {
+  const ingredientsByDepartment: IngredientsByDepartment = {};
+
+  const completeIngredientsList = getCompleteIngredientsList(activeList);
+
+  const handleIngredientsByDepartment = getHandleIngredientsByDepartment(
+    ingredientsByDepartment
+  );
+
   completeIngredientsList.forEach((ingredient) => {
     ingredient.departments.forEach((department) => {
       // here we handle the ingredients that come from the recipe
@@ -78,6 +80,13 @@ export const getIngredientsByDepartment = (
     ingredient.departments.forEach((department) => {
       // here we handle the special selected ingredients to avoid crashes
       handleIngredientsByDepartment(department, ingredient, true);
+    });
+  });
+
+  activeList.extraIngredients.forEach((ingredient) => {
+    ingredient.departments.forEach((department) => {
+      // here we handle the special selected ingredients to avoid crashes
+      handleIngredientsByDepartment(department, ingredient);
     });
   });
 
