@@ -14,6 +14,7 @@ const Button = ({
   className = "",
   loading,
   onClick = () => {},
+  type = "button",
   ...rest
 }: ButtonItemProps) => {
   return (
@@ -23,6 +24,7 @@ const Button = ({
         className,
         "bg-orange text-white h-10 px-3 rounded-3xl text-xs font-bold"
       )}
+      type={type}
       {...rest}
     >
       {!loading ? children : <span>loading...</span>}
