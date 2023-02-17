@@ -198,6 +198,7 @@ const Signin = () => {
 
                 <div>
                   <Button
+                    type="submit"
                     loading={isLoading}
                     className={cn(
                       "flex w-full justify-center rounded-md border border-transparent bg-orange py-2 px-4 text-sm text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2"

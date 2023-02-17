@@ -1,10 +1,12 @@
-import React from "react";
+import React, { HTMLProps } from "react";
 import cn from "classnames";
-import { DOMAttributes } from "react";
 
-interface ButtonItemProps extends DOMAttributes<HTMLButtonElement> {
-  className?: string;
+interface ButtonItemProps
+  extends Omit<HTMLProps<HTMLButtonElement>, "className"> {
+  className: string | null | undefined;
   loading?: boolean;
+  onClick?: () => void;
+  type: "button" | "submit" | "reset" | undefined;
 }
 
 const Button = ({
@@ -17,7 +19,6 @@ const Button = ({
   return (
     <button
       onClick={onClick}
-      type="button"
       className={cn(
         className,
         "bg-orange text-white h-10 px-3 rounded-3xl text-xs font-bold"
