@@ -7,10 +7,23 @@ import { AccordionBody } from "./utils/get-groceries-list-accordion-body";
 import { getIngredientsByDepartment } from "./utils/get-ingredients-by-department";
 import { isDepartmentCompleted } from "./utils/is-department-complete";
 import { getSortedIngredientsByDepartment } from "./utils/get-sorted-ingredients-by-department";
+import Modal from "../../atoms/Modal";
+import AddExtraItemForm from "../../molecules/add-extra-item-form";
+import { FieldValues, SubmitHandler } from "react-hook-form";
 
-const GroceriesList = () => {
+const GroceriesList = ({
+  isAddModalOpen,
+  setAddModalIsOpen,
+}: {
+  isAddModalOpen: boolean;
+  setAddModalIsOpen: (isOpen: boolean) => void;
+}) => {
   const activeList = ActiveListHook();
   const ingredientsByDepartment = getIngredientsByDepartment(activeList);
+  console.log(
+    "🚀 ~ file: groceries-list.tsx:15 ~ GroceriesList ~ ingredientsByDepartment:",
+    ingredientsByDepartment
+  );
   const selectedIngredients = useRef(activeList.selectedIngredients);
   const [openDepartments, setOpenDepartments] = useState<string[]>([]);
 
@@ -100,6 +113,14 @@ const GroceriesList = () => {
     return null;
   }
 
+  const options = [...Object.keys(ingredientsByDepartment), "Andere"].map(
+    (val) => ({ value: val, label: val })
+  );
+
+  const onFormSubmit: SubmitHandler<FieldValues> = (e) => {
+    console.log("data: ", e);
+  };
+
   return (
     <>
       {Object.keys(ingredientsByDepartment)
@@ -108,6 +129,12 @@ const GroceriesList = () => {
       {Object.keys(ingredientsByDepartment)
         .filter((department) => checkIfDepartmentIsCompleted(department))
         .map(AccordionMapperFunction())}
+      <Modal
+        isOpen={isAddModalOpen}
+        setModalIsOpen={(isOpen: boolean) => setAddModalIsOpen(isOpen)}
+      >
+        <AddExtraItemForm options={options} onSubmit={onFormSubmit} />
+      </Modal>
     </>
   );
 };

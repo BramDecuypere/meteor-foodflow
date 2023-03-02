@@ -9,7 +9,6 @@ import { navigation } from "/constants/navigation";
 import Button from "../atoms/Button";
 import { useNavigate } from "react-router-dom";
 import { PlusIcon } from "@heroicons/react/24/outline";
-import ModalBackground from "../atoms/ModalBackground";
 
 export enum GroceriesListStates {
   MENU = "My Active Menu",
@@ -19,7 +18,7 @@ export enum GroceriesListStates {
 const Groceries = () => {
   const activeList = ActiveListHook();
   const navigate = useNavigate();
-  const [openAddModal, setOpenAddModal] = useState(false);
+  const [isAddModalOpen, setAddModalIsOpen] = useState(false);
 
   const [selectedView, setSelectedView] = useState<GroceriesListStates>(
     GroceriesListStates.GROCERIES_LIST
@@ -89,7 +88,7 @@ const Groceries = () => {
 
           {selectedView === GroceriesListStates.GROCERIES_LIST && (
             <Button
-              onClick={() => setOpenAddModal(true)}
+              onClick={() => setAddModalIsOpen(true)}
               className="inline-flex my-8 md:my-0 items-center justify-center ml-4"
             >
               <PlusIcon height="1rem" />
@@ -100,7 +99,10 @@ const Groceries = () => {
 
         {selectedView === GroceriesListStates.GROCERIES_LIST && (
           <div className="w-full mx-auto">
-            <GroceriesList />
+            <GroceriesList
+              isAddModalOpen={isAddModalOpen}
+              setAddModalIsOpen={(isOpen) => setAddModalIsOpen(isOpen)}
+            />
           </div>
         )}
 
@@ -109,13 +111,6 @@ const Groceries = () => {
             <ActiveMenuList />
           </div>
         )}
-
-        <ModalBackground
-          isOpen={openAddModal}
-          setModalIsOpen={() => setOpenAddModal(!openAddModal)}
-        >
-          <div>Test</div>
-        </ModalBackground>
       </div>
     </div>
   );
