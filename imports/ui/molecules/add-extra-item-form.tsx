@@ -42,6 +42,10 @@ const AddExtraItemForm = ({
               placeholder="Quantity"
               type="number"
               {...field}
+              onChange={(value) => {
+                const _value = (value.target as any).value;
+                field.onChange(Number(_value));
+              }}
             />
           )}
         />

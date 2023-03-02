@@ -3,7 +3,7 @@ import cn from "classnames";
 
 interface Input extends React.HTMLProps<HTMLInputElement> {}
 
-const Input = ({ className, ...args }: Input) => {
+const Input = React.forwardRef(({ className, ...args }: Input) => {
   return (
     <input
       style={{ boxShadow: "none" }}
@@ -14,6 +14,6 @@ const Input = ({ className, ...args }: Input) => {
       {...args}
     />
   );
-};
+});
 
 export default Input;
