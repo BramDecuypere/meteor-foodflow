@@ -20,10 +20,7 @@ const GroceriesList = ({
 }) => {
   const activeList = ActiveListHook();
   const ingredientsByDepartment = getIngredientsByDepartment(activeList);
-  console.log(
-    "🚀 ~ file: groceries-list.tsx:15 ~ GroceriesList ~ ingredientsByDepartment:",
-    ingredientsByDepartment
-  );
+
   const selectedIngredients = useRef(activeList.selectedIngredients);
   const [openDepartments, setOpenDepartments] = useState<string[]>([]);
 
