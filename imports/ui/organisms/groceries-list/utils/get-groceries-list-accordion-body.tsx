@@ -16,18 +16,12 @@ export const AccordionBody = ({
   sortedIngredientsByDepartment: RecipeIngredient[];
   activeList: ActiveList;
 }) => {
-  const onAddIngredientAmount = (
-    ingredient: RecipeIngredient,
-    amount?: number
-  ) => {
-    Meteor.call("users.addActiveListRecipe", ingredient, amount);
+  const onAddIngredientAmount = (ingredient: RecipeIngredient) => {
+    Meteor.call("users.addIngredientToActiveList", ingredient);
   };
 
-  const onDecreaseIngredientAmount = (
-    ingredient: RecipeIngredient,
-    amount?: number
-  ) => {
-    Meteor.call("users.removeActiveListRecipe", ingredient, amount);
+  const onDecreaseIngredientAmount = (ingredient: RecipeIngredient) => {
+    Meteor.call("users.removeIngredientFromActiveList", ingredient);
   };
 
   return (
@@ -54,13 +48,8 @@ export const AccordionBody = ({
             {amount && (
               <AmountModifier
                 amount={amount || 0}
-                onAdd={() => onAddIngredientAmount(ingredient, amount + 1)}
-                onRemove={() =>
-                  onDecreaseIngredientAmount(
-                    ingredient,
-                    typeof amount !== "undefined" ? amount - 1 : undefined
-                  )
-                }
+                onAdd={() => onAddIngredientAmount(ingredient)}
+                onRemove={() => onDecreaseIngredientAmount(ingredient)}
                 disabled={selected}
               />
             )}
