@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   Controller,
   FieldValues,
@@ -16,6 +16,7 @@ const AddExtraItemForm = ({
   options: OptionItem[];
   onSubmit: SubmitHandler<FieldValues>;
 }) => {
+  const productRef = useRef();
   const { control, handleSubmit } = useForm({
     defaultValues: {
       product: "",
@@ -29,7 +30,9 @@ const AddExtraItemForm = ({
       <Controller
         name="product"
         control={control}
-        render={({ field }) => <Input placeholder="Product" {...field} />}
+        render={({ field }) => (
+          <Input placeholder="Product" {...field} ref={productRef} />
+        )}
       />
 
       <div className="flex flex-col sm:flex-row">

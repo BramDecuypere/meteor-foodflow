@@ -11,9 +11,10 @@ interface Select extends React.HTMLProps<HTMLSelectElement> {
 }
 
 const Select = React.forwardRef(
-  ({ className, options = [], ...args }: Select) => {
+  ({ className, options = [], ...args }: Select, ref) => {
     return (
       <select
+        ref={ref as any}
         placeholder="test"
         style={{ boxShadow: "none" }}
         className={cn(
