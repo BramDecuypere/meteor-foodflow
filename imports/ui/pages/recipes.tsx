@@ -30,9 +30,9 @@ const Recipes = () => {
 
             const onAddToListClick = (servings: number) => {
               if (activeRecipe) {
-                Meteor.call("users.removeRecipeToActiveList", recipe);
+                Meteor.call("users.activeList.removeRecipe", recipe);
               } else {
-                Meteor.call("users.addRecipeToActiveList", recipe, servings);
+                Meteor.call("users.activeList.addRecipe", recipe, servings);
               }
             };
 

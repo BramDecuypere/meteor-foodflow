@@ -1,5 +1,5 @@
 import { Meteor } from "meteor/meteor";
-import { RecipesCollection } from "../recipes/recipes";
+import { RecipesCollection } from "../../recipes/recipes";
 
 Meteor.publish("users.activeList", function () {
   if (!this.userId) {

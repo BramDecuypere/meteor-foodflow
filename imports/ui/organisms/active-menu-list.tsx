@@ -9,11 +9,11 @@ const ActiveMenuList = () => {
   const { recipes, loading } = ActiveListHook();
 
   const handleServingsChange = (recipe: Recipe, servings: number) => {
-    Meteor.call("users.changeServingsActiveList", recipe, servings);
+    Meteor.call("users.activeList.changeServings", recipe, servings);
   };
 
   const handleOnRemoveClick = (recipe: Recipe) => {
-    Meteor.call("users.removeRecipeToActiveList", recipe);
+    Meteor.call("users.activeList.removeRecipe", recipe);
   };
 
   if (loading) {

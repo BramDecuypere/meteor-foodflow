@@ -17,11 +17,11 @@ export const AccordionBody = ({
   activeList: ActiveList;
 }) => {
   const onAddIngredientAmount = (ingredient: RecipeIngredient) => {
-    Meteor.call("users.addIngredientToActiveList", ingredient);
+    Meteor.call("users.activeList.addIngredient", ingredient);
   };
 
   const onDecreaseIngredientAmount = (ingredient: RecipeIngredient) => {
-    Meteor.call("users.removeIngredientFromActiveList", ingredient);
+    Meteor.call("users.activeList.removeIngredient", ingredient);
   };
 
   return (
@@ -35,10 +35,7 @@ export const AccordionBody = ({
           <li key={idx2} className="flex justify-between pb-4 last:pb-0 w-full">
             <CheckboxLabel
               onClick={() => {
-                Meteor.call(
-                  "users.toggleSelectedIngredientOnAcctiveList",
-                  ingredient
-                );
+                Meteor.call("users.activeList.completeIngredients", ingredient);
               }}
               isSelected={selected}
             >

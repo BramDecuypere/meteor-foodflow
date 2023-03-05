@@ -1,33 +1,11 @@
-import { Meteor } from "meteor/meteor";
+import "./default-recipes.users.method";
+import "./default-settings.users.method";
 
-import {
-  Recipe,
-  RecipeIngredient,
-  RecipesCollection,
-} from "../recipes/recipes";
+import { Meteor } from "meteor/meteor";
+import { Recipe, RecipeIngredient } from "../../recipes/recipes";
 
 Meteor.methods({
-  "users.defaultRecipes"() {
-    if (!this.userId) {
-      throw new Meteor.Error("Not authorized.");
-    }
-
-    const recipes = RecipesCollection.find();
-
-    if (Meteor.user({ fields: { recipes: 1 } })?.recipes.length === 0) {
-      return Meteor.users.update(this.userId, {
-        $set: {
-          recipes: recipes.map((doc) => doc._id),
-        },
-      });
-    }
-
-    return Meteor.user();
-  },
-
-  "users.toggleSelectedIngredientOnAcctiveList"(
-    recipeIngredient: RecipeIngredient
-  ) {
+  "users.activeList.completeIngredients"(recipeIngredient: RecipeIngredient) {
     if (!this.userId) {
       throw new Meteor.Error("Not authorized.");
     }
@@ -59,7 +37,7 @@ Meteor.methods({
     });
   },
 
-  "users.addRecipeToActiveList"(recipe: Recipe, servings: number) {
+  "users.activeList.addRecipe"(recipe: Recipe, servings: number) {
     if (!this.userId) {
       throw new Meteor.Error("Not authorized.");
     }
@@ -86,7 +64,7 @@ Meteor.methods({
     });
   },
 
-  "users.removeRecipeFromActiveList"(recipe: Recipe, servings: number) {
+  "users.activeList.removeRecipe"(recipe: Recipe, servings: number) {
     if (!this.userId) {
       throw new Meteor.Error("Not authorized.");
     }
@@ -113,7 +91,7 @@ Meteor.methods({
     });
   },
 
-  "users.removeIngredientFromActiveList"(ingredient: RecipeIngredient) {
+  "users.activeList.removeIngredient"(ingredient: RecipeIngredient) {
     if (!this.userId) {
       throw new Meteor.Error("Not authorized.");
     }
@@ -174,7 +152,7 @@ Meteor.methods({
     });
   },
 
-  "users.addIngredientToActiveList"(
+  "users.activeList.addIngredient"(
     ingredient: RecipeIngredient,
     amount: number
   ) {
@@ -249,7 +227,7 @@ Meteor.methods({
     });
   },
 
-  "users.changeServingsActiveList"(recipe: Recipe, _servings: number) {
+  "users.activeList.changeServings"(recipe: Recipe, _servings: number) {
     if (!this.userId) {
       throw new Meteor.Error("Not authorized.");
     }
@@ -284,7 +262,7 @@ Meteor.methods({
     });
   },
 
-  "users.removeRecipeToActiveList"(recipe: Recipe) {
+  "users.activeList.removeRecipe"(recipe: Recipe) {
     if (!this.userId) {
       throw new Meteor.Error("Not authorized.");
     }
@@ -303,18 +281,6 @@ Meteor.methods({
           ...currentActiveList,
           recipes,
         },
-      },
-    });
-  },
-
-  "users.changeDefaultServings"(servings: number) {
-    if (!this.userId) {
-      throw new Meteor.Error("Not authorized.");
-    }
-
-    return Meteor.users.update(this.userId, {
-      $set: {
-        defaultServings: servings,
       },
     });
   },
