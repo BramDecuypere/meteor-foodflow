@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-
+import { FieldValues, SubmitHandler } from "react-hook-form";
 import cn from "classnames";
+
 import TextToggle from "../atoms/TextToggle";
 import ActiveMenuList from "../organisms/active-menu-list";
 import GroceriesList from "../organisms/groceries-list/groceries-list";
@@ -9,6 +10,9 @@ import { navigation } from "/constants/navigation";
 import Button from "../atoms/Button";
 import { useNavigate } from "react-router-dom";
 import { PlusIcon } from "@heroicons/react/24/outline";
+import Modal from "../atoms/Modal";
+import AddExtraItemForm from "../molecules/add-extra-item-form";
+import { getIngredientsByDepartment } from "../organisms/groceries-list/utils/get-ingredients-by-department";
 
 export enum GroceriesListStates {
   MENU = "My Active Menu",
@@ -17,6 +21,7 @@ export enum GroceriesListStates {
 
 const Groceries = () => {
   const activeList = ActiveListHook();
+  const ingredientsByDepartment = getIngredientsByDepartment(activeList);
   const navigate = useNavigate();
   const [isAddModalOpen, setAddModalIsOpen] = useState(false);
 
@@ -34,11 +39,22 @@ const Groceries = () => {
     return navigateItem;
   };
 
+  const options = [...Object.keys(ingredientsByDepartment), "Andere"].map(
+    (val) => ({ value: val, label: val })
+  );
+
+  const onFormSubmit: SubmitHandler<FieldValues> = (e) => {
+    console.log("data: ", e);
+  };
+
   if (activeList.loading) {
     return null;
   }
 
-  if (activeList.recipes.length === 0) {
+  if (
+    activeList.selectedIngredients.length === 0 &&
+    activeList.extraIngredients.length === 0
+  ) {
     return (
       <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
         {/* Replace with your content */}
@@ -57,6 +73,24 @@ const Groceries = () => {
                 Add recipes
               </Button>
             )}
+
+            <Button
+              onClick={() => {
+                console.log("clicking item");
+                setAddModalIsOpen(true);
+              }}
+              className="inline-flex my-8 md:my-0 items-center justify-center ml-4"
+            >
+              <PlusIcon height="1rem" />
+              &nbsp;Add item
+            </Button>
+
+            <Modal
+              isOpen={isAddModalOpen}
+              setModalIsOpen={(isOpen: boolean) => setAddModalIsOpen(isOpen)}
+            >
+              <AddExtraItemForm options={options} onSubmit={onFormSubmit} />
+            </Modal>
           </div>
         </div>
         {/* /End replace */}
@@ -88,7 +122,9 @@ const Groceries = () => {
 
           {selectedView === GroceriesListStates.GROCERIES_LIST && (
             <Button
-              onClick={() => setAddModalIsOpen(true)}
+              onClick={() => {
+                setAddModalIsOpen(true);
+              }}
               className="inline-flex my-8 md:my-0 items-center justify-center ml-4"
             >
               <PlusIcon height="1rem" />
@@ -99,10 +135,7 @@ const Groceries = () => {
 
         {selectedView === GroceriesListStates.GROCERIES_LIST && (
           <div className="w-full mx-auto">
-            <GroceriesList
-              isAddModalOpen={isAddModalOpen}
-              setAddModalIsOpen={(isOpen) => setAddModalIsOpen(isOpen)}
-            />
+            <GroceriesList />
           </div>
         )}
 
@@ -111,6 +144,13 @@ const Groceries = () => {
             <ActiveMenuList />
           </div>
         )}
+
+        <Modal
+          isOpen={isAddModalOpen}
+          setModalIsOpen={(isOpen: boolean) => setAddModalIsOpen(isOpen)}
+        >
+          <AddExtraItemForm options={options} onSubmit={onFormSubmit} />
+        </Modal>
       </div>
     </div>
   );
