@@ -29,6 +29,21 @@ export const AccordionBody = ({
       {sortedIngredientsByDepartment.map((ingredient, idx2) => {
         const { name, amount } = ingredient;
 
+        const selectedIngredient = activeList.selectedIngredients.find(
+          (selectedIngredient) => selectedIngredient.name === ingredient.name
+        );
+
+        let calculatedAmount = amount || 0;
+
+        if (
+          amount &&
+          selectedIngredient &&
+          selectedIngredient.amount &&
+          amount - selectedIngredient.amount !== 0
+        ) {
+          calculatedAmount = amount - selectedIngredient.amount;
+        }
+
         const selected = checkIsIngredientComplete(activeList, name);
 
         return (
@@ -44,7 +59,7 @@ export const AccordionBody = ({
 
             {amount && (
               <AmountModifier
-                amount={amount || 0}
+                amount={calculatedAmount}
                 onAdd={() => onAddIngredientAmount(ingredient)}
                 onRemove={() => onDecreaseIngredientAmount(ingredient)}
                 disabled={selected}

@@ -1,8 +1,11 @@
+import { getExtraIngredientAmountByName } from "./../../../ui/organisms/groceries-list/utils/get-extra-ingredient-amount-by-name";
 import "./default-recipes.users.method";
 import "./default-settings.users.method";
 
 import { Meteor } from "meteor/meteor";
 import { Recipe, RecipeIngredient } from "../../recipes/recipes";
+import { checkIsIngredientComplete } from "/imports/ui/organisms/groceries-list/utils/is-ingredient-complete";
+import { getTotalRecipeAmountByName } from "/imports/ui/organisms/groceries-list/utils/get-total-recipe-amount";
 
 Meteor.methods({
   "users.activeList.completeIngredients"(recipeIngredient: RecipeIngredient) {
@@ -22,10 +25,42 @@ Meteor.methods({
     const activeList = { ...currentActiveList };
 
     if (isIngredientSelected) {
-      activeList.selectedIngredients = activeList.selectedIngredients.filter(
-        ({ name }) => name !== recipeIngredient.name
+      const isIngredientComplete = checkIsIngredientComplete(
+        currentActiveList,
+        recipeIngredient.name
       );
+
+      if (isIngredientComplete) {
+        activeList.selectedIngredients = activeList.selectedIngredients.filter(
+          ({ name }) => name !== recipeIngredient.name
+        );
+      } else {
+        activeList.selectedIngredients = activeList.selectedIngredients.map(
+          (_ingredient) => {
+            if (_ingredient.name === recipeIngredient.name) {
+              const recipeAmount = getTotalRecipeAmountByName(
+                activeList,
+                recipeIngredient.name
+              );
+              const extraIngredientAmount = getExtraIngredientAmountByName(
+                activeList,
+                recipeIngredient.name
+              );
+
+              const amount = recipeAmount + extraIngredientAmount;
+
+              return {
+                ..._ingredient,
+                amount,
+              };
+            }
+
+            return _ingredient;
+          }
+        );
+      }
     } else {
+      console.log("adding recipe ingredient", recipeIngredient);
       activeList.selectedIngredients = [
         ...activeList.selectedIngredients,
         recipeIngredient,
@@ -100,32 +135,57 @@ Meteor.methods({
       fields: { activeList: 1 },
     }) as Meteor.User;
 
+    const isFoundInExtraIngredients =
+      currentActiveList.extraIngredients.findIndex((recipeIngredient) => {
+        return recipeIngredient.name === ingredient.name;
+      }) > -1;
+
+    if (isFoundInExtraIngredients) {
+      const _ingredient = currentActiveList.extraIngredients.find(
+        (extraIngredient) => extraIngredient.name === ingredient.name
+      );
+
+      if (!_ingredient) {
+        return;
+      }
+
+      let extraIngredients = currentActiveList.extraIngredients;
+
+      if (_ingredient.amount === undefined || _ingredient.amount === 1) {
+        extraIngredients = extraIngredients.filter(
+          (_ingredient) => _ingredient.name !== ingredient.name
+        );
+      } else if (_ingredient.amount > 1) {
+        extraIngredients = extraIngredients.map((_ingredient) => ({
+          ..._ingredient,
+          amount: _ingredient.amount! - 1,
+        }));
+      }
+
+      return Meteor.users.update(this.userId, {
+        $set: {
+          activeList: {
+            ...currentActiveList,
+            extraIngredients,
+          },
+        },
+      });
+    }
+
     const isFoundInSelectedIngredients =
       currentActiveList.selectedIngredients.findIndex((recipeIngredient) => {
         return recipeIngredient.name === ingredient.name;
       }) > -1;
 
     let selectedIngredients = currentActiveList.selectedIngredients;
-    console.log(
-      "🚀 ~ file: users.methods.ts:131 ~ selectedIngredients:",
-      selectedIngredients
-    );
 
     if (isFoundInSelectedIngredients) {
       selectedIngredients = selectedIngredients.map((recipeIngredient) => {
-        console.log(
-          "🚀 ~ file: users.methods.ts:134 ~ selectedIngredients=selectedIngredients.map ~ recipeIngredient:",
-          recipeIngredient
-        );
         if (
           recipeIngredient.name === ingredient.name &&
           recipeIngredient.amount
         ) {
           const amount = recipeIngredient.amount + 1;
-          console.log(
-            "🚀 ~ file: users.methods.ts:139 ~ selectedIngredients=selectedIngredients.map ~ amount:",
-            amount
-          );
 
           return {
             ...recipeIngredient,
@@ -152,10 +212,7 @@ Meteor.methods({
     });
   },
 
-  "users.activeList.addIngredient"(
-    ingredient: RecipeIngredient,
-    amount: number
-  ) {
+  "users.activeList.addIngredient"(ingredient: RecipeIngredient) {
     if (!this.userId) {
       throw new Meteor.Error("Not authorized.");
     }
@@ -180,18 +237,29 @@ Meteor.methods({
       currentActiveList.extraIngredients || [];
 
     if (isIngredientInSelectedIngredientList) {
-      selectedIngredients = currentActiveList.selectedIngredients.map(
-        (item) => {
-          if (item.name === ingredient.name) {
-            return {
-              ...item,
-              amount,
-            };
-          }
-
-          return item;
-        }
+      const _ingredient = currentActiveList.selectedIngredients.find(
+        (_ingredient) => _ingredient.name === ingredient.name
       );
+
+      if (!_ingredient || !_ingredient.amount) {
+      } else if (_ingredient.amount > 1) {
+        selectedIngredients = currentActiveList.selectedIngredients.map(
+          (item) => {
+            if (item.name === ingredient.name && item.amount) {
+              return {
+                ...item,
+                amount: item.amount - 1,
+              };
+            }
+
+            return item;
+          }
+        );
+      } else if (_ingredient.amount === 1) {
+        selectedIngredients = currentActiveList.selectedIngredients.filter(
+          (item) => item.name !== ingredient.name
+        );
+      }
     } else if (isIngredientInExtraIngredientsList) {
       extraIngredients = extraIngredients.map((_ingredient) => {
         if (_ingredient.name === ingredient.name) {

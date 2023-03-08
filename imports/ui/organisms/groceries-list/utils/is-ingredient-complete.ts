@@ -1,3 +1,5 @@
+import { getExtraIngredientAmountByName } from "./get-extra-ingredient-amount-by-name";
+import { getTotalRecipeAmountByName } from "./get-total-recipe-amount";
 import { ActiveList } from "/interfaces/active-list";
 
 export const checkIsIngredientComplete = (
@@ -18,41 +20,9 @@ export const checkIsIngredientComplete = (
 
   const selectedAmountOfIngredient = selectedIngredientToCheck.amount;
 
-  const totalRecipeAmount = activeList.recipes.reduce((prev, current) => {
-    const foundIngredient = current.recipe.food.ingredients.find(
-      (_ingredient) => _ingredient.name === name
-    );
+  const totalRecipeAmount = getTotalRecipeAmountByName(activeList, name);
 
-    if (!foundIngredient) {
-      return prev;
-    }
-
-    let amount = 0;
-
-    if (foundIngredient) {
-      const foundIngredientAmount = foundIngredient
-        ? foundIngredient.amount || 0
-        : 0;
-      debugger;
-      amount =
-        (foundIngredientAmount / current.recipe.food.servings) *
-        current.servings;
-    }
-
-    return prev + amount;
-  }, 0);
-
-  const foundExtraIngredient = activeList.extraIngredients.find(
-    (_ingredient) => _ingredient.name === name
-  );
-
-  let totalExtraIngredient = 0;
-
-  if (foundExtraIngredient) {
-    totalExtraIngredient = foundExtraIngredient.amount || 0;
-  }
-
-  debugger;
+  const totalExtraIngredient = getExtraIngredientAmountByName(activeList, name);
 
   return (
     selectedAmountOfIngredient === totalExtraIngredient + totalRecipeAmount
