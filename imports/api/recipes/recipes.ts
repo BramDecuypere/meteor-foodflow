@@ -4,6 +4,7 @@ export interface RecipeStep {
   title?: string;
   ingredients?: string[];
   description?: string;
+  optional?: boolean;
 }
 
 export interface RecipeIngredient {
@@ -11,6 +12,7 @@ export interface RecipeIngredient {
   amount?: number;
   metric?: string;
   departments: string[];
+  optional?: boolean;
 }
 
 export interface Recipe {

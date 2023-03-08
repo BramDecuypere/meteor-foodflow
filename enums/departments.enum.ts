@@ -8,6 +8,7 @@ export enum Departments {
   EGGS = "Eieren",
   PRESERVED = "Conserven",
   WINE = "Wijn",
+  BEER = "Bier",
   PASTA_RICE_GRAINS = "Pasta, rijst & granen",
   BREAD = "Brood",
   FREEZER = "Diepvriesproducten",

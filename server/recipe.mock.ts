@@ -8,6 +8,282 @@ import { Labels } from "/enums/labels.enum";
 export const recipesMock: Omit<Recipe, "_id">[] = [
   {
     language: Languages.NL,
+    title: "Spaghetti bolognese",
+    image: "",
+    timings: {
+      total: 60 * 3 + 20,
+      active: 20,
+    },
+    labels: ["zomer", "winter", "hoofdgerecht", "light"],
+    food: {
+      servings: 6,
+      ingredients: [
+        {
+          name: Ingredients.CELERY,
+          amount: 2,
+          metric: Metrics.STALK,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.CARROTS,
+          amount: 2,
+          metric: Metrics.STALK,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.ONION_WHITE,
+          amount: 2,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.GROUND_BEEF,
+          amount: 300,
+          metric: Metrics.GRAM,
+          departments: [Departments.MEAT],
+        },
+        {
+          name: Ingredients.GROUND_PIG,
+          amount: 300,
+          metric: Metrics.GRAM,
+          departments: [Departments.MEAT],
+        },
+        {
+          name: Ingredients.TOMATO_PUREE,
+          amount: 140,
+          metric: Metrics.GRAM,
+          departments: [Departments.PRESERVED],
+        },
+        {
+          name: Ingredients.PASSATA,
+          amount: 500,
+          metric: Metrics.MILLILITER,
+          departments: [Departments.PRESERVED],
+        },
+        {
+          name: Ingredients.BAY_LEAF,
+          amount: 2,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.HERBS],
+        },
+        {
+          name: Ingredients.RED_WINE,
+          amount: 150,
+          metric: Metrics.MILLILITER,
+          departments: [Departments.WINE],
+          optional: true,
+        },
+        {
+          name: Ingredients.MILK,
+          amount: 80,
+          metric: Metrics.MILLILITER,
+          departments: [Departments.MILK],
+          optional: true,
+        },
+        {
+          name: Ingredients.PASTA_TAGLIATELLE,
+          amount: 600,
+          metric: Metrics.GRAM,
+          departments: [Departments.PASTA_RICE_GRAINS],
+        },
+      ],
+    },
+    steps: [
+      // Increase the heat to medium and add the ground beef and pork. Stirring as the meat is cooking to break up the pieces. Once the meat has browned turned the heat up to high and add the wine.
+      // Cook until the alcohol has evaporated (about 20-30 seconds) and the liquid has evaporated. Decrease the heat to medium/low and add the tomato paste, puree, salt, pepper and bay leaf. Gradually decrease the heat to the lowest setting cover and let simmer for three hours (the mixture should not boil). Stir occasionally.
+      // After the time has passed remove the bay leaf and add the milk, heat thoroughly for a couple of minutes. Serve over cooked pasta. Enjoy!
+      {
+        ingredients: [
+          Ingredients.CARROTS,
+          Ingredients.CELERY,
+          Ingredients.ONION_WHITE,
+        ],
+        description: "Snij wortelen, selder en ajuin fijn.",
+      },
+      {
+        ingredients: [
+          Ingredients.OLIVE_OIL,
+          Ingredients.CARROTS,
+          Ingredients.CELERY,
+          Ingredients.ONION_WHITE,
+        ],
+        description:
+          // In a medium to large heavy pot add the olive oil and chopped vegetables, cook covered on low heat (stirring occasionally) until onion is transparent.
+          "In een grote pot op een laag vuur voeg je olijfolie en de gesneden groenten toe, zweet de groeten tot de ui doorzichtig is",
+      },
+      {
+        ingredients: [Ingredients.GROUND_BEEF, Ingredients.GROUND_PIG],
+        description:
+          "Zet het vuur hoger en voeg het gehakt toe (mag ook gemengd gehakt zijn). Roer regelmatig tot het gehakt kleur krijgt en een beetje bruint",
+      },
+      {
+        ingredients: [Ingredients.GROUND_BEEF, Ingredients.GROUND_PIG],
+        description:
+          "Zet het vuur hoger en voeg het gehakt toe (mag ook gemengd gehakt zijn). Roer regelmatig tot het gehakt kleur krijgt en een beetje bruint",
+        optional: true,
+      },
+      {
+        ingredients: [Ingredients.RED_WINE],
+        description: "Voeg de rode wijn toe en kook tot de alcohol is verdampt",
+      },
+      {
+        ingredients: [
+          Ingredients.SALT,
+          Ingredients.BLACK_PEPPER,
+          Ingredients.TOMATO_PUREE,
+        ],
+        description:
+          "Verlaag de temperatuur terug en voeg het zout, peper, de tomaten puree toe. Kook voor 2 minuten.",
+      },
+      {
+        ingredients: [
+          Ingredients.SALT,
+          Ingredients.BLACK_PEPPER,
+          Ingredients.TOMATO_PUREE,
+        ],
+        description:
+          "Verlaag de temperatuur terug en voeg het zout, peper, de tomaten puree toe. Kook voor 2 minuten.",
+      },
+      {
+        ingredients: [Ingredients.PASSATA, Ingredients.BAY_LEAF],
+        description:
+          "Voeg de passata en de laurier toe en laat de bolognese voor 3 uur sudderen. (NIET KOKEN!) Roer regelmatig.",
+      },
+      {
+        optional: true,
+        ingredients: [Ingredients.MILK, Ingredients.BAY_LEAF],
+        description:
+          "Verwijder de laurier en voeg de melk toe. Laat nog even goed doorkoken en serveer met pasta.",
+      },
+    ],
+  },
+  {
+    language: Languages.NL,
+    title:
+      "Quinoa bowl with poached egg, bacon, avocado, cherry tomatoes and arugola",
+    image: "",
+    timings: {
+      total: 30,
+      active: 10,
+    },
+    labels: ["zomer", "hoofdgerecht", "light"],
+    food: {
+      servings: 2,
+      ingredients: [
+        {
+          name: Ingredients.TOMATOES_CHERRY,
+          amount: 10,
+          metric: Metrics.PIECES,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.SMOKED_BACON,
+          amount: 200,
+          metric: Metrics.GRAM,
+          departments: [Departments.MEAT],
+        },
+        {
+          name: Ingredients.EGGS,
+          amount: 2,
+          metric: Metrics.PIECES,
+          departments: [Departments.EGGS],
+        },
+        {
+          name: Ingredients.QUINOA,
+          amount: 160,
+          metric: Metrics.GRAM,
+          departments: [Departments.PASTA_RICE_GRAINS],
+        },
+        {
+          name: Ingredients.ARUGOLA,
+          amount: 30,
+          metric: Metrics.GRAM,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.AVOCADO,
+          amount: 1,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+        {
+          name: Ingredients.OLIVE_OIL,
+          amount: 4,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.OILS],
+        },
+        {
+          name: Ingredients.RED_WINE_VINIGAR,
+          amount: 2,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.OILS],
+        },
+        {
+          name: Ingredients.LEMONS,
+          amount: 1,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.VEGETABLES_FRUITS],
+        },
+      ],
+    },
+    steps: [
+      {
+        description: "verwarm de oven voor op 180°C",
+      },
+      {
+        ingredients: [Ingredients.QUINOA],
+        description: "Start met het koken van water voor de quinoa",
+      },
+      {
+        ingredients: [Ingredients.TOMATOES_CHERRY],
+        description:
+          "In een grote ovenschaal voeg de volledige kerstomaten toe met wat olijfolie",
+      },
+      {
+        ingredients: [Ingredients.SMOKED_BACON],
+        description:
+          "Schuif de tomaten aan de kant (of neem een andere schaal, de tomaten moeten in 1 laag blijven liggen) en voeg de spekjes toe",
+      },
+      {
+        description:
+          "Zet de ovenschaal uit de vorige stap voor 20 minuten in de oven",
+      },
+      {
+        ingredients: [Ingredients.QUINOA],
+        description:
+          "Terwijl de de ovenschaal in de voorverwarmde oven staat, voeg je de quinoa toe aan het kokende water",
+      },
+      {
+        ingredients: [
+          Ingredients.OLIVE_OIL,
+          Ingredients.RED_WINE_VINIGAR,
+          Ingredients.LEMONS,
+        ],
+        description:
+          "Maak een dressing voor wanneer de quinoa klaar is. Voeg 3 eenheden olijfolie toe aan 1 eenheid azijn en citroensap. Je hebt ongeveer 1 eetlepel per persoon nodig (of naar smaak)",
+      },
+      {
+        ingredients: [Ingredients.ARUGOLA, Ingredients.AVOCADO],
+        description:
+          "Snij de avocado in blokjes of reepjes om te dresseren en was de rucola (indien nodig)",
+      },
+      {
+        description:
+          "Wanneer de quinoa klaar is (normaal ±10 minuten), mix je de dressing erdoor en dresseer je op de gewenste borden. De quinoa koelt een beetje af, maar dat is ok!",
+      },
+      {
+        ingredients: [Ingredients.EGGS],
+        description:
+          "In dezelfde pot als de quinoa kan je nu opnieuw water koken om de eieren te pocheren (voor gebruiksgemak). Let wel op dat je best op een gasvuur/inductie kookt, anders kan dit weleens te lang duren om alles samen klaar te krijgen.",
+      },
+      {
+        description:
+          "(Optioneel): Indien gewenst kan je afwerken met peper en zout. En zwarte en witte sesam zaadjes. En feta/parmesaan.",
+      },
+    ],
+  },
+  {
+    language: Languages.NL,
     title: "Tomaat Mozerella",
     image:
       "https://img.static-rmg.be/a/food/image/q75/w640/h400/7077/tomaat-mozzarella.jpg",
@@ -182,7 +458,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
           departments: [Departments.VEGETABLES_FRUITS],
         },
         {
-          name: Ingredients.LAUREL,
+          name: Ingredients.BAY_LEAF,
           amount: 1,
           metric: Metrics.LEAVES,
           departments: [Departments.VEGETABLES_FRUITS],
@@ -212,7 +488,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
           departments: [Departments.PRESERVED],
         },
         {
-          name: Ingredients.TOMATO_PULP,
+          name: Ingredients.PASSATA,
           amount: 250,
           metric: Metrics.GRAM,
           departments: [Departments.PRESERVED],
@@ -300,7 +576,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
           "Versnipper de rode chilipeper en voeg toe (zonder de zaadjes als je niet van TE pikant houdt",
       },
       {
-        ingredients: [Ingredients.LAUREL, Ingredients.THYME],
+        ingredients: [Ingredients.BAY_LEAF, Ingredients.THYME],
         description:
           "Voeg de laurier en tijm toe. Je kan de kruiden ook samenbinden met wat keukentouw.",
       },
@@ -315,7 +591,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
           "Schenk de witte wijn erbij (laat de alcohol enkele minuten verdampen).",
       },
       {
-        ingredients: [Ingredients.TOMATO_PULP, Ingredients.TOMATO_PIECES],
+        ingredients: [Ingredients.PASSATA, Ingredients.TOMATO_PIECES],
         description: "Voeg de tomatenpulp en de tomatenstukjes toe.",
       },
       {
@@ -451,7 +727,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
           departments: [Departments.HERBS],
         },
         {
-          name: Ingredients.LAUREL,
+          name: Ingredients.BAY_LEAF,
           amount: 2,
           metric: Metrics.LEAVES,
           departments: [Departments.HERBS],
@@ -620,7 +896,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
         description: `Versnij de ui en paprika naar keuze. Maak dunne rondjes van de ${Ingredients.COURGETTE} en ${Ingredients.EGG_PLANT}. Doe de rondjes van de ${Ingredients.EGG_PLANT} nog eens door twee (halve cirkels). Voeg de knoflook, olijfolie, zout, peper en basilicum toe`,
       },
       {
-        ingredients: [Ingredients.TOMATO_PULP],
+        ingredients: [Ingredients.PASSATA],
         description: "Overgiet met de tomatenblokjes en strijk glad",
       },
       {
@@ -954,7 +1230,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
           departments: [Departments.HERBS],
         },
         {
-          name: Ingredients.LAUREL,
+          name: Ingredients.BAY_LEAF,
           amount: 5,
           metric: Metrics.LEAVES,
           departments: [Departments.HERBS],
@@ -1031,7 +1307,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
           Ingredients.CUMIN,
           Ingredients.GARAM_MASALA,
           Ingredients.CHILI_FLAKES,
-          Ingredients.LAUREL,
+          Ingredients.BAY_LEAF,
           Ingredients.THYME,
         ],
         description:
