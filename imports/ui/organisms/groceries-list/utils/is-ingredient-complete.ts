@@ -1,35 +1,60 @@
-import { RecipeIngredient } from "/imports/api/recipes/recipes";
 import { ActiveList } from "/interfaces/active-list";
 
 export const checkIsIngredientComplete = (
   activeList: ActiveList,
   name: string
 ) => {
+  const selectedIngredientToCheck = activeList.selectedIngredients.find(
+    (ingredient) => ingredient.name === name
+  );
+
+  if (!selectedIngredientToCheck) {
+    return false;
+  }
+
+  if (selectedIngredientToCheck.amount === undefined) {
+    return true;
+  }
+
+  const selectedAmountOfIngredient = selectedIngredientToCheck.amount;
+
+  const totalRecipeAmount = activeList.recipes.reduce((prev, current) => {
+    const foundIngredient = current.recipe.food.ingredients.find(
+      (_ingredient) => _ingredient.name === name
+    );
+
+    if (!foundIngredient) {
+      return prev;
+    }
+
+    let amount = 0;
+
+    if (foundIngredient) {
+      const foundIngredientAmount = foundIngredient
+        ? foundIngredient.amount || 0
+        : 0;
+      debugger;
+      amount =
+        (foundIngredientAmount / current.recipe.food.servings) *
+        current.servings;
+    }
+
+    return prev + amount;
+  }, 0);
+
+  const foundExtraIngredient = activeList.extraIngredients.find(
+    (_ingredient) => _ingredient.name === name
+  );
+
+  let totalExtraIngredient = 0;
+
+  if (foundExtraIngredient) {
+    totalExtraIngredient = foundExtraIngredient.amount || 0;
+  }
+
+  debugger;
+
   return (
-    activeList.selectedIngredients.findIndex((ingredient) => {
-      const totalRecipeAmount = activeList.recipes.reduce((prev, current) => {
-        const foundIngredient: RecipeIngredient | undefined =
-          current.recipe.food.ingredients.find(
-            (_ingredient) => _ingredient.amount === ingredient.amount
-          );
-
-        if (!foundIngredient) {
-          return prev;
-        }
-
-        return prev + foundIngredient.amount!;
-      }, 0);
-
-      const foundExtraIngredient = activeList.extraIngredients.find(
-        (_ingredient) => _ingredient.name === ingredient.name
-      );
-
-      const totalExtraIngredient = foundExtraIngredient?.amount || 0;
-
-      return (
-        ingredient.name === name &&
-        ingredient.amount === totalRecipeAmount + totalExtraIngredient
-      );
-    }) > -1
+    selectedAmountOfIngredient === totalExtraIngredient + totalRecipeAmount
   );
 };
