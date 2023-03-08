@@ -29,7 +29,7 @@ export const AccordionBody = ({
       {sortedIngredientsByDepartment.map((ingredient, idx2) => {
         const { name, amount } = ingredient;
 
-        const selected = checkIsIngredientComplete(activeList, name, amount);
+        const selected = checkIsIngredientComplete(activeList, name);
 
         return (
           <li key={idx2} className="flex justify-between pb-4 last:pb-0 w-full">
