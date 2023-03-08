@@ -33,7 +33,7 @@ const AmountModifier = ({
         +
       </button>
       <span className="px-4 leading-10 min-w-fit text-center font-bold text-sm">
-        {!hideAmount && amount}
+        {!hideAmount && Math.round(amount * 10) / 10}
         {title ? ` ${title}` : undefined}
       </span>
       <button
