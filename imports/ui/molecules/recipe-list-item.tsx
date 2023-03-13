@@ -6,6 +6,7 @@ import Label from "/imports/ui/atoms/label";
 import { Recipe } from "/imports/api/recipes/recipes";
 import AddToListGroup from "./add-to-list-group";
 import { ClockIcon, UserIcon, XMarkIcon } from "@heroicons/react/20/solid";
+import { defaultBGImgPath } from "/constants/defaultBGImgPath";
 
 const RecipeListItem = ({
   className,
@@ -29,11 +30,16 @@ const RecipeListItem = ({
   onRemoveClick?: (recipe: Recipe) => void;
 }) => {
   const [currentServings, setCurrentServings] = useState(servings);
+  const [isDefaultImg, setIsDefaultImg] = useState(false);
 
   const setServings = (servings: number) => {
     const nextServings = currentServings <= 1 ? 1 : servings;
 
     return setCurrentServings(nextServings);
+  };
+
+  const onImgError = () => {
+    setIsDefaultImg(true);
   };
 
   useEffect(() => {
@@ -65,10 +71,17 @@ const RecipeListItem = ({
             <XMarkIcon className="w-10 h-10" />
           </div>
         )}
-        <img
-          className="rounded-t-3xl object-cover h-full w-full"
-          src={recipe.image}
-        />
+        {!isDefaultImg ? (
+          <img
+            className="rounded-t-3xl object-cover h-full w-full"
+            src={recipe.image}
+            onError={onImgError}
+          />
+        ) : (
+          <div className="flex items-center justify-center h-full bg-slate-300 rounded-t-3xl">
+            <img src={defaultBGImgPath} width={50} />
+          </div>
+        )}
         <div className="flex flex-col absolute bottom-2 left-2 text-white font-bold">
           <div className="flex">
             {recipe.labels.map((value, idx) => {

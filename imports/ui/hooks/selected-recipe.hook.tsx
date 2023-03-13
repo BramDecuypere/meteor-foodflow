@@ -5,7 +5,8 @@ import { RecipesCollection } from "/imports/api/recipes/recipes";
 
 const SelectedRecipeHook = (id?: string) => {
   return useTracker(() => {
-    const handler = Meteor.subscribe("recipes");
+    const _id = new Mongo.ObjectID(id);
+    const handler = Meteor.subscribe("recipeDetail", _id);
 
     const data = { recipe: null, loading: false };
 
@@ -20,14 +21,21 @@ const SelectedRecipeHook = (id?: string) => {
       };
     }
 
-    const objectId = new Mongo.ObjectID(id);
-    const recipe = RecipesCollection.findOne({ _id: objectId });
+    try {
+      const recipe = RecipesCollection.findOne({ _id });
 
-    if (!recipe) {
-      return data;
+      if (!recipe) {
+        return data;
+      }
+
+      return { recipe, loading: false };
+    } catch (err) {
+      console.log(err);
+      return {
+        ...data,
+        loading: false,
+      };
     }
-
-    return { recipe, loading: false };
   });
 };
 

@@ -1,13 +1,16 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Label from "../atoms/label";
 import TextToggle from "../atoms/TextToggle";
 import SelectedRecipeHook from "../hooks/selected-recipe.hook";
+import { defaultBGImgPath } from "/constants/defaultBGImgPath";
 import { ButtonGroupState } from "/enums/button-group-state";
 
 const RecipeDetail = () => {
   const { id } = useParams();
   const { recipe, loading } = SelectedRecipeHook(id);
+  const [isImgDefault, setIsImgDefault] = useState(false);
+
   const [selectedView, setSelectedView] = useState(
     ButtonGroupState.INGREDIENTS
   );
@@ -15,6 +18,10 @@ const RecipeDetail = () => {
   if (!recipe || loading) {
     return null;
   }
+
+  const onImgError = () => {
+    setIsImgDefault(true);
+  };
 
   const getIngredients = () => {
     let availableDepartmentSet = new Set<string>();
@@ -29,14 +36,24 @@ const RecipeDetail = () => {
   return (
     <div className="mx-auto flex max-w-4xl px-4 sm:px-6 md:px-8">
       <div className="flex flex-col py-4 px-2 my-4 w-full bg-white rounded-md">
-        <div className="flex">
-          <div className="w-2/5 mr-4">
+        <div className="flex flex-col md:flex-row">
+          <div className="pb-4 md:pb-0 md:w-2/5 md:mr-4 h-52 overflow-hidden relative backdrop-filter">
             {/* eslint-disable-next-line */}
-            <img
-              src={recipe.image}
-              alt={recipe.title}
-              className="w-full object-cover rounded"
-            />
+            {/* <object data={recipe.image} type="image/jpeg">
+              <img src="/img/image.svg" alt="Name" />
+            </object> */}
+            {!isImgDefault ? (
+              <img
+                src={recipe.image}
+                alt={recipe.title}
+                className="h-full object-cover rounded"
+                onError={onImgError}
+              />
+            ) : (
+              <div className="flex items-center justify-center h-full bg-slate-300 rounded-3xl">
+                <img src={defaultBGImgPath} width={50} />
+              </div>
+            )}
           </div>
 
           <div>
