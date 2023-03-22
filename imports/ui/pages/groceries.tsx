@@ -12,7 +12,9 @@ import { useNavigate } from "react-router-dom";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import Modal from "../atoms/Modal";
 import AddExtraItemForm from "../molecules/add-extra-item-form";
-import { getIngredientsByDepartment } from "../organisms/groceries-list/utils/get-ingredients-by-department";
+import { Meteor } from "meteor/meteor";
+import { RecipeIngredient } from "/imports/api/recipes/recipes";
+import { Metrics } from "/enums/metrics.enum";
 
 export enum GroceriesListStates {
   MENU = "My Active Menu",
@@ -21,7 +23,6 @@ export enum GroceriesListStates {
 
 const Groceries = () => {
   const activeList = ActiveListHook();
-  const ingredientsByDepartment = getIngredientsByDepartment(activeList);
   const navigate = useNavigate();
   const [isAddModalOpen, setAddModalIsOpen] = useState(false);
 
@@ -39,12 +40,14 @@ const Groceries = () => {
     return navigateItem;
   };
 
-  const options = [...Object.keys(ingredientsByDepartment), "Andere"].map(
-    (val) => ({ value: val, label: val })
-  );
-
-  const onFormSubmit: SubmitHandler<FieldValues> = (e) => {
-    console.log("data: ", e);
+  const onFormSubmit: SubmitHandler<FieldValues> = (values) => {
+    const { product, quantity, category } = values;
+    Meteor.call("users.activeList.addIngredient", {
+      name: product,
+      amount: quantity,
+      metric: Metrics.AMOUNT,
+      departments: [category],
+    } as RecipeIngredient);
   };
 
   if (activeList.loading) {
@@ -90,7 +93,7 @@ const Groceries = () => {
               isOpen={isAddModalOpen}
               setModalIsOpen={(isOpen: boolean) => setAddModalIsOpen(isOpen)}
             >
-              <AddExtraItemForm options={options} onSubmit={onFormSubmit} />
+              <AddExtraItemForm onSubmit={onFormSubmit} />
             </Modal>
           </div>
         </div>
@@ -150,7 +153,7 @@ const Groceries = () => {
           isOpen={isAddModalOpen}
           setModalIsOpen={(isOpen: boolean) => setAddModalIsOpen(isOpen)}
         >
-          <AddExtraItemForm options={options} onSubmit={onFormSubmit} />
+          <AddExtraItemForm onSubmit={onFormSubmit} />
         </Modal>
       </div>
     </div>

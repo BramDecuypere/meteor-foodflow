@@ -6,9 +6,11 @@ import { AccordionBody } from "./utils/get-groceries-list-accordion-body";
 import { getIngredientsByDepartment } from "./utils/get-ingredients-by-department";
 import { isDepartmentCompleted } from "./utils/is-department-complete";
 import { getSortedIngredientsByDepartment } from "./utils/get-sorted-ingredients-by-department";
+import DepartmentsHook from "../../hooks/departments.hook";
 
 const GroceriesList = () => {
   const activeList = ActiveListHook();
+  const { departments } = DepartmentsHook();
   const ingredientsByDepartment = getIngredientsByDepartment(activeList);
 
   const selectedIngredients = useRef(activeList.selectedIngredients);
@@ -77,12 +79,16 @@ const GroceriesList = () => {
         activeList
       );
 
+      const _department = departments.find(
+        (value) => value.department === department
+      );
+
       return (
         <Accordion
           key={idx}
           isComplete={checkIfDepartmentIsCompleted(department)}
           className="mb-6 md:mb-10 mx-auto max-w-2xl"
-          title={department}
+          title={_department ? _department.title.en! : ""}
           body={
             <AccordionBody
               activeList={activeList}

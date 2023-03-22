@@ -7,21 +7,22 @@ import {
 } from "react-hook-form";
 import Button from "../atoms/Button";
 import Input from "../atoms/Input";
-import Select, { OptionItem } from "../atoms/Select";
+import Select from "../atoms/Select";
+import DepartmentsHook from "../hooks/departments.hook";
+import { Departments } from "/enums/departments.enum";
 
 const AddExtraItemForm = ({
-  options = [],
   onSubmit,
 }: {
-  options: OptionItem[];
   onSubmit: SubmitHandler<FieldValues>;
 }) => {
+  const { departments } = DepartmentsHook();
   const productRef = useRef();
   const { control, handleSubmit } = useForm({
     defaultValues: {
       product: "",
       quantity: 1,
-      category: "",
+      category: Departments.OTHER,
     },
   });
 
@@ -60,7 +61,12 @@ const AddExtraItemForm = ({
             <Select
               className="flex-1"
               placeholder="Type "
-              options={options}
+              options={departments.map(
+                ({ title: { en: label }, department: value }) => ({
+                  value,
+                  label: label || "",
+                })
+              )}
               {...field}
             />
           )}

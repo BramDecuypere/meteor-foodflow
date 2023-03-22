@@ -329,27 +329,4 @@ Meteor.methods({
       },
     });
   },
-
-  "users.activeList.removeRecipe"(recipe: Recipe) {
-    if (!this.userId) {
-      throw new Meteor.Error("Not authorized.");
-    }
-
-    const { activeList: currentActiveList } = Meteor.user({
-      fields: { activeList: 1 },
-    }) as Meteor.User;
-
-    const recipes = currentActiveList.recipes.filter(
-      ({ recipe: _recipe }) => recipe._id.valueOf() !== _recipe._id.valueOf()
-    );
-
-    return Meteor.users.update(this.userId, {
-      $set: {
-        activeList: {
-          ...currentActiveList,
-          recipes,
-        },
-      },
-    });
-  },
 });
