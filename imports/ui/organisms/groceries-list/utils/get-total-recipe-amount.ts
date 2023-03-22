@@ -19,7 +19,7 @@ export const getTotalRecipeAmountByName = (
       const foundIngredientAmount = foundIngredient
         ? foundIngredient.amount || 0
         : 0;
-      debugger;
+
       amount =
         (foundIngredientAmount / current.recipe.food.servings) *
         current.servings;

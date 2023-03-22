@@ -77,6 +77,7 @@ const MobileNav = () => {
                 <nav className="space-y-1 px-2">
                   {navigation.map((item) => (
                     <NavLink
+                      onClick={onCloseClick}
                       key={item.name}
                       to={item.href}
                       className={({ isActive }) =>
