@@ -7,7 +7,7 @@ interface Wrapper extends React.HTMLProps<HTMLDivElement> {
   title: string;
   body: ReactNode;
   isComplete?: boolean;
-  onChangeClick?: (department: string) => void;
+  onChangeClick?: (title: string) => void;
 }
 
 const Accordion = ({

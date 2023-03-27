@@ -42,6 +42,8 @@ const Groceries = () => {
 
   const onFormSubmit: SubmitHandler<FieldValues> = (values) => {
     const { product, quantity, category } = values;
+
+    setAddModalIsOpen(false);
     Meteor.call("users.activeList.addIngredient", {
       name: product,
       amount: quantity,

@@ -7,6 +7,7 @@ import { getIngredientsByDepartment } from "./utils/get-ingredients-by-departmen
 import { isDepartmentCompleted } from "./utils/is-department-complete";
 import { getSortedIngredientsByDepartment } from "./utils/get-sorted-ingredients-by-department";
 import DepartmentsHook from "../../hooks/departments.hook";
+import { Department } from "/imports/api/departments/departments";
 
 const GroceriesList = () => {
   const activeList = ActiveListHook();
@@ -14,24 +15,38 @@ const GroceriesList = () => {
   const ingredientsByDepartment = getIngredientsByDepartment(activeList);
 
   const selectedIngredients = useRef(activeList.selectedIngredients);
-  const [openDepartments, setOpenDepartments] = useState<string[]>([]);
+  const [openDepartments, setOpenDepartments] = useState<Department[]>([]);
 
   const closeDepartment = (department: string) => {
-    return openDepartments.filter((_department) => _department !== department);
+    return openDepartments.filter(
+      (_department) => _department.title.en !== department
+    );
   };
 
-  const handleDepartmentChange = (department: string) => {
-    const isOpenDepartment = openDepartments.indexOf(department) !== -1;
+  const handleDepartmentChange = (departmentTitle: string) => {
+    const _department = departments.find(
+      (dep) => dep.title.en === departmentTitle
+    );
+    const isOpenDepartment = openDepartments.find(
+      (val) => val.title.en === departmentTitle
+    );
 
     if (isOpenDepartment) {
-      setOpenDepartments(closeDepartment(department));
+      setOpenDepartments(closeDepartment(departmentTitle));
     } else {
-      setOpenDepartments([...openDepartments, department]);
+      setOpenDepartments([...openDepartments, _department!]);
     }
   };
 
   useEffect(() => {
-    setOpenDepartments(Object.keys(ingredientsByDepartment));
+    const newOpenDepartments = Object.keys(ingredientsByDepartment).map(
+      (department) => {
+        const val = departments.find((dep) => dep.department === department);
+        return val || departments[0];
+      }
+    );
+    debugger;
+    setOpenDepartments(newOpenDepartments);
   }, [Object.keys(ingredientsByDepartment).length]);
 
   useEffect(() => {
@@ -83,19 +98,23 @@ const GroceriesList = () => {
         (value) => value.department === department
       );
 
+      const title = _department ? _department.title.en! : "";
+      debugger;
+      const isOpen = openDepartments.find((val) => val.title.en === title);
+
       return (
         <Accordion
           key={idx}
           isComplete={checkIfDepartmentIsCompleted(department)}
           className="mb-6 md:mb-10 mx-auto max-w-2xl"
-          title={_department ? _department.title.en! : ""}
+          title={title}
           body={
             <AccordionBody
               activeList={activeList}
               sortedIngredientsByDepartment={sortedIngredientsByDepartment}
             />
           }
-          isOpen={openDepartments.indexOf(department) !== -1}
+          isOpen={!!isOpen}
           onChangeClick={handleDepartmentChange}
         />
       );
