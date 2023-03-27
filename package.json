@@ -8,6 +8,8 @@
   },
   "scripts": {
     "start": "meteor run",
+    "start:ios": "meteor run ios:device",
+    "start:android": "meteor run android:device",
     "test": "meteor test --once --driver-package meteortesting:mocha",
     "dev": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
     "visualize": "meteor --production --extra-packages bundle-visualizer"
