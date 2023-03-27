@@ -100,7 +100,11 @@ const GroceriesList = () => {
 
       const title = _department ? _department.title.en! : "";
       debugger;
-      const isOpen = openDepartments.find((val) => val.title.en === title);
+      const isOpen = openDepartments.find((val) => {
+        if (!val) return false;
+
+        return val.title.en === title;
+      });
 
       return (
         <Accordion
