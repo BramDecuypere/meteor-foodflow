@@ -18,18 +18,36 @@ const GroceriesList = () => {
   const [openDepartments, setOpenDepartments] = useState<Department[]>([]);
 
   const closeDepartment = (department: string) => {
-    return openDepartments.filter(
-      (_department) => _department.title.en !== department
-    );
+    return openDepartments.filter((_department) => {
+      return _department.title.en !== department;
+    });
   };
 
   const handleDepartmentChange = (departmentTitle: string) => {
-    const _department = departments.find(
-      (dep) => dep.title.en === departmentTitle
-    );
-    const isOpenDepartment = openDepartments.find(
-      (val) => val.title.en === departmentTitle
-    );
+    const _department = departments.find((dep) => {
+      if (!dep) {
+        console.error(
+          "departments.find - handledepartmentchange: ",
+          dep,
+          departments
+        );
+        return false;
+      }
+      return dep.title.en === departmentTitle;
+    });
+
+    const isOpenDepartment = openDepartments.find((val) => {
+      if (!val) {
+        console.error(
+          "openDepartments.find - isOpenDepartment: ",
+          val,
+          departments
+        );
+        return false;
+      }
+
+      return val.title.en === departmentTitle;
+    });
 
     if (isOpenDepartment) {
       setOpenDepartments(closeDepartment(departmentTitle));
@@ -41,7 +59,13 @@ const GroceriesList = () => {
   useEffect(() => {
     const newOpenDepartments = Object.keys(ingredientsByDepartment).map(
       (department) => {
-        const val = departments.find((dep) => dep.department === department);
+        const val = departments.find((dep) => {
+          if (!dep) {
+            console.log("departments.find: ", dep, departments);
+          }
+          return dep.department === department;
+        });
+
         return val || departments[0];
       }
     );
@@ -94,14 +118,26 @@ const GroceriesList = () => {
         activeList
       );
 
-      const _department = departments.find(
-        (value) => value.department === department
-      );
+      const _department = departments.find((value) => {
+        if (!value) {
+          console.error("departments.find: ", value, departments);
+          return false;
+        }
+
+        return value.department === department;
+      });
 
       const title = _department ? _department.title.en! : "";
       debugger;
       const isOpen = openDepartments.find((val) => {
-        if (!val) return false;
+        if (!val) {
+          console.error(
+            "openDepartments.find - isOpen: ",
+            val,
+            openDepartments
+          );
+          return false;
+        }
 
         return val.title.en === title;
       });

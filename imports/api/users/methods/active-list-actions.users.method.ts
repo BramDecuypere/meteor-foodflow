@@ -60,7 +60,6 @@ Meteor.methods({
         );
       }
     } else {
-      console.log("adding recipe ingredient", recipeIngredient);
       activeList.selectedIngredients = [
         ...activeList.selectedIngredients,
         recipeIngredient,

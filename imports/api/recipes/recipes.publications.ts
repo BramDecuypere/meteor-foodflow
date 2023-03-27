@@ -17,10 +17,6 @@ Meteor.publish(
       throw new Meteor.Error("Not authorized.");
     }
 
-    console.log(
-      "🚀 ~ file: recipes.publications.ts:21 ~ publishRecipeDetail ~ _id:",
-      _id
-    );
     return RecipesCollection.find({ _id });
   }
 );

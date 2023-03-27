@@ -82,7 +82,6 @@ const Groceries = () => {
 
             <Button
               onClick={() => {
-                console.log("clicking item");
                 setAddModalIsOpen(true);
               }}
               className="inline-flex my-8 md:my-0 items-center justify-center ml-4"
