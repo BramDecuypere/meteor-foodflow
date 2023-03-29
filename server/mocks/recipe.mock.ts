@@ -2268,4 +2268,93 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
       },
     ],
   },
+  {
+    language: Languages.NL,
+    title: "Bordje gerookte zalm en komkommer",
+    image: "",
+    timings: {
+      total: 15,
+      active: 15,
+    },
+    labels: [Labels.LUNCH, Labels.SUMMER],
+    food: {
+      servings: 2,
+      ingredients: [
+        {
+          name: Ingredients.CUCUMBER,
+          amount: 1,
+          metric: Metrics.PIECES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.DILLE,
+          amount: 6,
+          metric: Metrics.BRANCHES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.SMOKED_SALMON,
+          amount: 100,
+          metric: Metrics.GRAM,
+          departments: [Departments.MEAT_FISH_AND_ALTERNATIVES],
+        },
+        {
+          name: Ingredients.AVOCADO,
+          amount: 1,
+          metric: Metrics.PIECES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.RED_WINE_VINIGAR,
+          amount: 2,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.HUTTEKASE,
+          amount: 2,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.OTHER],
+        },
+      ],
+    },
+    steps: [
+      {
+        ingredients: [Ingredients.CUCUMBER, Ingredients.RED_WINE_VINIGAR],
+        description:
+          "Snij de komkommer met de dunschiller in plkakken en meng ze in een kom met een snufje zeezout, wijnazijn om een snelle pikkel te maken",
+      },
+      {
+        ingredients: [Ingredients.DILLE],
+        description: "Pluk de dille en meng het grootste deel erdoor",
+      },
+      {
+        ingredients: [Ingredients.SALMON],
+        description: "Verdeel de gerookte zalm over de borden",
+      },
+      {
+        ingredients: [Ingredients.AVOCADO],
+        description:
+          "Snij de avocado door twee, verwijder de pit en voorzie een halve avocade op ieder bord",
+      },
+      {
+        ingredients: [Ingredients.CUCUMBER],
+        description:
+          "Dresseer de lichtgepkelde komkommer op de borden en verdeel het overblijvende vocht over de avocado's",
+      },
+      {
+        ingredients: [Ingredients.HUTTEKASE],
+        description:
+          "Schep 2 eetlepels huttekase of creme fraiche per persoon op de zalm ",
+      },
+      {
+        description:
+          "Maal er wat zwarte peper naar smaak over en giet 1 theelepel olijfolie erover per bord",
+      },
+      {
+        ingredients: [Ingredients.DILLE],
+        description: "Garneer met wat overblijvende dille",
+      },
+    ],
+  },
 ];

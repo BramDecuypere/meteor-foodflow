@@ -1,4 +1,7 @@
 export enum Ingredients {
+  HUTTEKASE = "huttekase",
+  CUCUMBER = "komkommer",
+  DILLE = "dille",
   COUSCOUS = "couscous",
   PAPRIKA_POWDER = "paprika poeder",
   PENNE = "penne",
