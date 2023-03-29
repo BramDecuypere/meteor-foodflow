@@ -443,7 +443,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
         },
         {
           name: Ingredients.OLIVE_OIL,
-          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+          departments: [Departments.OTHER],
         },
         {
           name: Ingredients.GARLIC,
@@ -1075,7 +1075,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
           departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
         },
         {
-          name: Ingredients.SUN_DRIED_TOMATOES,
+          name: Ingredients.TOMATOES_SEMI_SUNDRIED,
           amount: 50,
           metric: Metrics.GRAM,
           departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
@@ -1151,7 +1151,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
           "Laat 10 minuten grillen en kijk regelmatig (panko verbrandt sneller dan paneermeel)",
       },
       {
-        ingredients: [Ingredients.ARUGOLA, Ingredients.SUN_DRIED_TOMATOES],
+        ingredients: [Ingredients.ARUGOLA, Ingredients.TOMATOES_SEMI_SUNDRIED],
         description:
           "Haal uit de oven en laat even afkoelen, maak een snelle rucola salade met zongedroogde tomaten voor erbij",
       },
@@ -1805,6 +1805,466 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
       {
         description:
           "Verdeel het volledige plattekaasmengsel nu over de gekoelde springvorm met de verkruimelde koekjes in",
+      },
+    ],
+  },
+  {
+    language: Languages.NL,
+    title: "Poke bowl zalm, mango, avocado, kerstomaten, wortel, sla",
+    image: "",
+    timings: {
+      total: 20,
+      active: 20,
+    },
+    labels: [Labels.DINNER, Labels.SUMMER],
+    food: {
+      servings: 2,
+      ingredients: [
+        {
+          name: Ingredients.ICE_BERG_LETTUCE,
+          amount: 25,
+          metric: Metrics.GRAM,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.MANGO,
+          amount: 1,
+          metric: Metrics.PIECES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.CARROTS,
+          amount: 1,
+          metric: Metrics.PIECES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.TOMATOES_CHERRY,
+          amount: 10,
+          metric: Metrics.PIECES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.AVOCADO,
+          amount: 1,
+          metric: Metrics.PIECES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.SALMON,
+          amount: 200,
+          metric: Metrics.GRAM,
+          departments: [Departments.MEAT_FISH_AND_ALTERNATIVES],
+        },
+        {
+          name: Ingredients.SUSHI_RICE,
+          amount: 200,
+          metric: Metrics.GRAM,
+          departments: [Departments.GRAINS_BEANS_RICE],
+        },
+        {
+          name: Ingredients.SOY_SAUCE,
+          amount: 2,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.RICE_VINEGAR,
+          amount: 1,
+          metric: Metrics.TEASPOON,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.SESAME_SEEDS,
+          amount: 2,
+          metric: Metrics.TEASPOON,
+          departments: [Departments.OTHER],
+          optional: true,
+        },
+        {
+          name: Ingredients.ROASTED_ONIONS,
+          amount: 2,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.OTHER],
+          optional: true,
+        },
+      ],
+    },
+    steps: [
+      {
+        description:
+          "Je kan een dubbele hoeveleheid maken en morgen nog eens van deze maaltijd genieten met minder werk door een dubbele portie klaar te maken.",
+      },
+      {
+        description: "Voeg zelf andere dingen toe die je lekker vindt",
+      },
+      {
+        ingredients: [Ingredients.SUSHI_RICE],
+        description:
+          "Doe de rijst in een kookpot (met deksel) met ongeveer 140% de hoeveelheid in water en laat koken",
+      },
+      {
+        ingredients: [
+          Ingredients.CARROTS,
+          Ingredients.ICE_BERG_LETTUCE,
+          Ingredients.MANGO,
+          Ingredients.AVOCADO,
+          Ingredients.TOMATOES_CHERRY,
+          Ingredients.EDAMMAME,
+        ],
+        description:
+          "Versnij alle groenten op de gewenste manier en bewaar ze in kommetjes",
+      },
+      {
+        ingredients: [Ingredients.ICE_BERG_LETTUCE, Ingredients.SUSHI_RICE],
+        description:
+          "Vorm de basis van de poke bowl door de helft te vullen met sla en de andere helft met rijst",
+      },
+      {
+        ingredients: [Ingredients.SALMON],
+        description: "Bak de zalm in een beetje vet",
+      },
+      {
+        ingredients: [Ingredients.SOY_SAUCE, Ingredients.RICE_VINEGAR],
+        description:
+          "Meng in een kommetje de sojasaus en de rijstazijn (met eventueel chilivlokken naar smaak) en verdeel over de rijst",
+      },
+      {
+        ingredients: [Ingredients.ROASTED_ONIONS, Ingredients.SESAME_SEEDS],
+        description:
+          "Dresseer alle mixins en werk af met toppings naar keuze (optioneel)",
+      },
+    ],
+  },
+  {
+    language: Languages.NL,
+    title: "Pasta brocolli, olijven en zongedroogde tomaten",
+    image: "",
+    timings: {
+      total: 35,
+      active: 10,
+    },
+    labels: [Labels.LUNCH, Labels.SUMMER],
+    food: {
+      servings: 2,
+      ingredients: [
+        {
+          name: Ingredients.BROCOLLI,
+          amount: 1,
+          metric: Metrics.PIECES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.OLIVES_BLACK,
+          amount: 75,
+          metric: Metrics.GRAM,
+          departments: [Departments.CANNED_FOOD],
+        },
+        {
+          name: Ingredients.TOMATOES_SEMI_SUNDRIED,
+          amount: 75,
+          metric: Metrics.GRAM,
+          departments: [Departments.CANNED_FOOD],
+        },
+        {
+          name: Ingredients.PENNE,
+          amount: 200,
+          metric: Metrics.GRAM,
+          departments: [Departments.PASTA_SAUCE],
+        },
+        {
+          name: Ingredients.BASIL_FRESH,
+          amount: 30,
+          metric: Metrics.GRAM,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.LEMONS_BIO,
+          amount: 1,
+          metric: Metrics.GRAM,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.OLIVE_OIL,
+          amount: 2,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.SEA_SALT,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.BLACK_PEPPER,
+          departments: [Departments.OTHER],
+        },
+      ],
+    },
+    steps: [
+      {
+        description: "Verwarm de oven voor op 200°C",
+      },
+      {
+        ingredients: [
+          Ingredients.BROCOLLI,
+          Ingredients.OLIVES_BLACK,
+          Ingredients.TOMATOES_SEMI_SUNDRIED,
+          Ingredients.OLIVE_OIL,
+        ],
+        description:
+          "Leg de broccoliroosjes, olijven, tomaten, olie in een ovenschaal. Bestrooi met zeezout en schep alles goed om.",
+      },
+      { description: "Zet water op met zout voor de pasta" },
+      {
+        ingredients: [Ingredients.PENNE],
+        description:
+          "Wanneer het water kookt, voeg je de pasta toe volgens de verpakking om al dente te zijn. Zet een kleine hoeveelheid pastawater opzij, giet af en zet opzij.",
+      },
+      {
+        description:
+          "Haal het geheel uit de oven en bestrooi met de pijnboompitten. Zet nog 10 minuten terug.",
+      },
+      {
+        description:
+          "Haal de ovenschaal uit de oven en meng met de pasta, citroenzeste, citroensap, wat olijfolie en het pastawater.",
+      },
+      {
+        description:
+          "Voeg wat basilicum toe en bestrooi met versgemalen zwarte peper en wat extra zout naar smaak",
+      },
+    ],
+  },
+  {
+    language: Languages.NL,
+    title: "Shakshuka uit de oven",
+    image: "",
+    timings: {
+      total: 60,
+      active: 15,
+    },
+    labels: [Labels.BREAKFAST, Labels.DINNER, Labels.LUNCH, Labels.SUMMER],
+    food: {
+      servings: 4,
+      ingredients: [
+        {
+          name: Ingredients.ONION_RED,
+          amount: 1,
+          metric: Metrics.PIECES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.PAPRIKA_RED,
+          amount: 2,
+          metric: Metrics.PIECES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.PAPRIKA_YELLOW,
+          amount: 2,
+          metric: Metrics.PIECES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.TOMATOES,
+          amount: 300,
+          metric: Metrics.GRAM,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.CHILI_RED,
+          amount: 2,
+          metric: Metrics.PIECES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.GARLIC,
+          amount: 2,
+          metric: Metrics.CLOVES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.OLIVE_OIL,
+          amount: 1,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.SEA_SALT,
+          amount: 1,
+          metric: Metrics.TEASPOON,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.CUMIN,
+          amount: 1,
+          metric: Metrics.TEASPOON,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.PAPRIKA_POWDER,
+          amount: 1,
+          metric: Metrics.TEASPOON,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.TOMATO_PIECES,
+          amount: 400,
+          metric: Metrics.GRAM,
+          departments: [Departments.PASTA_SAUCE],
+        },
+        {
+          name: Ingredients.EGGS,
+          amount: 4,
+          metric: Metrics.PIECES,
+          departments: [Departments.DAIRY_AND_EGGS],
+        },
+        {
+          name: Ingredients.BREAD,
+          departments: [Departments.BAKERY],
+        },
+      ],
+    },
+    steps: [
+      {
+        description:
+          "Dit gerecht kun je opdienen met elk soort brood (Probeer zelf eens naan brood te maken!)",
+      },
+      {
+        description: "Verwarm de oven voor op 200°C",
+      },
+      {
+        ingredients: [
+          Ingredients.TOMATOES,
+          Ingredients.PAPRIKA_RED,
+          Ingredients.PAPRIKA_YELLOW,
+          Ingredients.TOMATOES,
+          Ingredients.CHILI_RED,
+          Ingredients.GARLIC,
+        ],
+        description:
+          "Versnij de groeten in grove stukken en doe ze in een braadslee",
+      },
+      {
+        ingredients: [
+          Ingredients.SEA_SALT,
+          Ingredients.OLIVE_OIL,
+          Ingredients.CUMIN,
+          Ingredients.PAPRIKA_POWDER,
+        ],
+        description: "Meng onder de groenten het zout, de kruiden en olijfolie",
+      },
+      {
+        description: "Zet de braadslee met de groenten voor 30 min in de oven",
+      },
+      {
+        description:
+          "Verlaag de temperatuur naar 180 °C, haal de braadslee uit de oven, meng alles nog eens goed onder elkaar",
+      },
+      {
+        ingredients: [Ingredients.EGGS],
+        description:
+          "Maak kuiltjes en verdeel de eieren in de kuiltjes over de braadslee",
+      },
+      {
+        description: "Zet alles nog eens in de oven voor ±10 minuten en geniet",
+      },
+    ],
+  },
+  {
+    language: Languages.NL,
+    title: "Mediteraanse courgette met olijven en feta",
+    image: "",
+    timings: {
+      total: 45,
+      active: 10,
+    },
+    labels: [Labels.DINNER, Labels.SUMMER],
+    food: {
+      servings: 4,
+      ingredients: [
+        {
+          name: Ingredients.COURGETTE,
+          amount: 6,
+          metric: Metrics.PIECES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.FETA,
+          amount: 200,
+          metric: Metrics.GRAM,
+          departments: [Departments.DAIRY_AND_EGGS],
+        },
+        {
+          name: Ingredients.TOMATOES_SEMI_SUNDRIED,
+          amount: 140,
+          metric: Metrics.GRAM,
+          departments: [Departments.CANNED_FOOD],
+        },
+        {
+          name: Ingredients.OLIVES_BLACK,
+          amount: 100,
+          metric: Metrics.GRAM,
+          departments: [Departments.CANNED_FOOD],
+        },
+        {
+          name: Ingredients.PANKO,
+          amount: 40,
+          metric: Metrics.GRAM,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.COUSCOUS,
+          amount: 400,
+          metric: Metrics.GRAM,
+          departments: [Departments.GRAINS_BEANS_RICE],
+        },
+        {
+          name: Ingredients.LEMON_JUICE,
+          amount: 1,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.BLACK_PEPPER,
+          departments: [Departments.OTHER],
+        },
+      ],
+    },
+    steps: [
+      {
+        description: "Verwarm de oven voor op 200°C",
+      },
+      {
+        ingredients: [Ingredients.COURGETTE],
+        description:
+          "Snij de courgettes in plakjes van ± 1cm en verdeel over een bakplaat met bakpapier.",
+      },
+      {
+        description:
+          "Indien er olie bij de feta/tomaten/olijven zit moet je geen extra olietoevoegen aan de courgette om ze mooi te laten bakken. Probeer er dan voor te zorgen dat de courgette bedekt is met wat van die olie.",
+      },
+      {
+        ingredients: [
+          Ingredients.FETA,
+          Ingredients.TOMATOES_SEMI_SUNDRIED,
+          Ingredients.OLIVES_BLACK,
+          Ingredients.PANKO,
+          Ingredients.BLACK_PEPPER,
+        ],
+        description:
+          "Verdeel de feta, tomaten, olijven en panko over de bakplaat",
+      },
+      {
+        description: "Kook water voor de couscous in de waterkoker",
+      },
+      {
+        ingredients: [Ingredients.COUSCOUS],
+        description:
+          "In de laatste 10 minuten van de oventijd start je met de bereiding van de couscous. Giet de droge couscous in een kom en bedek met dezelfde hoeveelheid water. Laat 5 min wellen vooraleer je er wat boter (& citroensap) doorroert met een vork",
+      },
+      {
+        description:
+          "Voor nog meer smaak kan je wat bouillonpoeder toevoegen aan de couscous op hetzelfde moment dat je het kokende water toevoegd.",
       },
     ],
   },
