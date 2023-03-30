@@ -36,18 +36,20 @@ const GroceriesList = () => {
       return dep.title.en === departmentTitle;
     });
 
-    const isOpenDepartment = openDepartments.find((val) => {
-      if (!val) {
-        console.error(
-          "openDepartments.find - isOpenDepartment: ",
-          val,
-          departments
-        );
-        return false;
-      }
+    const isOpenDepartment = openDepartments
+      .filter((val) => !!val)
+      .find((val) => {
+        if (!val) {
+          console.error(
+            "openDepartments.find - isOpenDepartment: ",
+            val,
+            departments
+          );
+          return false;
+        }
 
-      return val.title.en === departmentTitle;
-    });
+        return val.title.en === departmentTitle;
+      });
 
     if (isOpenDepartment) {
       setOpenDepartments(closeDepartment(departmentTitle));
@@ -69,7 +71,7 @@ const GroceriesList = () => {
         return val || departments[0];
       }
     );
-    debugger;
+
     setOpenDepartments(newOpenDepartments);
   }, [Object.keys(ingredientsByDepartment).length]);
 
@@ -128,19 +130,21 @@ const GroceriesList = () => {
       });
 
       const title = _department ? _department.title.en! : "";
-      debugger;
-      const isOpen = openDepartments.find((val) => {
-        if (!val) {
-          console.error(
-            "openDepartments.find - isOpen: ",
-            val,
-            openDepartments
-          );
-          return false;
-        }
 
-        return val.title.en === title;
-      });
+      const isOpen = openDepartments
+        .filter((val) => !!val)
+        .find((val) => {
+          if (!val) {
+            console.error(
+              "openDepartments.find - isOpen: ",
+              val,
+              openDepartments
+            );
+            return false;
+          }
+
+          return val.title.en === title;
+        });
 
       return (
         <Accordion
