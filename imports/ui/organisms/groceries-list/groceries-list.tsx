@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import ActiveListHook from "../../hooks/active-list.hook";
-import Accordion from "../../molecules/accordion";
-import { AccordionBody } from "./utils/get-groceries-list-accordion-body";
-import { getIngredientsByDepartment } from "./utils/get-ingredients-by-department";
-import { isDepartmentCompleted } from "./utils/is-department-complete";
-import { getSortedIngredientsByDepartment } from "./utils/get-sorted-ingredients-by-department";
-import DepartmentsHook from "../../hooks/departments.hook";
+import ActiveListHook from "/imports/ui/hooks/active-list.hook";
+import Accordion from "/imports/ui/molecules/accordion";
+import DepartmentsHook from "/imports/ui/hooks/departments.hook";
+import { AccordionBody } from "/imports/utils/get-groceries-list-accordion-body";
+import { getIngredientsByDepartment } from "/imports/utils/get-ingredients-by-department";
+import { isDepartmentCompleted } from "/imports/utils/is-department-complete";
+import { getSortedIngredientsByDepartment } from "/imports/utils/get-sorted-ingredients-by-department";
 import { Department } from "/imports/api/departments/departments";
 
 const GroceriesList = () => {
@@ -115,9 +115,8 @@ const GroceriesList = () => {
   const AccordionMapperFunction = () => {
     return (department: string, idx: number) => {
       const sortedIngredientsByDepartment = getSortedIngredientsByDepartment(
-        ingredientsByDepartment,
+        activeList,
         department,
-        activeList
       );
 
       const _department = departments.find((value) => {

@@ -1,7 +1,7 @@
+import { getIngredientsByDepartment } from "./get-ingredients-by-department";
 import { checkIsIngredientComplete } from "./is-ingredient-complete";
 import { RecipeIngredient } from "/imports/api/recipes/recipes";
 import { ActiveList } from "/interfaces/active-list";
-import { IngredientsByDepartment } from "/interfaces/ingredients-by-department";
 
 export const sortIngredientsByDepartment =
   (activeList: ActiveList) =>
@@ -16,11 +16,10 @@ export const sortIngredientsByDepartment =
   };
 
 export const getSortedIngredientsByDepartment = (
-  ingredientsByDepartment: IngredientsByDepartment,
-  department: string,
-  activeList: ActiveList
+  activeList: ActiveList,
+  department: string
 ) => {
-  return ingredientsByDepartment[department].sort(
+  return getIngredientsByDepartment(activeList)[department].sort(
     sortIngredientsByDepartment(activeList)
   );
 };

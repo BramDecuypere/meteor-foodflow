@@ -23,3 +23,5 @@ declare module "meteor/meteor" {
     }
   }
 }
+
+declare module "meteor/quave:testing" {}

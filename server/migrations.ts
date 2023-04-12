@@ -1,8 +1,8 @@
 import { Accounts } from "meteor/accounts-base";
 import { Recipe, RecipesCollection } from "../imports/api/recipes/recipes";
 import { Meteor } from "meteor/meteor";
-import { recipesMock } from "./mocks/recipe.mock";
-import { departmentsMock } from "./mocks/departments.mock";
+import { recipesMock } from "../mocks/recipe.mock";
+import { departmentsMock } from "../mocks/departments.mock";
 
 // Make sure we create a user with everything attached to it
 import "/server/on-create-user";

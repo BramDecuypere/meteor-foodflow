@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import { GlobalContext } from "/interfaces/global-context";
 
 const initialGlobalState: GlobalContext = {
-  recipes: {
-    selected: [],
-  },
   sidebar: {
     isOpen: false,
   },

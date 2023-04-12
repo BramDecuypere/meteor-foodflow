@@ -11,9 +11,6 @@ describe("meteor-foodflow", function () {
     it("client is not server", function () {
       assert.strictEqual(Meteor.isServer, false);
     });
-    it("client is not serverrrr", function () {
-      assert.strictEqual(Meteor.isServer, false);
-    });
   }
 
   if (Meteor.isServer) {
