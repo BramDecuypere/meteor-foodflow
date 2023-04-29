@@ -12,9 +12,8 @@ import { checkIfDepartmentIsCompleted } from "/imports/utils/check-if-department
 const DepartmentAccordeon = ({ department }: { department: string }) => {
   const activeList = ActiveListHook();
   const { departments } = DepartmentsHook();
-  const selectedIngredients = useRef(activeList.selectedIngredients);
 
-  debugger;
+  const selectedIngredients = useRef(activeList.selectedIngredients);
 
   const [openDepartments, setOpenDepartments] = useState<Department[]>([]);
 
@@ -82,18 +81,6 @@ const DepartmentAccordeon = ({ department }: { department: string }) => {
   };
 
   useEffect(() => {
-    const nextOpenDepartments = departments.filter((_department) => {
-      const isDepartmentCompleted = checkIfDepartmentIsCompleted(
-        _department.department,
-        activeList
-      );
-      return !isDepartmentCompleted;
-    });
-
-    setOpenDepartments(nextOpenDepartments);
-  }, [departments.length]);
-
-  useEffect(() => {
     const changedIngredients = activeList.selectedIngredients.filter(
       (ingredient) => {
         const isIngredientFoundInPreviousList =
@@ -114,6 +101,19 @@ const DepartmentAccordeon = ({ department }: { department: string }) => {
     selectedIngredients.current = activeList.selectedIngredients;
   }, [activeList.selectedIngredients.length]);
 
+  useEffect(() => {
+    const initialOpenDepartments = departments.filter((_department) => {
+      const isDepartmentCompleted = checkIfDepartmentIsCompleted(
+        _department.department,
+        activeList
+      );
+
+      return !isDepartmentCompleted;
+    });
+
+    setOpenDepartments(initialOpenDepartments);
+  }, [departments.length]);
+
   return (
     <Accordion
       isComplete={checkIfDepartmentIsCompleted(department, activeList)}
@@ -126,7 +126,7 @@ const DepartmentAccordeon = ({ department }: { department: string }) => {
         />
       }
       isOpen={!!isOpen}
-      onChangeClick={handleDepartmentChange}
+      onChangeClick={(title) => handleDepartmentChange(title)}
     />
   );
 };
@@ -144,6 +144,7 @@ const GroceriesList = () => {
         .map((department, idx) => (
           <DepartmentAccordeon key={idx} department={department} />
         ))}
+
       {Object.keys(ingredientsByDepartment)
         .filter((department) =>
           checkIfDepartmentIsCompleted(department, activeList)

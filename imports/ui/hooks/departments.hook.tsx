@@ -6,7 +6,11 @@ const DepartmentsHook = () => {
   return useTracker(() => {
     const handler = Meteor.subscribe("departments");
 
-    const data = { departments: [], loading: false };
+    const data = {
+      departments: [],
+      initialOpenDepartments: [],
+      loading: false,
+    };
 
     if (!Meteor.user()) {
       return data;
@@ -21,7 +25,7 @@ const DepartmentsHook = () => {
 
     try {
       const departments = DepartmentsCollection.find({}).fetch();
-
+      
       return { departments, loading: false };
     } catch (err) {
       console.log(err);
