@@ -114,7 +114,7 @@ Meteor.methods({
     }) as Meteor.User;
 
     const recipes = currentActiveList.recipes.filter(
-      ({ recipe: _recipe }) => recipe._id.valueOf() !== _recipe._id.valueOf()
+      ({ recipe: _recipe }) => recipe._id.toHexString() !== _recipe._id.toHexString()
     );
 
     return Meteor.users.update(this.userId, {
