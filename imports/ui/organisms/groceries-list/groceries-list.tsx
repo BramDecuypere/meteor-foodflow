@@ -7,7 +7,7 @@ import { AccordionBody } from "/imports/utils/get-groceries-list-accordion-body"
 import { getIngredientsByDepartment } from "/imports/utils/get-ingredients-by-department";
 import { getSortedIngredientsByDepartment } from "/imports/utils/get-sorted-ingredients-by-department";
 import { Department } from "/imports/api/departments/departments";
-import { checkIfDepartmentIsCompleted } from "/imports/utils/check-if-department-is-complete";
+import { isDepartmentCompleted } from "/imports/utils/is-department-complete";
 
 const DepartmentAccordeon = ({ department }: { department: string }) => {
   const activeList = ActiveListHook();
@@ -39,9 +39,15 @@ const DepartmentAccordeon = ({ department }: { department: string }) => {
       return val.title.en === title;
     });
 
-  const closeDepartment = (department: string) => {
+  const closeDepartmentByTitle = (department: string) => {
     return openDepartments.filter((_department) => {
       return _department.title.en !== department;
+    });
+  };
+
+  const closeDepartmentDepartment = (department: string) => {
+    return openDepartments.filter((_department) => {
+      return _department.department !== department;
     });
   };
 
@@ -55,7 +61,7 @@ const DepartmentAccordeon = ({ department }: { department: string }) => {
         );
         return false;
       }
-      debugger;
+
       return dep.title.en === departmentTitle;
     });
 
@@ -66,7 +72,8 @@ const DepartmentAccordeon = ({ department }: { department: string }) => {
       });
 
     if (isOpenDepartment) {
-      setOpenDepartments(closeDepartment(departmentTitle));
+      const nextOpenDepartments = closeDepartmentByTitle(departmentTitle);
+      setOpenDepartments(nextOpenDepartments);
     } else {
       setOpenDepartments([...openDepartments, _department!]);
     }
@@ -75,48 +82,48 @@ const DepartmentAccordeon = ({ department }: { department: string }) => {
   const handleCloseDepartmentWhenIngredientsAreCompleted = (
     department: string
   ) => {
-    if (checkIfDepartmentIsCompleted(department, activeList)) {
-      setOpenDepartments(closeDepartment(department));
+    if (isDepartmentCompleted(department, activeList)) {
+      const nextOpenDepartments = closeDepartmentDepartment(department);
+      setOpenDepartments(nextOpenDepartments);
     }
   };
 
-  useEffect(() => {
-    const changedIngredients = activeList.selectedIngredients.filter(
-      (ingredient) => {
-        const isIngredientFoundInPreviousList =
-          selectedIngredients.current.findIndex(
-            ({ name }) => name === ingredient.name
-          ) > -1;
+  // useEffect(() => {
+  //   const changedIngredients = activeList.selectedIngredients.filter(
+  //     (ingredient) => {
+  //       const isIngredientFoundInPreviousList =
+  //         selectedIngredients.current.findIndex(
+  //           ({ name }) => name === ingredient.name
+  //         ) > -1;
 
-        return !isIngredientFoundInPreviousList;
-      }
-    );
+  //       return !isIngredientFoundInPreviousList;
+  //     }
+  //   );
 
-    if (changedIngredients.length === 1) {
-      handleCloseDepartmentWhenIngredientsAreCompleted(
-        changedIngredients[0].departments[0]
-      );
-    }
+  //   if (changedIngredients.length === 1) {
+  //     const department = changedIngredients[0].departments[0];
+  //     handleCloseDepartmentWhenIngredientsAreCompleted(department);
+  //   }
 
-    selectedIngredients.current = activeList.selectedIngredients;
-  }, [activeList.selectedIngredients.length]);
+  //   selectedIngredients.current = activeList.selectedIngredients;
+  // }, [activeList.selectedIngredients.length]);
 
   useEffect(() => {
     const initialOpenDepartments = departments.filter((_department) => {
-      const isDepartmentCompleted = checkIfDepartmentIsCompleted(
+      const _isDepartmentCompleted = isDepartmentCompleted(
         _department.department,
         activeList
       );
 
-      return !isDepartmentCompleted;
+      return !_isDepartmentCompleted;
     });
 
     setOpenDepartments(initialOpenDepartments);
-  }, [departments.length]);
+  }, [departments.length, activeList.selectedIngredients.length]);
 
   return (
     <Accordion
-      isComplete={checkIfDepartmentIsCompleted(department, activeList)}
+      isComplete={isDepartmentCompleted(department, activeList)}
       className="mb-6 md:mb-10 mx-auto max-w-2xl"
       title={title}
       body={
@@ -138,17 +145,13 @@ const GroceriesList = () => {
   return (
     <>
       {Object.keys(ingredientsByDepartment)
-        .filter(
-          (department) => !checkIfDepartmentIsCompleted(department, activeList)
-        )
+        .filter((department) => !isDepartmentCompleted(department, activeList))
         .map((department, idx) => (
           <DepartmentAccordeon key={idx} department={department} />
         ))}
 
       {Object.keys(ingredientsByDepartment)
-        .filter((department) =>
-          checkIfDepartmentIsCompleted(department, activeList)
-        )
+        .filter((department) => isDepartmentCompleted(department, activeList))
         .map((department, idx) => (
           <DepartmentAccordeon key={idx} department={department} />
         ))}
