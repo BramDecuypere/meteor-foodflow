@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import ActiveListHook from "/imports/ui/hooks/active-list.hook";
 import Accordion from "/imports/ui/molecules/accordion";
@@ -12,8 +12,6 @@ import { isDepartmentCompleted } from "/imports/utils/is-department-complete";
 const DepartmentAccordeon = ({ department }: { department: string }) => {
   const activeList = ActiveListHook();
   const { departments } = DepartmentsHook();
-
-  const selectedIngredients = useRef(activeList.selectedIngredients);
 
   const [openDepartments, setOpenDepartments] = useState<Department[]>([]);
 
@@ -45,12 +43,6 @@ const DepartmentAccordeon = ({ department }: { department: string }) => {
     });
   };
 
-  const closeDepartmentDepartment = (department: string) => {
-    return openDepartments.filter((_department) => {
-      return _department.department !== department;
-    });
-  };
-
   const handleDepartmentChange = (departmentTitle: string) => {
     const _department = departments.find((dep) => {
       if (!dep) {
@@ -78,35 +70,6 @@ const DepartmentAccordeon = ({ department }: { department: string }) => {
       setOpenDepartments([...openDepartments, _department!]);
     }
   };
-
-  const handleCloseDepartmentWhenIngredientsAreCompleted = (
-    department: string
-  ) => {
-    if (isDepartmentCompleted(department, activeList)) {
-      const nextOpenDepartments = closeDepartmentDepartment(department);
-      setOpenDepartments(nextOpenDepartments);
-    }
-  };
-
-  // useEffect(() => {
-  //   const changedIngredients = activeList.selectedIngredients.filter(
-  //     (ingredient) => {
-  //       const isIngredientFoundInPreviousList =
-  //         selectedIngredients.current.findIndex(
-  //           ({ name }) => name === ingredient.name
-  //         ) > -1;
-
-  //       return !isIngredientFoundInPreviousList;
-  //     }
-  //   );
-
-  //   if (changedIngredients.length === 1) {
-  //     const department = changedIngredients[0].departments[0];
-  //     handleCloseDepartmentWhenIngredientsAreCompleted(department);
-  //   }
-
-  //   selectedIngredients.current = activeList.selectedIngredients;
-  // }, [activeList.selectedIngredients.length]);
 
   useEffect(() => {
     const initialOpenDepartments = departments.filter((_department) => {
