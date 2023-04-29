@@ -22,6 +22,7 @@
     "bcrypt": "^5.1.0",
     "classnames": "^2.3.2",
     "cssnano": "^5.1.14",
+    "enzyme": "^3.11.0",
     "meteor-node-stubs": "^1.2.1",
     "postcss": "^8.4.21",
     "postcss-load-config": "^4.0.1",
@@ -34,6 +35,7 @@
   },
   "devDependencies": {
     "@meteorjs/eslint-config-meteor": "^1.0.5",
+    "@types/enzyme": "^3.10.12",
     "@types/meteor": "^1.4.87",
     "@types/mocha": "^8.2.3",
     "@types/react": "^17.0.43",

@@ -3,14 +3,12 @@ import { getAmountOfCheckedIngredients } from "./getAmountOfCheckedIngredients";
 import { ActiveList } from "/interfaces/active-list";
 
 export const isDepartmentCompleted = (
-  ingredientsByDepartment: any,
   department: string,
   activeList: ActiveList
 ) => {
   const sortedIngredientsByList = getSortedIngredientsByDepartment(
-    ingredientsByDepartment,
-    department,
-    activeList
+    activeList,
+    department
   );
 
   const amountOfCheckedIngredients = getAmountOfCheckedIngredients(

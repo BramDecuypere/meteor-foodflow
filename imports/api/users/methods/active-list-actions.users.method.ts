@@ -1,11 +1,13 @@
-import { getExtraIngredientAmountByName } from "./../../../ui/organisms/groceries-list/utils/get-extra-ingredient-amount-by-name";
+import { Meteor } from "meteor/meteor";
+
+import { getExtraIngredientAmountByName } from "/imports/utils/get-extra-ingredient-amount-by-name";
+import { checkIsIngredientComplete } from "/imports/utils/is-ingredient-complete";
+import { getTotalRecipeAmountByName } from "/imports/utils/get-total-recipe-amount";
+
 import "./default-recipes.users.method";
 import "./default-settings.users.method";
 
-import { Meteor } from "meteor/meteor";
 import { Recipe, RecipeIngredient } from "../../recipes/recipes";
-import { checkIsIngredientComplete } from "/imports/ui/organisms/groceries-list/utils/is-ingredient-complete";
-import { getTotalRecipeAmountByName } from "/imports/ui/organisms/groceries-list/utils/get-total-recipe-amount";
 
 Meteor.methods({
   "users.activeList.completeIngredients"(recipeIngredient: RecipeIngredient) {

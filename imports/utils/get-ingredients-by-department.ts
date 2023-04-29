@@ -2,8 +2,12 @@ import { RecipeIngredient } from "/imports/api/recipes/recipes";
 import { ActiveList } from "/interfaces/active-list";
 import { IngredientsByDepartment } from "/interfaces/ingredients-by-department";
 
-const getCompleteIngredientsList = (activeList: ActiveList) =>
-  activeList.recipes.reduce((ingredientsList, activeListItem) => {
+const getCompleteIngredientsList = (activeList: ActiveList) => {
+  if (!activeList || !activeList.recipes) {
+    return [];
+  }
+
+  return activeList.recipes.reduce((ingredientsList, activeListItem) => {
     if (!activeListItem) return ingredientsList;
 
     const ingredientsAdjustedToNewServingSize =
@@ -22,7 +26,7 @@ const getCompleteIngredientsList = (activeList: ActiveList) =>
 
     return [...ingredientsList, ...ingredientsAdjustedToNewServingSize];
   }, [] as RecipeIngredient[]);
-
+}
 const getHandleIngredientsByDepartment =
   (ingredientsByDepartment: IngredientsByDepartment) =>
   (department: string, ingredient: RecipeIngredient, isSelected?: boolean) => {

@@ -5,17 +5,40 @@ import Accordion from "/imports/ui/molecules/accordion";
 import DepartmentsHook from "/imports/ui/hooks/departments.hook";
 import { AccordionBody } from "/imports/utils/get-groceries-list-accordion-body";
 import { getIngredientsByDepartment } from "/imports/utils/get-ingredients-by-department";
-import { isDepartmentCompleted } from "/imports/utils/is-department-complete";
 import { getSortedIngredientsByDepartment } from "/imports/utils/get-sorted-ingredients-by-department";
 import { Department } from "/imports/api/departments/departments";
+import { checkIfDepartmentIsCompleted } from "/imports/utils/check-if-department-is-complete";
 
-const GroceriesList = () => {
+const DepartmentAccordeon = ({ department }: { department: string }) => {
   const activeList = ActiveListHook();
   const { departments } = DepartmentsHook();
-  const ingredientsByDepartment = getIngredientsByDepartment(activeList);
-
   const selectedIngredients = useRef(activeList.selectedIngredients);
+
+  debugger;
+
   const [openDepartments, setOpenDepartments] = useState<Department[]>([]);
+
+  const sortedIngredientsByDepartment = getSortedIngredientsByDepartment(
+    activeList,
+    department
+  );
+
+  const _department = departments.find((value) => {
+    if (!value) {
+      console.error("departments.find: ", value, departments);
+      return false;
+    }
+
+    return value.department === department;
+  });
+
+  const title = _department ? _department.title.en! : "";
+
+  const isOpen = openDepartments
+    .filter((val) => !!val)
+    .find((val) => {
+      return val.title.en === title;
+    });
 
   const closeDepartment = (department: string) => {
     return openDepartments.filter((_department) => {
@@ -33,21 +56,13 @@ const GroceriesList = () => {
         );
         return false;
       }
+      debugger;
       return dep.title.en === departmentTitle;
     });
 
     const isOpenDepartment = openDepartments
       .filter((val) => !!val)
       .find((val) => {
-        if (!val) {
-          console.error(
-            "openDepartments.find - isOpenDepartment: ",
-            val,
-            departments
-          );
-          return false;
-        }
-
         return val.title.en === departmentTitle;
       });
 
@@ -58,22 +73,25 @@ const GroceriesList = () => {
     }
   };
 
+  const handleCloseDepartmentWhenIngredientsAreCompleted = (
+    department: string
+  ) => {
+    if (checkIfDepartmentIsCompleted(department, activeList)) {
+      setOpenDepartments(closeDepartment(department));
+    }
+  };
+
   useEffect(() => {
-    const newOpenDepartments = Object.keys(ingredientsByDepartment).map(
-      (department) => {
-        const val = departments.find((dep) => {
-          if (!dep) {
-            console.log("departments.find: ", dep, departments);
-          }
-          return dep.department === department;
-        });
+    const nextOpenDepartments = departments.filter((_department) => {
+      const isDepartmentCompleted = checkIfDepartmentIsCompleted(
+        _department.department,
+        activeList
+      );
+      return !isDepartmentCompleted;
+    });
 
-        return val || departments[0];
-      }
-    );
-
-    setOpenDepartments(newOpenDepartments);
-  }, [Object.keys(ingredientsByDepartment).length]);
+    setOpenDepartments(nextOpenDepartments);
+  }, [departments.length]);
 
   useEffect(() => {
     const changedIngredients = activeList.selectedIngredients.filter(
@@ -96,86 +114,43 @@ const GroceriesList = () => {
     selectedIngredients.current = activeList.selectedIngredients;
   }, [activeList.selectedIngredients.length]);
 
-  const checkIfDepartmentIsCompleted = (department: string) => {
-    return isDepartmentCompleted(
-      ingredientsByDepartment,
-      department,
-      activeList
-    );
-  };
-
-  const handleCloseDepartmentWhenIngredientsAreCompleted = (
-    department: string
-  ) => {
-    if (checkIfDepartmentIsCompleted(department)) {
-      setOpenDepartments(closeDepartment(department));
-    }
-  };
-
-  const AccordionMapperFunction = () => {
-    return (department: string, idx: number) => {
-      const sortedIngredientsByDepartment = getSortedIngredientsByDepartment(
-        activeList,
-        department,
-      );
-
-      const _department = departments.find((value) => {
-        if (!value) {
-          console.error("departments.find: ", value, departments);
-          return false;
-        }
-
-        return value.department === department;
-      });
-
-      const title = _department ? _department.title.en! : "";
-
-      const isOpen = openDepartments
-        .filter((val) => !!val)
-        .find((val) => {
-          if (!val) {
-            console.error(
-              "openDepartments.find - isOpen: ",
-              val,
-              openDepartments
-            );
-            return false;
-          }
-
-          return val.title.en === title;
-        });
-
-      return (
-        <Accordion
-          key={idx}
-          isComplete={checkIfDepartmentIsCompleted(department)}
-          className="mb-6 md:mb-10 mx-auto max-w-2xl"
-          title={title}
-          body={
-            <AccordionBody
-              activeList={activeList}
-              sortedIngredientsByDepartment={sortedIngredientsByDepartment}
-            />
-          }
-          isOpen={!!isOpen}
-          onChangeClick={handleDepartmentChange}
+  return (
+    <Accordion
+      isComplete={checkIfDepartmentIsCompleted(department, activeList)}
+      className="mb-6 md:mb-10 mx-auto max-w-2xl"
+      title={title}
+      body={
+        <AccordionBody
+          activeList={activeList}
+          sortedIngredientsByDepartment={sortedIngredientsByDepartment}
         />
-      );
-    };
-  };
+      }
+      isOpen={!!isOpen}
+      onChangeClick={handleDepartmentChange}
+    />
+  );
+};
 
-  if (activeList.loading) {
-    return null;
-  }
+const GroceriesList = () => {
+  const activeList = ActiveListHook();
+  const ingredientsByDepartment = getIngredientsByDepartment(activeList);
 
   return (
     <>
       {Object.keys(ingredientsByDepartment)
-        .filter((department) => !checkIfDepartmentIsCompleted(department))
-        .map(AccordionMapperFunction())}
+        .filter(
+          (department) => !checkIfDepartmentIsCompleted(department, activeList)
+        )
+        .map((department, idx) => (
+          <DepartmentAccordeon key={idx} department={department} />
+        ))}
       {Object.keys(ingredientsByDepartment)
-        .filter((department) => checkIfDepartmentIsCompleted(department))
-        .map(AccordionMapperFunction())}
+        .filter((department) =>
+          checkIfDepartmentIsCompleted(department, activeList)
+        )
+        .map((department, idx) => (
+          <DepartmentAccordeon key={idx} department={department} />
+        ))}
     </>
   );
 };

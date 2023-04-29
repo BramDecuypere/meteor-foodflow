@@ -19,7 +19,13 @@ export const getSortedIngredientsByDepartment = (
   activeList: ActiveList,
   department: string
 ) => {
-  return getIngredientsByDepartment(activeList)[department].sort(
+  const ingredientsByDepartment = getIngredientsByDepartment(activeList);
+
+  if (!ingredientsByDepartment || !ingredientsByDepartment[department]) {
+    return []
+  }
+
+  return ingredientsByDepartment[department].sort(
     sortIngredientsByDepartment(activeList)
   );
 };
