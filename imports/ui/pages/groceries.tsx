@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import cn from "classnames";
+import { Menu, Transition } from "@headlessui/react";
 
 import TextToggle from "../atoms/TextToggle";
 import ActiveMenuList from "../organisms/active-menu-list";
@@ -9,7 +10,7 @@ import ActiveListHook from "../hooks/active-list.hook";
 import { navigation } from "/constants/navigation";
 import Button from "../atoms/Button";
 import { useNavigate } from "react-router-dom";
-import { PlusIcon } from "@heroicons/react/24/outline";
+import { EllipsisVerticalIcon, PlusIcon } from "@heroicons/react/24/outline";
 import Modal from "../atoms/Modal";
 import AddExtraItemForm from "../molecules/add-extra-item-form";
 import { Meteor } from "meteor/meteor";
@@ -40,6 +41,10 @@ const Groceries = () => {
     return navigateItem;
   };
 
+  const onOptionsClick = () => {
+    console.log("clicked ellipsis");
+  };
+
   const onFormSubmit: SubmitHandler<FieldValues> = (values) => {
     const { product, quantity, category } = values;
 
@@ -55,6 +60,14 @@ const Groceries = () => {
   if (activeList.loading) {
     return null;
   }
+
+  const resetList = () => {
+    const result = confirm("Are you sure you want to reset the list?");
+
+    if (result) {
+      Meteor.call("users.resetGroceryList");
+    }
+  };
 
   if (
     activeList.selectedIngredients.length === 0 &&
@@ -109,11 +122,7 @@ const Groceries = () => {
         <div
           className={cn(
             "flex flex-col md:flex-row py-8 mx-auto md:w-full md:items-center",
-            {
-              "max-w-2xl md:justify-between":
-                selectedView === GroceriesListStates.GROCERIES_LIST,
-              "justify-center": selectedView === GroceriesListStates.MENU,
-            }
+            "max-w-2xl md:justify-between"
           )}
         >
           <TextToggle
@@ -125,17 +134,60 @@ const Groceries = () => {
             ]}
           />
 
-          {selectedView === GroceriesListStates.GROCERIES_LIST && (
-            <Button
-              onClick={() => {
-                setAddModalIsOpen(true);
-              }}
-              className="inline-flex my-8 md:my-0 items-center justify-center ml-4"
+          <Menu as="div" className="relative inline-block text-left">
+            <Menu.Button
+              className="cursor-pointer w-6 h-6"
+              onClick={onOptionsClick}
             >
-              <PlusIcon height="1rem" />
-              &nbsp;Add item
-            </Button>
-          )}
+              <EllipsisVerticalIcon />
+            </Menu.Button>
+
+            <Transition
+              as={Fragment}
+              enter="transition ease-out duration-100"
+              enterFrom="transform opacity-0 scale-95"
+              enterTo="transform opacity-100 scale-100"
+              leave="transition ease-in duration-75"
+              leaveFrom="transform opacity-100 scale-100"
+              leaveTo="transform opacity-0 scale-95"
+            >
+              <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                {selectedView === GroceriesListStates.GROCERIES_LIST && (
+                  <>
+                    <div className="py-1">
+                      <Menu.Item>
+                        <button
+                          onClick={() => {
+                            setAddModalIsOpen(true);
+                          }}
+                          className={cn(
+                            "flex px-4 py-2 text-sm w-full text-gray-900"
+                          )}
+                        >
+                          Add item
+                        </button>
+                      </Menu.Item>
+                    </div>
+                    <hr />
+                  </>
+                )}
+                <div className="py-1">
+                  <Menu.Item>
+                    {() => (
+                      <button
+                        onClick={resetList}
+                        className={cn(
+                          "flex px-4 py-2 text-sm w-full text-gray-900"
+                        )}
+                      >
+                        Reset list
+                      </button>
+                    )}
+                  </Menu.Item>
+                </div>
+              </Menu.Items>
+            </Transition>
+          </Menu>
         </div>
 
         {selectedView === GroceriesListStates.GROCERIES_LIST && (
