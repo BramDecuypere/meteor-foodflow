@@ -1938,7 +1938,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
   },
   {
     language: Languages.NL,
-    title: "Pasta brocolli, olijven en zongedroogde tomaten",
+    title: "Pasta broccoli, olijven en zongedroogde tomaten",
     image: "",
     timings: {
       total: 35,
@@ -1949,7 +1949,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
       servings: 2,
       ingredients: [
         {
-          name: Ingredients.BROCOLLI,
+          name: Ingredients.BROCCOLI,
           amount: 1,
           metric: Metrics.PIECES,
           departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
@@ -2006,7 +2006,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
       },
       {
         ingredients: [
-          Ingredients.BROCOLLI,
+          Ingredients.BROCCOLI,
           Ingredients.OLIVES_BLACK,
           Ingredients.TOMATOES_SEMI_SUNDRIED,
           Ingredients.OLIVE_OIL,

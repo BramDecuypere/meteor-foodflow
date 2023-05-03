@@ -119,5 +119,5 @@ export enum Ingredients {
   RICE_VINEGAR = "rijstazijn",
   ROASTED_ONIONS = "geroosterde ajuin",
   EDAMMAME = "edammame",
-  BROCOLLI = "broccoli",
+  BROCCOLI = "broccoli",
 }
