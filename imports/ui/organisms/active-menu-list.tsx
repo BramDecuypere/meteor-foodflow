@@ -22,20 +22,26 @@ const ActiveMenuList = () => {
 
   return (
     <RecipeList>
-      {recipes.map(({ servings, recipe }, idx) => (
-        <RecipeListItem
-          key={idx}
-          servings={servings}
-          recipe={recipe}
-          onIncreaseServingsClick={() =>
-            handleServingsChange(recipe, servings + 1)
-          }
-          onDecreaseServingsClick={() =>
-            handleServingsChange(recipe, servings - 1)
-          }
-          onRemoveClick={handleOnRemoveClick}
-        />
-      ))}
+      {recipes.length > 0 ? (
+        recipes.map(({ servings, recipe }, idx) => (
+          <RecipeListItem
+            key={idx}
+            servings={servings}
+            recipe={recipe}
+            onIncreaseServingsClick={() =>
+              handleServingsChange(recipe, servings + 1)
+            }
+            onDecreaseServingsClick={() =>
+              handleServingsChange(recipe, servings - 1)
+            }
+            onRemoveClick={handleOnRemoveClick}
+          />
+        ))
+      ) : (
+        <div className="flex justify-center">
+          <div className="max-w-2xl">No recipes added...</div>
+        </div>
+      )}
     </RecipeList>
   );
 };
