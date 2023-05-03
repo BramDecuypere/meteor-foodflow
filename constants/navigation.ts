@@ -2,6 +2,7 @@ import {
   HomeIcon,
   ShoppingCartIcon,
   Cog6ToothIcon,
+  SunIcon,
 } from "@heroicons/react/24/outline";
 
 export const navigation = [
@@ -17,6 +18,13 @@ export const navigation = [
     name: "Active Groceries",
     href: "/groceries",
     icon: ShoppingCartIcon,
+    current: false,
+  },
+  {
+    id: "seasonal",
+    name: "Seasonal Fruits & Vegetables",
+    href: "/seasonal-fruits-and-vegetables",
+    icon: SunIcon,
     current: false,
   },
   {

@@ -13,6 +13,7 @@ import { GlobalProvider } from "/imports/ui/hooks/global.context";
 import Groceries from "../imports/ui/pages/groceries";
 import Settings from "/imports/ui/pages/settings";
 import RecipeDetail from "/imports/ui/pages/recipe-detail";
+import SeasonalFruitsAndVeggies from "/imports/ui/pages/seasonal-fruits-and-veggies";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +74,25 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Groceries />,
+      },
+    ],
+  },
+  {
+    path: "/seasonal-fruits-and-vegetables",
+    element: (
+      <RequireAuth>
+        <DashboardTemplate title="Seasonal fruits and vegetables" />
+      </RequireAuth>
+    ),
+    errorElement: (
+      <DashboardTemplate>
+        <div>Not found</div>
+      </DashboardTemplate>
+    ),
+    children: [
+      {
+        path: "",
+        element: <SeasonalFruitsAndVeggies />,
       },
     ],
   },
