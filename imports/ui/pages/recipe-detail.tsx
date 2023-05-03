@@ -1,14 +1,17 @@
 import React, { Fragment, useState } from "react";
 import { useParams } from "react-router-dom";
+
 import Label from "../atoms/label";
 import TextToggle from "../atoms/TextToggle";
 import SelectedRecipeHook from "../hooks/selected-recipe.hook";
 import { defaultBGImgPath } from "/constants/defaultBGImgPath";
 import { ButtonGroupState } from "/enums/button-group-state";
+import DepartmentsHook from "../hooks/departments.hook";
 
 const RecipeDetail = () => {
   const { id } = useParams();
   const { recipe, loading } = SelectedRecipeHook(id);
+  const { departments } = DepartmentsHook();
   const [isImgDefault, setIsImgDefault] = useState(false);
 
   const [selectedView, setSelectedView] = useState(
@@ -82,9 +85,15 @@ const RecipeDetail = () => {
                 (ingredient) => ingredient.departments.indexOf(department) > -1
               );
 
+              const foundDepartment = departments.find(
+                (val) => val.department === department
+              );
+
               return (
                 <Fragment key={department}>
-                  <p className="font-bold text-2xl">{department}</p>
+                  <p className="font-bold text-2xl">
+                    {foundDepartment?.title.en}
+                  </p>
                   <ul className="pb-4">
                     {ingredientsList.map((ingredient, idx) => (
                       <li
