@@ -7,30 +7,82 @@ import { Recipe } from "/imports/api/recipes/recipes";
 import AddToListGroup from "./add-to-list-group";
 import { ClockIcon, UserIcon, XMarkIcon } from "@heroicons/react/20/solid";
 import { defaultBGImgPath } from "/constants/defaultBGImgPath";
+import { Mongo } from "meteor/mongo";
+import { Languages } from "/enums/languages.enum";
+
+const RecipeImage = ({
+  imgSrc,
+  loading,
+}: {
+  imgSrc?: string;
+  loading: boolean;
+}) => {
+  const [isDefaultImg, setIsDefaultImg] = useState(false);
+
+  const onImgError = () => {
+    setIsDefaultImg(true);
+  };
+
+  if (loading) {
+    return <div className="animate-pulse h-full rounded-t-3xl"></div>;
+  }
+
+  if (isDefaultImg) {
+    return (
+      <div className="flex items-center justify-center h-full bg-slate-300 rounded-t-3xl">
+        <img src={defaultBGImgPath} width={50} />
+      </div>
+    );
+  }
+
+  return (
+    <img
+      className="rounded-t-3xl object-cover h-full w-full"
+      src={imgSrc}
+      onError={onImgError}
+    />
+  );
+};
 
 const RecipeListItem = ({
   className,
-  recipe,
+  recipe = {
+    _id: new Mongo.ObjectID(),
+    language: Languages.NL,
+    labels: [],
+    title: "",
+    image: "",
+    timings: {
+      active: 0,
+      total: 0,
+    },
+    food: {
+      servings: 0,
+      ingredients: [],
+    },
+    steps: [],
+  },
   selected,
   selectable,
-  servings,
+  servings = 1,
+  loading = false,
   onAddToListClick,
   onIncreaseServingsClick,
   onDecreaseServingsClick,
   onRemoveClick,
 }: {
+  loading?: boolean;
   className?: string;
-  recipe: Recipe;
+  recipe?: Recipe;
   selected?: boolean;
   selectable?: boolean;
-  servings: number;
+  servings?: number;
   onAddToListClick?: (servings: number) => void;
   onIncreaseServingsClick?: () => void;
   onDecreaseServingsClick?: () => void;
   onRemoveClick?: (recipe: Recipe) => void;
 }) => {
   const [currentServings, setCurrentServings] = useState(servings);
-  const [isDefaultImg, setIsDefaultImg] = useState(false);
 
   const setServings = (servings: number) => {
     const nextServings = currentServings <= 1 ? 1 : servings;
@@ -38,13 +90,17 @@ const RecipeListItem = ({
     return setCurrentServings(nextServings);
   };
 
-  const onImgError = () => {
-    setIsDefaultImg(true);
-  };
-
   useEffect(() => {
     setCurrentServings(servings);
   }, [servings]);
+
+  const getLink = () => {
+    if (!recipe || loading) {
+      return "";
+    }
+
+    return `/recipes/${recipe._id.valueOf()}`;
+  };
 
   return (
     <div
@@ -55,7 +111,7 @@ const RecipeListItem = ({
     >
       <Link
         onClick={(e) => e.stopPropagation()}
-        to={`/recipes/${recipe._id.valueOf()}`}
+        to={getLink()}
         className="h-56 overflow-hidden relative backdrop-filter"
       >
         <div className="absolute w-full h-full bg-black rounded-t-3xl opacity-5"></div>
@@ -71,26 +127,39 @@ const RecipeListItem = ({
             <XMarkIcon className="w-10 h-10" />
           </div>
         )}
-        {!isDefaultImg ? (
-          <img
-            className="rounded-t-3xl object-cover h-full w-full"
-            src={recipe.image}
-            onError={onImgError}
-          />
-        ) : (
-          <div className="flex items-center justify-center h-full bg-slate-300 rounded-t-3xl">
-            <img src={defaultBGImgPath} width={50} />
-          </div>
-        )}
-        <div className="flex flex-col absolute bottom-2 left-2 text-white font-bold">
+
+        <RecipeImage imgSrc={recipe.image} loading={loading} />
+
+        <div
+          className={cn(
+            "flex flex-col absolute bottom-2 left-2 text-white font-bold ",
+            { "w-10/12": loading }
+          )}
+        >
           <div className="flex">
-            {recipe.labels.map((value, idx) => {
-              return <Label key={idx} label={value} className="mr-2 text-xs" />;
-            })}
+            {recipe.labels.length > 0 || loading ? (
+              recipe.labels.map((value, idx) => {
+                return (
+                  <Label key={idx} label={value} className="mr-2 text-xs" />
+                );
+              })
+            ) : (
+              <Label
+                loading={loading}
+                className="mr-2 text-xs w-10 bg-red-100 h-4"
+              />
+            )}
           </div>
-          <span className="text-lg">{recipe.title}</span>
+          <span className="text-lg">
+            {recipe.title || (
+              <div className="bg-slate-200 animate-pulse w-full h-10 text-transparent">
+                xxxxxxxx
+              </div>
+            )}
+          </span>
         </div>
       </Link>
+
       <div className="flex flex-col flex-grow p-3">
         <div>
           <div className="flex">
