@@ -14,4 +14,5 @@ export enum Metrics {
   DECILITER = "dl",
   CLOVES = "teentje(s)",
   STALK = "stengel",
+  CUPS = 'cup(s)'
 }

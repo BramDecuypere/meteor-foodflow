@@ -28,6 +28,7 @@ export enum Ingredients {
   CARROTS = "wortelen",
   CELERY = "selder",
   CHEESE_PARMASAN = "parmazaanse kaas",
+  CHICKPEAS = "kikkererwten",
   CHICKEN_BREAST = "kippenborst",
   CHICKEN_HERBS = "kippen kruiden",
   CHICKEN_STOCK = "kippenbouillon",

@@ -2357,4 +2357,127 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
       },
     ],
   },
+  {
+    language: Languages.NL,
+    title: "Mason Jar Salad - Mediterraans",
+    image: "",
+    timings: {
+      total: 10,
+      active: 10,
+    },
+    labels: [Labels.LUNCH, Labels.SUMMER],
+    food: {
+      servings: 4,
+      ingredients: [
+        {
+          name: Ingredients.ARUGOLA,
+          amount: 4,
+          metric: Metrics.CUPS,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.TOMATOES_CHERRY,
+          amount: 2,
+          metric: Metrics.CUPS,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.CUCUMBER,
+          amount: 2,
+          metric: Metrics.CUPS,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.QUINOA,
+          amount: 2,
+          metric: Metrics.CUPS,
+          departments: [Departments.GRAINS_BEANS_RICE],
+        },
+        {
+          name: Ingredients.CHICKPEAS,
+          amount: 2,
+          metric: Metrics.CUPS,
+          departments: [Departments.GRAINS_BEANS_RICE],
+        },
+        {
+          name: Ingredients.ONION_RED,
+          amount: 1,
+          metric: Metrics.CUPS,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.FLAT_PARSLEY,
+          amount: 1,
+          metric: Metrics.CUPS,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.OLIVE_OIL,
+          amount: 0.25,
+          metric: Metrics.CUPS,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.LEMON_JUICE,
+          amount: 3,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.RED_WINE_VINIGAR,
+          amount: 2,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.GARLIC,
+          amount: 3,
+          metric: Metrics.CLOVES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.BLACK_PEPPER,
+          amount: 0.25,
+          metric: Metrics.TEASPOON,
+          departments: [Departments.OTHER],
+        },
+      ],
+    },
+    steps: [
+      {
+        ingredients: [
+          Ingredients.OLIVE_OIL,
+          Ingredients.RED_WINE_VINIGAR,
+          Ingredients.LEMON_JUICE,
+          Ingredients.GARLIC,
+          Ingredients.CUMIN,
+          Ingredients.BLACK_PEPPER,
+        ],
+        description:
+          "In een kleine kom meng je alle ingredienten voor de dressing en verdeel je ze over de mason jars",
+      },
+      {
+        ingredients: [
+          Ingredients.CHICKPEAS,
+          Ingredients.ONION_RED,
+          Ingredients.FLAT_PARSLEY,
+        ],
+        description:
+          "Voeg al deze ingredienten samen toe aan de mason jars en geef en schud ze even door elkaar",
+      },
+      {
+        ingredients: [
+          Ingredients.TOMATOES_CHERRY,
+          Ingredients.CUCUMBER,
+          Ingredients.QUINOA,
+          Ingredients.ARUGOLA,
+        ],
+        description:
+          "Daarna voeg je in lagen deze ingredienten toe in deze volgorde",
+      },
+      {
+        description: "Deze salade blijft 3-4 dagen goed in de frigo.",
+      },
+    ],
+  },
 ];
