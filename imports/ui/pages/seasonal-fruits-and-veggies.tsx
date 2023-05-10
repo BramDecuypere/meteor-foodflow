@@ -26,6 +26,7 @@ const SeasonalFruitsAndVeggies = () => {
           Vegetables of the month:
           <select
             value={selectedMonth}
+            className="rounded-full ml-5 text-center"
             onChange={(e) => setSelectedMonth(e.target.value)}
           >
             <option value={Months.JANUARY}>{Months.JANUARY}</option>
