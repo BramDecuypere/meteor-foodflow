@@ -2722,4 +2722,263 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
       },
     ],
   },
+  {
+    language: Languages.NL,
+    title: "Gehaktballen uit de oven met mozzarella en rode wijn",
+    image: "",
+    timings: {
+      total: 110,
+      active: 20,
+    },
+    labels: [Labels.DINNER, Labels.WINTER],
+    food: {
+      servings: 2,
+      ingredients: [
+        {
+          name: Ingredients.LEEK,
+          amount: 1,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.CARROTS,
+          amount: 2,
+          metric: Metrics.PIECES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.ONION_WHITE,
+          amount: 1,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.GARLIC,
+          amount: 1,
+          metric: Metrics.CLOVES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.GROUND_BEEF,
+          amount: 500,
+          metric: Metrics.GRAM,
+          departments: [Departments.MEAT_FISH_AND_ALTERNATIVES],
+        },
+        {
+          name: Ingredients.RED_WINE,
+          amount: 1,
+          metric: Metrics.CUPS,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.CINNAMON,
+          amount: 1,
+          metric: Metrics.TEASPOON,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.PAPRIKA_POWDER,
+          amount: 1,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.TOMATO_PIECES,
+          amount: 400,
+          metric: Metrics.GRAM,
+          departments: [Departments.CANNED_FOOD],
+        },
+        {
+          name: Ingredients.PASSATA,
+          amount: 200,
+          metric: Metrics.GRAM,
+          departments: [Departments.CANNED_FOOD],
+        },
+        {
+          name: Ingredients.BOUILLON_MEAT,
+          amount: 100,
+          metric: Metrics.MILLILITER,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.ROSEMARY,
+          amount: 1,
+          metric: Metrics.BRANCHES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.BAY_LEAF,
+          amount: 2,
+          metric: Metrics.LEAVES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.MOZERELLA,
+          amount: 1,
+          metric: Metrics.BALLS,
+          departments: [Departments.DAIRY_AND_EGGS],
+        },
+        {
+          name: Ingredients.BASIL_FRESH,
+          amount: 5,
+          metric: Metrics.LEAVES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+          optional: true,
+        },
+      ],
+    },
+    steps: [
+      {
+        description: "Verwarm de oven op 150°C",
+      },
+      {
+        ingredients: [
+          Ingredients.LEEK,
+          Ingredients.CARROTS,
+          Ingredients.ONION_WHITE,
+        ],
+        description:
+          "Snipper de ui fijn, was de wortels en prei en snij ze fijn",
+      },
+      {
+        ingredients: [Ingredients.GROUND_BEEF],
+        description:
+          "Rol het gehakt in balletjes en bak ze krokant in een pan. Wanneer ze kleur hebben kan je naar de volgende stap gaan",
+      },
+      {
+        ingredients: [
+          Ingredients.LEEK,
+          Ingredients.CARROTS,
+          Ingredients.ONION_WHITE,
+          Ingredients.CINNAMON,
+          Ingredients.SALT,
+          Ingredients.BLACK_PEPPER,
+          Ingredients.PAPRIKA_POWDER,
+        ],
+        description:
+          "Voeg de groenten toe en verlaag het vuur. Kruid met peper, zout, kaneel en paprikapoeder",
+      },
+      {
+        ingredients: [Ingredients.GARLIC],
+        description: "Voeg de fijngesneden look toe",
+      },
+      {
+        ingredients: [Ingredients.RED_WINE],
+        description: "Giet de rode wijn erbij en laat tot de helft inkoken",
+      },
+      {
+        ingredients: [
+          Ingredients.TOMATO_PIECES,
+          Ingredients.BOUILLON_MEAT,
+          Ingredients.PASSATA,
+          Ingredients.BAY_LEAF,
+          Ingredients.ROSEMARY,
+        ],
+        description:
+          "Voeg wanneer de wijn is ingekookt, de bouillon, de tomatenblokjes, de passata en de kruiden toe",
+      },
+      {
+        description:
+          "Zet de pot voor 90 minuten in de oven met aluminiumfolie ",
+      },
+      {
+        ingredients: [Ingredients.MOZERELLA],
+        description:
+          "Verhoog de temperatuur naar 200°C en verwijder de aluminiumfolie. Scheur de mozerella in stukjes en voeg toe aan de oven",
+      },
+      {
+        description: "Werk af met wat basilicum blaadjes",
+      },
+    ],
+  },
+  {
+    language: Languages.NL,
+    title: "Ovenfrites met oregano en feta",
+    image: "",
+    timings: {
+      total: 80,
+      active: 20,
+    },
+    labels: [Labels.DINNER, Labels.WINTER, Labels.SUMMER, Labels.LUNCH],
+    food: {
+      servings: 6,
+      ingredients: [
+        {
+          name: Ingredients.POTATOES_FLOURY,
+          amount: 2,
+          metric: Metrics.KILO_GRAM,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.SUNFLOUR_OIL,
+          amount: 90,
+          metric: Metrics.MILLILITER,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.OLIVE_OIL,
+          amount: 60,
+          metric: Metrics.MILLILITER,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.GARLIC,
+          amount: 6,
+          metric: Metrics.CLOVES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.OREGANO,
+          amount: 2,
+          metric: Metrics.TEASPOON,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.FETA,
+          amount: 150,
+          metric: Metrics.GRAM,
+          departments: [Departments.DAIRY_AND_EGGS],
+        },
+        {
+          name: Ingredients.SEA_SALT,
+          departments: [Departments.OTHER],
+        },
+      ],
+    },
+    steps: [
+      {
+        description: "Verhit de oven voor op 220°C",
+      },
+      {
+        ingredients: [Ingredients.POTATOES_FLOURY],
+        description:
+          "Kook de aardappelen in schil voor 8 minuten. Giet ze af en laat 5 minuten rusten",
+      },
+      {
+        ingredients: [
+          Ingredients.POTATOES_FLOURY,
+          Ingredients.SEA_SALT,
+          Ingredients.SUNFLOUR_OIL,
+        ],
+        description:
+          "Snij in frieten, doe in een grote kom en meng voorzichtig met de zonnebloemolie en het zout",
+      },
+      {
+        description:
+          "Bak ze voor ±45 minuten en schud halverwege op tot de de frieten goudbruin zijn.",
+      },
+      {
+        ingredients: [Ingredients.GARLIC],
+        description:
+          "Verhit 5 minuten voor het einde de olijfolie met de knoflook in een kleine pan op een gemiddeld vuur. Bak de plakjes knoflook tot ze goudbruin zien. (±3 minuten)",
+      },
+      {
+        description:
+          "Giet de olie over de frieten en zet ze terug in de oven voor 4 minuten.",
+      },
+      {
+        description: "Haal ze eruit en strooi er de feta en oregano over",
+      },
+    ],
+  },
 ];

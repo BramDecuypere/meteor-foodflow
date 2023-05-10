@@ -1,4 +1,5 @@
 export enum Ingredients {
+  CINNAMON = "kaneel",
   HUTTEKASE = "huttekase",
   CUCUMBER = "komkommer",
   DILLE = "dille",
@@ -20,6 +21,7 @@ export enum Ingredients {
   BISCUITS_CRUMBLED = "verkruimelde koekjes",
   BLACK_PEPPER = "zwarte peper",
   BOUILLON_VEGGIES = "groentebouillon",
+  BOUILLON_MEAT = "rundsbouillon",
   BREAD = "brood",
   BREADCRUMBS = "broodkruimels",
   BROWN_RICE = "bruine rijst",
@@ -126,5 +128,10 @@ export enum Ingredients {
   ALMOND_FLOUR = "amandelmeel",
   HONEY = "honing",
   POTATOES = "aardappelen",
+  POTATOES_FLOURY = "aardappelen (bloemig)",
   CREAM = "room",
+  LEEK = "prei",
+  ROSEMARY = "rosemarijn",
+  SUNFLOUR_OIL = "zonnebloemolie",
+  OREGANO = "oregano",
 }
