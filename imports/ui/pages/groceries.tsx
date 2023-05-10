@@ -118,11 +118,69 @@ const Groceries = () => {
 
   return (
     <div className="mx-auto px-4 sm:px-6 md:px-8">
+      <Menu
+        as="div"
+        className="inline-block text-left fixed bottom-10 right-5 md:bottom-10 md:right-10 z-50"
+      >
+        <Menu.Button
+          className="cursor-pointer bg-orange rounded-full p-3 shadow-lg"
+          onClick={onOptionsClick}
+        >
+          <EllipsisVerticalIcon className="w-8 h-8 text-4xl text-white" />
+        </Menu.Button>
+
+        <Transition
+          as={Fragment}
+          enter="transition ease-out duration-100"
+          enterFrom="transform opacity-0 scale-95"
+          enterTo="transform opacity-100 scale-100"
+          leave="transition ease-in duration-75"
+          leaveFrom="transform opacity-100 scale-100"
+          leaveTo="transform opacity-0 scale-95"
+        >
+          <Menu.Items className="absolute right-0 bottom-16 z-10 mt-2 w-56 origin-bottom-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            {selectedView === GroceriesListStates.GROCERIES_LIST && (
+              <>
+                <div className="py-1">
+                  <Menu.Item>
+                    <button
+                      onClick={() => {
+                        setAddModalIsOpen(true);
+                      }}
+                      className={cn(
+                        "flex px-4 py-2 text-sm w-full text-gray-900"
+                      )}
+                    >
+                      Add item
+                    </button>
+                  </Menu.Item>
+                </div>
+                <hr />
+              </>
+            )}
+            <div className="py-1">
+              <Menu.Item>
+                {() => (
+                  <button
+                    onClick={resetList}
+                    className={cn(
+                      "flex px-4 py-2 text-sm w-full text-gray-900"
+                    )}
+                  >
+                    Reset list
+                  </button>
+                )}
+              </Menu.Item>
+            </div>
+          </Menu.Items>
+        </Transition>
+      </Menu>
+
       <div className="flex flex-col py-4">
         <div
           className={cn(
-            "flex flex-col md:flex-row py-8 mx-auto md:w-full md:items-center",
-            "max-w-2xl md:justify-between"
+            "flex flex-row w-full py-8 mx-auto items-center justify-center",
+            "max-w-2xl"
           )}
         >
           <TextToggle
@@ -133,61 +191,6 @@ const Groceries = () => {
               GroceriesListStates.GROCERIES_LIST,
             ]}
           />
-
-          <Menu as="div" className="relative inline-block text-left">
-            <Menu.Button
-              className="cursor-pointer w-6 h-6"
-              onClick={onOptionsClick}
-            >
-              <EllipsisVerticalIcon />
-            </Menu.Button>
-
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95"
-            >
-              <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                {selectedView === GroceriesListStates.GROCERIES_LIST && (
-                  <>
-                    <div className="py-1">
-                      <Menu.Item>
-                        <button
-                          onClick={() => {
-                            setAddModalIsOpen(true);
-                          }}
-                          className={cn(
-                            "flex px-4 py-2 text-sm w-full text-gray-900"
-                          )}
-                        >
-                          Add item
-                        </button>
-                      </Menu.Item>
-                    </div>
-                    <hr />
-                  </>
-                )}
-                <div className="py-1">
-                  <Menu.Item>
-                    {() => (
-                      <button
-                        onClick={resetList}
-                        className={cn(
-                          "flex px-4 py-2 text-sm w-full text-gray-900"
-                        )}
-                      >
-                        Reset list
-                      </button>
-                    )}
-                  </Menu.Item>
-                </div>
-              </Menu.Items>
-            </Transition>
-          </Menu>
         </div>
 
         {selectedView === GroceriesListStates.GROCERIES_LIST && (
