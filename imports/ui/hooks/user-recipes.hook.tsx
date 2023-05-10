@@ -1,8 +1,9 @@
 import { Meteor } from "meteor/meteor";
 import { useTracker } from "meteor/react-meteor-data";
 import { RecipesCollection } from "/imports/api/recipes/recipes";
+import { Labels } from "/enums/labels.enum";
 
-const UserRecipes = () => {
+const UserRecipes = ({ labels }: { labels?: Labels[] }) => {
   const userRecipes = useTracker(() => {
     const handler = Meteor.subscribe("users.recipes");
 
@@ -10,7 +11,12 @@ const UserRecipes = () => {
       return [];
     }
 
-    return RecipesCollection.find().fetch();
+    const query: { [key: string]: any } = {};
+    if (labels && labels.length > 0) {
+      query.labels = { $in: labels };
+    }
+
+    return RecipesCollection.find(query).fetch();
   });
 
   return userRecipes;

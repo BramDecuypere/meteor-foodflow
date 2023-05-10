@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Meteor } from "meteor/meteor";
 import RecipeListItem from "../molecules/recipe-list-item";
 import UserRecipes from "../hooks/user-recipes.hook";
 import ActiveList from "../hooks/active-list.hook";
 import RecipeList from "../molecules/recipe-list";
 import UserDefaultServings from "../hooks/user-default-servings.hook";
+import { Labels } from "/enums/labels.enum";
 
 const Recipes = () => {
-  const userRecipes = UserRecipes();
+  const [activeLabels, setActiveLabels] = useState([]);
+  const userRecipes = UserRecipes({ labels: activeLabels });
   const { recipes, loading } = ActiveList();
   const userServings = UserDefaultServings();
 

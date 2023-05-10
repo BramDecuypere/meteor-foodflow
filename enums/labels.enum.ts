@@ -8,4 +8,5 @@ export enum Labels {
   LUNCH = "lunch",
   DINNER = "diner",
   DESSERT = "dessert",
+  LIGHT = "light",
 }

@@ -14,7 +14,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
       total: 60 * 3 + 20,
       active: 20,
     },
-    labels: ["zomer", "winter", "hoofdgerecht", "light"],
+    labels: [Labels.SUMMER, Labels.WINTER, Labels.DINNER, Labels.LIGHT],
     food: {
       servings: 6,
       ingredients: [
@@ -166,7 +166,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
       total: 30,
       active: 10,
     },
-    labels: ["zomer", "hoofdgerecht", "light"],
+    labels: [Labels.SUMMER, Labels.LUNCH, Labels.LIGHT],
     food: {
       servings: 2,
       ingredients: [
@@ -291,7 +291,7 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
       total: 30,
       active: 10,
     },
-    labels: ["zomer", "hoofdgerecht", "light"],
+    labels: [Labels.SUMMER, Labels.LUNCH, Labels.LIGHT],
     food: {
       servings: 2,
       ingredients: [
