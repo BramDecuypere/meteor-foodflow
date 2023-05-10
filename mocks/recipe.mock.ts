@@ -2480,4 +2480,246 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
       },
     ],
   },
+  {
+    language: Languages.NL,
+    title: "Avocado spek en boontjes",
+    image: "",
+    timings: {
+      total: 15,
+      active: 15,
+    },
+    labels: [Labels.LUNCH, Labels.SUMMER],
+    food: {
+      servings: 2,
+      ingredients: [
+        {
+          name: Ingredients.AVOCADO,
+          amount: 1,
+          metric: Metrics.PIECES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.SLUMBER_PEAS,
+          amount: 300,
+          metric: Metrics.GRAM,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.LAMBS_LETUCE,
+          amount: 200,
+          metric: Metrics.GRAM,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.SMOKED_BACON,
+          amount: 200,
+          metric: Metrics.GRAM,
+          departments: [Departments.MEAT_FISH_AND_ALTERNATIVES],
+        },
+      ],
+    },
+    steps: [
+      {
+        description:
+          "Zet een pot met water op om de sluimererwten te koken en een pan voor het spek",
+      },
+      {
+        ingredients: [Ingredients.SMOKED_BACON],
+        description: "Bak het spek krokant in de pan",
+      },
+      {
+        ingredients: [Ingredients.SLUMBER_PEAS],
+        description:
+          "Kook de sluimererwten kort in het water met wat zout en olijfolie",
+      },
+      {
+        ingredients: [Ingredients.LAMBS_LETUCE],
+        description:
+          "Meng de gewassen veldsla met wat olijfolie en kruid met peper en zout en verdeel over de borden",
+      },
+      {
+        ingredients: [Ingredients.SMOKED_BACON, Ingredients.SLUMBER_PEAS],
+        description:
+          "Haal de sluimererwten uit het water en het krokante spek van het vuur en verdeel over de borden",
+      },
+      {
+        ingredients: [Ingredients.AVOCADO],
+        description: "Snij de avocado in blokjes en verdeel over de borden",
+      },
+    ],
+  },
+  {
+    language: Languages.NL,
+    title: "Bananencake",
+    image: "",
+    timings: {
+      total: 30,
+      active: 10,
+    },
+    labels: [Labels.BREAKFAST, Labels.LUNCH, Labels.SUMMER],
+    food: {
+      servings: 4,
+      ingredients: [
+        {
+          name: Ingredients.BANANA,
+          amount: 2,
+          metric: Metrics.PIECES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.OATMEAL,
+          amount: 2,
+          metric: Metrics.CUPS,
+          departments: [Departments.GRAINS_BEANS_RICE],
+        },
+        {
+          name: Ingredients.ALMOND_FLOUR,
+          amount: 1,
+          metric: Metrics.CUPS,
+          departments: [Departments.BAKERY],
+        },
+        {
+          name: Ingredients.COCONUT_MILK,
+          amount: 2,
+          metric: Metrics.CUPS,
+          departments: [Departments.CANNED_FOOD],
+        },
+        {
+          name: Ingredients.HONEY,
+          amount: 3,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.BAKERY],
+          optional: true,
+        },
+      ],
+    },
+    steps: [
+      {
+        description: "Verwarm de oven voor op 180°C",
+      },
+      {
+        ingredients: [Ingredients.BANANA],
+        description: "Snij de banaan in schijfjes",
+      },
+      {
+        ingredients: [
+          Ingredients.OATMEAL,
+          Ingredients.ALMOND_FLOUR,
+          Ingredients.COCONUT_MILK,
+        ],
+        description:
+          "Meng de havermout met het amandelmeel, de kokosmelk en de schijfjes van de helft van het aantal bananen",
+      },
+      {
+        ingredients: [Ingredients.BANANA],
+        description: "Leg de andere helft van de banenen bovenop de cake",
+      },
+      {
+        description: "Zet 20 minuten in een voorverwarmde oven van 180°C",
+      },
+    ],
+  },
+  {
+    language: Languages.NL,
+    title: "Drielagenpuree met gehakt",
+    image: "",
+    timings: {
+      total: 40,
+      active: 10,
+    },
+    labels: [Labels.DINNER, Labels.WINTER],
+    food: {
+      servings: 4,
+      ingredients: [
+        {
+          name: Ingredients.POTATOES,
+          amount: 400,
+          metric: Metrics.GRAM,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.BROCCOLI,
+          amount: 2,
+          metric: Metrics.PIECES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.CARROTS,
+          amount: 400,
+          metric: Metrics.GRAM,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.ONION_WHITE,
+          amount: 1,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.GROUND_BEEF,
+          amount: 3,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.MEAT_FISH_AND_ALTERNATIVES],
+        },
+        {
+          name: Ingredients.CREAM,
+          amount: 3,
+          metric: Metrics.DECILITER,
+          departments: [Departments.DAIRY_AND_EGGS],
+        },
+        {
+          name: Ingredients.BUTTER,
+          amount: 150,
+          metric: Metrics.GRAM,
+          departments: [Departments.DAIRY_AND_EGGS],
+        },
+        {
+          name: Ingredients.BREADCRUMBS,
+          amount: 4,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.OTHER],
+        },
+      ],
+    },
+    steps: [
+      {
+        description:
+          "Je kan dit recept ook op voorhand maken en in een oven van 180 opwarmen",
+      },
+      {
+        ingredients: [Ingredients.ONION_WHITE],
+        description: "Snipper de ui fijn",
+      },
+      {
+        ingredients: [Ingredients.GROUND_BEEF, Ingredients.ONION_WHITE],
+        description:
+          "Bak het gehakt samen met de gesnipperde ajuin. Kruid met peper en zout",
+      },
+      {
+        ingredients: [
+          Ingredients.BROCCOLI,
+          Ingredients.POTATOES,
+          Ingredients.CARROTS,
+        ],
+        description:
+          "Reinig de groenten en snij ze in ongeveer gelijke stukken (hoe kleiner, hoe sneller gaar)",
+      },
+      {
+        description:
+          "Kook de verschillende groenten afzonderlijk gaar en pureer ze apart in de blender met wat room en boter tot je een smeuige puree bekomt. Kruid met peper en zout",
+      },
+      {
+        description:
+          "Leg in een ovenschotel eerst een laag wortelpuree, daarna het gehakt, daarboven op de broccoli en tot slot de aardappelpuree",
+      },
+      {
+        description:
+          "Wil je dit meteen eten: doe er paneermeel op en zet hem onder een hete gril",
+      },
+      {
+        description:
+          "Voor later? Zet in de frigo (max 2 dagen). Doe de paneermeel er op net voor je ze in de oven zet en warm op 30 minuten in een voorverwarmde oven",
+      },
+    ],
+  },
 ];

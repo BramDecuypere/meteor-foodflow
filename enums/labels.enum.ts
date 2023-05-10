@@ -1,5 +1,6 @@
 export enum Labels {
   SUMMER = "zomer",
+  WINTER = "winter",
   ITALIAN = "italiaans",
   INDIAN = "indiaas",
   BREAKFAST = "ontbijt",

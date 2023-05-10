@@ -121,4 +121,10 @@ export enum Ingredients {
   ROASTED_ONIONS = "geroosterde ajuin",
   EDAMMAME = "edammame",
   BROCCOLI = "broccoli",
+  SLUMBER_PEAS = "sluimererwten",
+  LAMBS_LETUCE = "veldsla",
+  ALMOND_FLOUR = "amandelmeel",
+  HONEY = "honing",
+  POTATOES = "aardappelen",
+  CREAM = "room",
 }
