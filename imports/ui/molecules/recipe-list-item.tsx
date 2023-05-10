@@ -44,6 +44,19 @@ const RecipeImage = ({
   );
 };
 
+const TextSkeleton = ({ className }: { className: string }) => {
+  return (
+    <span
+      className={cn(
+        "w-10 text-transparent animate-pulse bg-slate-200 rounded-xl",
+        className
+      )}
+    >
+      xxx
+    </span>
+  );
+};
+
 const RecipeListItem = ({
   className,
   recipe = {
@@ -112,7 +125,9 @@ const RecipeListItem = ({
       <Link
         onClick={(e) => e.stopPropagation()}
         to={getLink()}
-        className="h-56 overflow-hidden relative backdrop-filter"
+        className={cn("h-56 overflow-hidden relative backdrop-filter", {
+          "animate-pulse": loading,
+        })}
       >
         <div className="absolute w-full h-full bg-black rounded-t-3xl opacity-5"></div>
         {onRemoveClick && (
@@ -132,31 +147,19 @@ const RecipeListItem = ({
 
         <div
           className={cn(
-            "flex flex-col absolute bottom-2 left-2 text-white font-bold ",
+            "flex flex-col absolute bottom-2 left-2 text-white font-bold",
             { "w-10/12": loading }
           )}
         >
           <div className="flex">
-            {recipe.labels.length > 0 || loading ? (
+            {recipe.labels.length > 0 &&
               recipe.labels.map((value, idx) => {
                 return (
                   <Label key={idx} label={value} className="mr-2 text-xs" />
                 );
-              })
-            ) : (
-              <Label
-                loading={loading}
-                className="mr-2 text-xs w-10 bg-red-100 h-4"
-              />
-            )}
+              })}
           </div>
-          <span className="text-lg">
-            {recipe.title || (
-              <div className="bg-slate-200 animate-pulse w-full h-10 text-transparent">
-                xxxxxxxx
-              </div>
-            )}
-          </span>
+          <span className="text-lg">{recipe.title}</span>
         </div>
       </Link>
 
@@ -165,14 +168,22 @@ const RecipeListItem = ({
           <div className="flex">
             <span className="flex items-center text-xs pb-3 pr-2">
               <ClockIcon className="h-3 text-orange pr-1" />
-              <span>
-                ± {recipe.timings.total} min ({recipe.timings.active} min
-                active)
-              </span>
+              {!loading ? (
+                <span>
+                  ± {recipe.timings.total} min ({recipe.timings.active} min
+                  active)
+                </span>
+              ) : (
+                <TextSkeleton className="w-20" />
+              )}
             </span>
             <span className="flex items-center text-xs pb-3 pr-2">
               <UserIcon className="h-3 text-orange pr-1" />
-              <span>{recipe.food.servings}</span>
+              {!loading ? (
+                <span>{recipe.food.servings}</span>
+              ) : (
+                <TextSkeleton className="w-4" />
+              )}
             </span>
             {/* <span className="flex items-center text-xs pb-3 pr-2">
               <ClockIcon className="h-3 text-orange pr-1" />

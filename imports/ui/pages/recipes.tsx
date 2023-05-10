@@ -50,7 +50,9 @@ const Recipes = () => {
     <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
       <div className="py-4">
         <RecipeList>
-          {!loading ? getRecipes() : <RecipeListItem loading={loading} />}
+          {!loading
+            ? getRecipes()
+            : [...Array(10)].map(() => <RecipeListItem loading={loading} />)}
         </RecipeList>
       </div>
     </div>
