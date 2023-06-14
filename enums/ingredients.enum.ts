@@ -1,4 +1,8 @@
 export enum Ingredients {
+  COGNAC = "Cognac",
+  WISKEY = "Wiskey",
+  STEAK = "steak",
+  WATER = "water",
   CINNAMON = "kaneel",
   HUTTEKASE = "huttekase",
   CUCUMBER = "komkommer",
@@ -18,6 +22,7 @@ export enum Ingredients {
   BANANA = "banaan",
   BASIL_FRESH = "basilicum (vers)",
   BELL_PEPPER_RED = "rode paprika",
+  BELL_PEPPER_GREEN = "groene paprika",
   BISCUITS_CRUMBLED = "verkruimelde koekjes",
   BLACK_PEPPER = "zwarte peper",
   BOUILLON_VEGGIES = "groentebouillon",

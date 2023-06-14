@@ -2981,4 +2981,262 @@ export const recipesMock: Omit<Recipe, "_id">[] = [
       },
     ],
   },
+  {
+    language: Languages.NL,
+    title: "Gazpacho",
+    image: "",
+    timings: {
+      total: 25,
+      active: 15,
+    },
+    labels: [Labels.DINNER, Labels.SUMMER, Labels.LUNCH],
+    food: {
+      servings: 4,
+      ingredients: [
+        {
+          name: Ingredients.TOMATOES,
+          amount: 7,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.CUCUMBER,
+          amount: 1,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.BELL_PEPPER_GREEN,
+          amount: 1,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.ONION_WHITE,
+          amount: 0.5,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.GARLIC,
+          amount: 1,
+          metric: Metrics.CLOVES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.RED_WINE_VINIGAR,
+          amount: 4,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.OLIVE_OIL,
+          amount: 0.25,
+          metric: Metrics.CUPS,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.SALT,
+          amount: 1,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.BLACK_PEPPER,
+          amount: 1,
+          metric: Metrics.TEASPOON,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.BASIL_FRESH,
+          amount: 4,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+      ],
+    },
+    steps: [
+      {
+        ingredients: [Ingredients.GARLIC],
+        description:
+          "Verwijder de kern van de knoflook (deze is bitterder wanneer niet gekookt).",
+      },
+      {
+        ingredients: [Ingredients.CUCUMBER],
+        description: "Schil de komkommer",
+      },
+      {
+        ingredients: [
+          Ingredients.CUCUMBER,
+          Ingredients.GARLIC,
+          Ingredients.TOMATOES,
+          Ingredients.ONION_WHITE,
+          Ingredients.BELL_PEPPER_GREEN,
+        ],
+        description:
+          "Snij de groenten in grove stukken, voeg ze toe aan de blender en mix ze (de tomaten onderaan)",
+      },
+      {
+        ingredients: [Ingredients.TOMATOES, Ingredients.BELL_PEPPER_RED],
+      },
+      {
+        ingredients: [
+          Ingredients.BLACK_PEPPER,
+          Ingredients.SALT,
+          Ingredients.RED_WINE_VINIGAR,
+          Ingredients.WATER,
+          Ingredients.OLIVE_OIL,
+        ],
+        description: "Voeg peper, zout, azijn, water, olijfolie",
+      },
+      {
+        description:
+          "Zet maximaal een paar uur in de frigo voor het beste resultaat",
+      },
+      {
+        description: "Voor een compleet zachte soep, kan je de soep zeven",
+      },
+      {
+        description:
+          "Je kan de soep in een glas serveren of in een kom met extra toppings zoals: croutons, olijfolie, fijngesneden komkommer",
+        optional: true,
+      },
+    ],
+  },
+  {
+    language: Languages.NL,
+    title: "Steak champignonroomsaus, ovenfrieten en frisse salade",
+    image: "",
+    timings: {
+      total: 25,
+      active: 15,
+    },
+    labels: [Labels.DINNER, Labels.SUMMER, Labels.LUNCH],
+    food: {
+      servings: 4,
+      ingredients: [
+        {
+          name: Ingredients.POTATOES_FLOURY,
+          amount: 1.5,
+          metric: Metrics.KILO_GRAM,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.MUSHROOMS,
+          amount: 250,
+          metric: Metrics.GRAM,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.GARLIC,
+          amount: 0.5,
+          metric: Metrics.CLOVES,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.THYME,
+          amount: 1,
+          metric: Metrics.TABLESPOON,
+          departments: [Departments.FRESH_VEGETABLES_AND_FRUITS],
+        },
+        {
+          name: Ingredients.SUNFLOUR_OIL,
+          amount: 90,
+          metric: Metrics.MILLILITER,
+          departments: [Departments.OTHER],
+        },
+        {
+          name: Ingredients.STEAK,
+          amount: 4,
+          metric: Metrics.AMOUNT,
+          departments: [Departments.MEAT_FISH_AND_ALTERNATIVES],
+        },
+      ],
+    },
+    steps: [
+      {
+        ingredients: [Ingredients.STEAK],
+        description:
+          "Haal de steak 1-2u op voorhand uit om op kamertemperatuur te komen",
+      },
+      {
+        description: "Verhit de oven voor op 220°C voor de ovenfrieten",
+      },
+      {
+        ingredients: [Ingredients.STEAK],
+        description:
+          "Dep voor het bakken het vlees droog, zo maak je een mooiere korst",
+      },
+      {
+        ingredients: [Ingredients.STEAK],
+        description: "Voeg zout pas net voor het bakken toe aan de steak.",
+      },
+      {
+        ingredients: [Ingredients.STEAK],
+        description:
+          "Voeg zwarte peper toe na het bakken en naar wens extra zeezout.",
+      },
+      {
+        description:
+          "Vleesbakken: Saignant - dichtschroeien is voldoende - kerntemperatuur (oven) 45-50 graden",
+      },
+      {
+        description:
+          "Vleesbakken: Medium rare - 1 a 2 minuten per kant - kerntemperatuur (oven) 55 graden",
+      },
+      {
+        description:
+          "Vleesbakken: Medium rare - 2 a 3 minuten per kant - kerntemperatuur (oven) 60 graden",
+      },
+      {
+        description:
+          "Na het bakken wikkel je het vlees losjes in zilverpapier en een kleine opening vanboven voor de stoom - 3 tot 5 minuten",
+      },
+      {
+        ingredients: [Ingredients.POTATOES_FLOURY],
+        description:
+          "Kook de aardappelen in schil voor 8 minuten. Giet ze af en laat 5 minuten rusten (kan je een paar uur op voorhand doen)",
+      },
+      {
+        ingredients: [
+          Ingredients.POTATOES_FLOURY,
+          Ingredients.SEA_SALT,
+          Ingredients.SUNFLOUR_OIL,
+        ],
+        description:
+          "Snij in frieten, doe in een grote kom en meng voorzichtig met de zonnebloemolie en het zout",
+      },
+      {
+        description:
+          "Bak ze voor ±45 minuten en schud halverwege op tot de de frieten goudbruin zijn.",
+      },
+      {
+        ingredients: [
+          Ingredients.THYME,
+          Ingredients.MUSHROOMS,
+          Ingredients.SHALLOT,
+          Ingredients.BAY_LEAF,
+        ],
+        description:
+          "De champignonroomsaus kan ook op voorhand worden gemaakt. Bak de champignons, voeg de tijm, laurier en sjalot toe en laat glazig worden.",
+      },
+      {
+        ingredients: [
+          Ingredients.COGNAC,
+          Ingredients.WISKEY,
+          Ingredients.WINE_WHITE,
+        ],
+        description:
+          "Voeg wanneer de sterke drank toe en flambeer. Voeg daarna de scheut witte wijn toe.",
+      },
+      {
+        ingredients: [Ingredients.CREAM],
+        description: "Voeg de room toe en laat even inkoken.",
+      },
+      {
+        ingredients: [Ingredients.LAMBS_LETUCE],
+        description: "Dresseer de veldsla met wat vinigraitte",
+      },
+    ],
+  },
 ];
