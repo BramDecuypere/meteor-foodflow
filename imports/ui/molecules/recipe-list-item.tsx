@@ -118,7 +118,7 @@ const RecipeListItem = ({
   return (
     <div
       className={cn(
-        "flex flex-col rounded-3xl border-gray-200 border text-black h-full font-bold",
+        "flex flex-col rounded-3xl border-gray-200 border text-black h-full",
         className
       )}
     >
@@ -166,7 +166,7 @@ const RecipeListItem = ({
       <div className="flex flex-col flex-grow p-3">
         <div>
           <div className="flex">
-            <span className="flex items-center text-xs pb-3 pr-2">
+            <span className="flex items-center text-xs font-bold pb-3 pr-2">
               <ClockIcon className="h-3 text-primary pr-1" />
               {!loading ? (
                 <span>
@@ -177,7 +177,7 @@ const RecipeListItem = ({
                 <TextSkeleton className="w-20" />
               )}
             </span>
-            <span className="flex items-center text-xs pb-3 pr-2">
+            <span className="flex items-center text-sm pb-3 pr-2">
               <UserIcon className="h-3 text-primary pr-1" />
               {!loading ? (
                 <span>{recipe.food.servings}</span>

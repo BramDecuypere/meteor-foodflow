@@ -22,7 +22,7 @@ const StaticSidebar = () => {
                 className={({ isActive }) =>
                   cx(
                     isActive
-                      ? "bg-primary bg-opacity-5 text-gray-900"
+                      ? "bg-primary bg-opacity-5 font-bold text-gray-900"
                       : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
                     "group flex items-center px-2 py-2 text-sm rounded-md"
                   )

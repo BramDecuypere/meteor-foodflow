@@ -22,7 +22,7 @@ export const navigation = [
   },
   {
     id: "seasonal",
-    name: "Seasonal Fruits & Vegetables",
+    name: "Seasonal Fruits & Vegies",
     href: "/seasonal-fruits-and-vegetables",
     icon: SunIcon,
     current: false,
