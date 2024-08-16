@@ -18,7 +18,7 @@ const DashboardTemplate = ({
 
       <StaticSidebar />
 
-      <div className="flex flex-1 flex-col md:pl-64">
+      <div className="flex flex-1 flex-col md:pl-80">
         <TopNav title={title} />
 
         <main className="flex-1 pb-16 relative">{children ?? <Outlet />}</main>
