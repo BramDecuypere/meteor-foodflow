@@ -177,7 +177,7 @@ const RecipeListItem = ({
                 <TextSkeleton className="w-20" />
               )}
             </span>
-            <span className="flex items-center text-sm pb-3 pr-2">
+            <span className="flex items-center text-sm pb-3 pr-2 font-bold">
               <UserIcon className="h-3 text-primary pr-1" />
               {!loading ? (
                 <span>{recipe.food.servings}</span>
