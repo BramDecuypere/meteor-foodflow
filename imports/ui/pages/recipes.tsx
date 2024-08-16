@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import { Meteor } from "meteor/meteor";
 import cn from "classnames";
 import { Menu, Transition } from "@headlessui/react";
-import { EllipsisVerticalIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { EllipsisVerticalIcon } from "@heroicons/react/24/outline";
 
 import RecipeListItem from "../molecules/recipe-list-item";
 import UserRecipes from "../hooks/user-recipes.hook";

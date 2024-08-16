@@ -6,13 +6,14 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "/imports/ui/pages/home";
 import DashboardTemplate from "/imports/ui/templates/dashboard";
 import Signin from "/imports/ui/pages/signin";
-import RequireAuth from "../imports/ui/hooks/require-auth.hook";
+import RequireAuth from "/imports/ui/hooks/require-auth.hook";
 import { AuthProvider } from "/imports/ui/hooks/auth.hook";
-import Recipes from "../imports/ui/pages/recipes";
+import Recipes from "/imports/ui/pages/recipes";
 import { GlobalProvider } from "/imports/ui/hooks/global.context";
-import Groceries from "../imports/ui/pages/groceries";
+import Groceries from "/imports/ui/pages/groceries";
 import Settings from "/imports/ui/pages/settings";
 import RecipeDetail from "/imports/ui/pages/recipe-detail";
+import RecipeCreate from "/imports/ui/pages/new-recipe";
 import SeasonalFruitsAndVeggies from "/imports/ui/pages/seasonal-fruits-and-veggies";
 
 const router = createBrowserRouter([
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: "/recipes/:id",
         element: <RecipeDetail />,
+      },
+      {
+        path: "/recipes/create",
+        element: <RecipeCreate />,
       },
     ],
   },
