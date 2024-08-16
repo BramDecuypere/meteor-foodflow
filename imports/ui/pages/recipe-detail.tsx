@@ -37,7 +37,7 @@ const RecipeDetail = () => {
   };
 
   return (
-    <div className="mx-auto flex max-w-4xl px-4 sm:px-6 md:px-8">
+    <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
       <div className="flex flex-col py-4 px-2 my-4 w-full bg-white rounded-md">
         <div className="flex flex-col md:flex-row">
           <div className="pb-4 md:pb-0 md:w-2/5 md:mr-4 h-52 overflow-hidden relative backdrop-filter">
@@ -70,7 +70,7 @@ const RecipeDetail = () => {
           </div>
         </div>
 
-        <div className="w-full text-center py-6">
+        <div className="w-full py-6 md:py-10">
           <TextToggle
             selected={selectedView}
             onClick={(val) => setSelectedView(val as ButtonGroupState)}
@@ -79,7 +79,7 @@ const RecipeDetail = () => {
         </div>
 
         {selectedView === ButtonGroupState.INGREDIENTS && (
-          <div className="w-full max-w-xl mx-auto">
+          <div className="w-full max-w-xl">
             {getIngredients().map((department) => {
               const ingredientsList = recipe.food.ingredients.filter(
                 (ingredient) => ingredient.departments.indexOf(department) > -1
@@ -116,8 +116,8 @@ const RecipeDetail = () => {
         )}
 
         {selectedView === ButtonGroupState.STEPS && (
-          <div className="w-full max-w-xl mx-auto">
-            <ol className="w-full list-decimal">
+          <div className="w-full max-w-xl">
+            <ol className="w-full list-decimal ml-6">
               {recipe.steps.map((step, idx) => {
                 if (!step || !step.ingredients) {
                   return null;

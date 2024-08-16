@@ -42,7 +42,7 @@ const TopNav = ({ title = "" }: { title?: string | ReactNode }) => {
         <span className="sr-only">Open sidebar</span>
         <Bars3BottomLeftIcon className="h-6 w-6" aria-hidden="true" />
       </button>
-      <div className="flex flex-1 justify-between px-4">
+      <div className="flex flex-1 justify-between mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
         <div className="flex flex-1 items-center">
           {/* <form className="flex w-full md:ml-0" action="#" method="GET">
                   <label htmlFor="search-field" className="sr-only">
@@ -64,7 +64,7 @@ const TopNav = ({ title = "" }: { title?: string | ReactNode }) => {
                     />
                   </div>
                 </form> */}
-          {title && <h1 className="md:ml-8 text-2xl">{title}</h1>}
+          {title && <h1 className="text-2xl">{title}</h1>}
         </div>
         <div className="ml-4 flex items-center md:ml-6">
           {/* {isLoading && <div>Loading...</div>}

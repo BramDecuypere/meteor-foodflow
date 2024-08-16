@@ -75,7 +75,7 @@ const Groceries = () => {
     activeList.recipes.length === 0
   ) {
     return (
-      <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
         {/* Replace with your content */}
         <div className="px-4 py-8 sm:px-0">
           <div className="h-96 rounded-lg border-4 border-dashed border-gray-200 flex justify-center items-center">
