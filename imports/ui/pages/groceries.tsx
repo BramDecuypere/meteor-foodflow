@@ -76,7 +76,7 @@ const Groceries = () => {
     activeList.recipes.length === 0
   ) {
     return (
-      <div>
+      <RecipeList>
         <div className="py-8 sm:px-0">
           <div className="h-96 rounded-lg border-4 border-dashed border-gray-200 flex justify-center items-center">
             {getNavigation() && (
@@ -112,7 +112,7 @@ const Groceries = () => {
           </div>
         </div>
         {/* /End replace */}
-      </div>
+      </RecipeList>
     );
   }
 
