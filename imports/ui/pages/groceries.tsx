@@ -16,6 +16,7 @@ import AddExtraItemForm from "../molecules/add-extra-item-form";
 import { Meteor } from "meteor/meteor";
 import { RecipeIngredient } from "/imports/api/recipes/recipes";
 import { Metrics } from "/enums/metrics.enum";
+import RecipeList from "../molecules/recipe-list";
 
 export enum GroceriesListStates {
   MENU = "My Active Menu",
@@ -75,9 +76,8 @@ const Groceries = () => {
     activeList.recipes.length === 0
   ) {
     return (
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
-        {/* Replace with your content */}
-        <div className="px-4 py-8 sm:px-0">
+      <div>
+        <div className="py-8 sm:px-0">
           <div className="h-96 rounded-lg border-4 border-dashed border-gray-200 flex justify-center items-center">
             {getNavigation() && (
               <Button
@@ -117,7 +117,7 @@ const Groceries = () => {
   }
 
   return (
-    <div className="mx-auto px-4 sm:px-6 md:px-8">
+    <div>
       <Menu
         as="div"
         className="inline-block text-left fixed bottom-10 right-5 md:bottom-10 md:right-10 z-50"
