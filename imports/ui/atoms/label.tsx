@@ -13,7 +13,7 @@ const Label = ({
   return (
     <span
       className={cn(
-        "rounded-full bg-orange bg-opacity-60 px-2 py-1",
+        "rounded-full bg-primary bg-opacity-60 px-2 py-1",
         { "animate-pulse": loading },
         className
       )}

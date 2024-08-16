@@ -34,7 +34,7 @@ const Accordion = ({
           }
         }}
         className={cn(
-          "flex justify-between bg-orange text-white text-sm  cursor-pointer",
+          "flex justify-between bg-primary text-white text-sm  cursor-pointer",
           {
             "rounded-t-xl": isOpen,
             "rounded-xl": !isOpen,

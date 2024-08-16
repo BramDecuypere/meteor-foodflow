@@ -22,7 +22,7 @@ const Button = ({
       onClick={onClick}
       className={cn(
         className,
-        "bg-orange text-white h-10 px-3 rounded-3xl text-xs font-bold"
+        "bg-primary text-white h-10 px-3 rounded-3xl text-xs font-bold"
       )}
       type={type}
       {...rest}

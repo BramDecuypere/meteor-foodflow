@@ -28,7 +28,7 @@ const AmountModifier = ({
       <button
         disabled={disabled}
         onClick={onAdd}
-        className="text-2xl w-5 text-orange h-9"
+        className="text-2xl w-5 text-primary h-9"
       >
         +
       </button>
@@ -39,7 +39,7 @@ const AmountModifier = ({
       <button
         disabled={disabled}
         onClick={onRemove}
-        className="text-2xl w-5 text-orange h-9"
+        className="text-2xl w-5 text-primary h-9"
       >
         -
       </button>

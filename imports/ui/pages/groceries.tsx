@@ -123,7 +123,7 @@ const Groceries = () => {
         className="inline-block text-left fixed bottom-10 right-5 md:bottom-10 md:right-10 z-50"
       >
         <Menu.Button
-          className="cursor-pointer bg-orange rounded-full p-3 shadow-lg"
+          className="cursor-pointer bg-primary rounded-full p-3 shadow-lg"
           onClick={onOptionsClick}
         >
           <EllipsisVerticalIcon className="w-8 h-8 text-4xl text-white" />

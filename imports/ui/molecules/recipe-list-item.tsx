@@ -118,7 +118,7 @@ const RecipeListItem = ({
   return (
     <div
       className={cn(
-        "flex flex-col rounded-3xl shadow-lighter text-black h-full font-bold",
+        "flex flex-col rounded-3xl border-gray-200 border text-black h-full font-bold",
         className
       )}
     >
@@ -132,7 +132,7 @@ const RecipeListItem = ({
         <div className="absolute w-full h-full bg-black rounded-t-3xl opacity-5"></div>
         {onRemoveClick && (
           <div
-            className="text-orange absolute top-0 right-0 p-2"
+            className="text-primary absolute top-0 right-0 p-2"
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
@@ -167,7 +167,7 @@ const RecipeListItem = ({
         <div>
           <div className="flex">
             <span className="flex items-center text-xs pb-3 pr-2">
-              <ClockIcon className="h-3 text-orange pr-1" />
+              <ClockIcon className="h-3 text-primary pr-1" />
               {!loading ? (
                 <span>
                   ± {recipe.timings.total} min ({recipe.timings.active} min
@@ -178,7 +178,7 @@ const RecipeListItem = ({
               )}
             </span>
             <span className="flex items-center text-xs pb-3 pr-2">
-              <UserIcon className="h-3 text-orange pr-1" />
+              <UserIcon className="h-3 text-primary pr-1" />
               {!loading ? (
                 <span>{recipe.food.servings}</span>
               ) : (
@@ -186,7 +186,7 @@ const RecipeListItem = ({
               )}
             </span>
             {/* <span className="flex items-center text-xs pb-3 pr-2">
-              <ClockIcon className="h-3 text-orange pr-1" />
+              <ClockIcon className="h-3 text-primary pr-1" />
               <span>± 10 min</span>
             </span> */}
           </div>

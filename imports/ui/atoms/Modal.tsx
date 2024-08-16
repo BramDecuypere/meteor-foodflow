@@ -46,7 +46,7 @@ const Modal = ({
                 <div className="absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
                   <button
                     type="button"
-                    className="rounded-md bg-white text-orange hover:text-orange focus:outline-none focus:ring-2 focus:ring-orange focus:ring-offset-2"
+                    className="rounded-md bg-white text-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                     onClick={() => setModalIsOpen(false)}
                   >
                     <span className="sr-only">Close</span>

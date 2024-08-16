@@ -24,7 +24,7 @@ const AddToListGroup = ({
   return (
     <div
       className={cn(
-        "flex items-center font-bold shadow-light rounded-3xl h-10 bg-white text-xs w-full mx-auto",
+        "flex items-center font-bold border border-gray-100 rounded-3xl h-10 bg-white text-xs w-full mx-auto",
         { "max-w-sm  justify-between": selectable },
         className
       )}
@@ -42,13 +42,13 @@ const AddToListGroup = ({
         <Button
           onClick={onClick}
           className={cn({
-            "bg-white border-2 border-orange text-orange": isSelected,
+            "bg-white border-2 border-primary text-primary": isSelected,
           })}
         >
           {isSelected ? (
             <span className="flex items-center">
-              <CheckIcon className="h-6 w-6 pr-2 text-orange" />
-              <span className="text-orange">Added</span>
+              <CheckIcon className="h-6 w-6 pr-2 text-primary" />
+              <span className="text-primary">Added</span>
             </span>
           ) : (
             <span>Add to list</span>

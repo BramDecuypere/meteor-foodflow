@@ -21,7 +21,7 @@ const CheckboxLabel = ({
           onChange={onClick}
           checked={isSelected}
           className={cn(
-            "mr-4 rounded-xl border-solid border-2 border-orange text-orange focus:ring-transparent cursor-pointer"
+            "mr-4 rounded-xl border-solid border-2 border-primary text-primary focus:ring-transparent cursor-pointer"
           )}
         />
         {children}

@@ -113,7 +113,7 @@ const Home = () => (
             </a>
           </div>
           <div className="-my-2 -mr-2 md:hidden">
-            <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-300">
+            <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-300">
               <span className="sr-only">Open menu</span>
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </Popover.Button>
@@ -125,7 +125,7 @@ const Home = () => (
                     <Popover.Button
                       className={cl(
                         open ? "text-gray-900" : "text-gray-500",
-                        "group inline-flex items-center rounded-md bg-white text-base hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-300 focus:ring-offset-2"
+                        "group inline-flex items-center rounded-md bg-white text-base hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
                       )}
                     >
                       <span>Solutions</span>
@@ -157,7 +157,7 @@ const Home = () => (
                                 className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
                               >
                                 <item.icon
-                                  className="h-6 w-6 flex-shrink-0 text-orange"
+                                  className="h-6 w-6 flex-shrink-0 text-primary"
                                   aria-hidden="true"
                                 />
                                 <div className="ml-4">
@@ -213,7 +213,7 @@ const Home = () => (
                     <Popover.Button
                       className={cl(
                         open ? "text-gray-900" : "text-gray-500",
-                        "group inline-flex items-center rounded-md bg-white text-base hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-300 focus:ring-offset-2"
+                        "group inline-flex items-center rounded-md bg-white text-base hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2"
                       )}
                     >
                       <span>More</span>
@@ -245,7 +245,7 @@ const Home = () => (
                                 className="-m-3 flex items-start rounded-lg p-3 hover:bg-gray-50"
                               >
                                 <item.icon
-                                  className="h-6 w-6 flex-shrink-0 text-orange"
+                                  className="h-6 w-6 flex-shrink-0 text-primary"
                                   aria-hidden="true"
                                 />
                                 <div className="ml-4">
@@ -283,7 +283,7 @@ const Home = () => (
                             <div className="mt-5 text-sm">
                               <a
                                 href="#"
-                                className= text-orange hover:text-orange-300"
+                                className= text-primary hover:text-primary-300"
                               >
                                 View all posts
                                 <span aria-hidden="true"> &rarr;</span>
@@ -306,7 +306,7 @@ const Home = () => (
             </Link>
             <Link
               to="/signup"
-              className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-orange px-4 py-2 text-base text-white shadow-sm hover:bg-orange-600"
+              className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-primary px-4 py-2 text-base text-white shadow-sm hover:bg-primary-600"
             >
               Sign up
             </Link>
@@ -334,7 +334,7 @@ const Home = () => (
                   <Logo />
                 </div>
                 <div className="-mr-2">
-                  <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-300">
+                  <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-300">
                     <span className="sr-only">Close menu</span>
                     <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                   </Popover.Button>
@@ -349,7 +349,7 @@ const Home = () => (
                         className="-m-3 flex items-center rounded-md p-3 hover:bg-gray-50"
                       >
                         <item.icon
-                          className="h-6 w-6 flex-shrink-0 text-orange"
+                          className="h-6 w-6 flex-shrink-0 text-primary"
                           aria-hidden="true"
                         />
                         <span className="ml-3 text-base text-gray-900">
@@ -364,7 +364,7 @@ const Home = () => (
               <div>
                 <Link
                   to="/signup"
-                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-orange px-4 py-2 text-base text-white shadow-sm hover:bg-orange-700"
+                  className="flex w-full items-center justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-base text-white shadow-sm hover:bg-primary-700"
                 >
                   Sign up
                 </Link>
@@ -373,7 +373,7 @@ const Home = () => (
                   Existing customer?
                   <Link
                     to="/signin"
-                    className="pl-2 text-orange hover:text-orange-300"
+                    className="pl-2 text-primary hover:text-primary-300"
                   >
                     Log in
                   </Link>
@@ -392,7 +392,9 @@ const Home = () => (
             <span className="block xl:inline">
               The way you eat and do groceries
             </span>{" "}
-            <span className="block text-orange xl:inline">managed in flow</span>
+            <span className="block text-primary xl:inline">
+              managed in flow
+            </span>
           </h1>
           <p className="mx-auto mt-3 max-w-md text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl">
             Creating groceries lists and remembering all of your favourite
@@ -403,7 +405,7 @@ const Home = () => (
             <div className="rounded-md shadow">
               <a
                 href="#"
-                className="flex w-full items-center justify-center rounded-md border border-transparent bg-orange px-8 py-3 text-base text-white hover:bg-orange-700 md:py-4 md:px-10 md:text-lg"
+                className="flex w-full items-center justify-center rounded-md border border-transparent bg-primary px-8 py-3 text-base text-white hover:bg-primary-700 md:py-4 md:px-10 md:text-lg"
               >
                 Get started
               </a>
@@ -411,7 +413,7 @@ const Home = () => (
             <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
               <a
                 href="#"
-                className="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base text-orange hover:bg-gray-50 md:py-4 md:px-10 md:text-lg"
+                className="flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base text-primary hover:bg-gray-50 md:py-4 md:px-10 md:text-lg"
               >
                 Book a call
               </a>
