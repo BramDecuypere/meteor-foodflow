@@ -8,6 +8,7 @@ import { getIngredientsByDepartment } from "/imports/utils/get-ingredients-by-de
 import { getSortedIngredientsByDepartment } from "/imports/utils/get-sorted-ingredients-by-department";
 import { Department } from "/imports/api/departments/departments";
 import { isDepartmentCompleted } from "/imports/utils/is-department-complete";
+import RecipeList from "../../molecules/recipe-list";
 
 const DepartmentAccordeon = ({ department }: { department: string }) => {
   const activeList = ActiveListHook();
@@ -106,7 +107,7 @@ const GroceriesList = () => {
   const ingredientsByDepartment = getIngredientsByDepartment(activeList);
 
   return (
-    <>
+    <RecipeList>
       {Object.keys(ingredientsByDepartment)
         .filter((department) => !isDepartmentCompleted(department, activeList))
         .map((department, idx) => (
@@ -118,7 +119,7 @@ const GroceriesList = () => {
         .map((department, idx) => (
           <DepartmentAccordeon key={idx} department={department} />
         ))}
-    </>
+    </RecipeList>
   );
 };
 
