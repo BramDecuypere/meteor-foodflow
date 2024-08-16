@@ -13,6 +13,6 @@ export enum Metrics {
   MILLILITER = "ml",
   DECILITER = "dl",
   CLOVES = "teentje(s)",
-  STALK = "stengel",
-  CUPS = 'cup(s)'
+  STALK = "stengel(s)",
+  CUPS = "cup(s)",
 }
